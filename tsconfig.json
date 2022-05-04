@@ -18,7 +18,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "noImplicitAny": false,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "gandoo-react/*": ["src/app/*"]
+    }
   },
   "include": [
     "src"
