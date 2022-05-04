@@ -1,15 +1,31 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Login() {
-
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const onSubmit = (data) => {
+
+    let payload = {
+      username: username,
+      password: password,
+      clientSecret: "gandooahmedabad",
+      version: "uiapi(gandoo)-0.0.0"
+    }
+
+    axios.post("/uiapi/AccountsAPI/v1/rest/login/", payload)
+    .then((res) => {
+      navigate("/list")
+    })
+    .catch((res) => {
+      console.log("catch " + res)
+    })
   }
 
   return (
