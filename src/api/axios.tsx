@@ -4,6 +4,7 @@ import axios from "axios";
 axios.interceptors.request.use(function (config) {
     if (!config.headers)
       config.headers = {}
+    // append csfr token on every* request
     config.headers["X-IDGARD-CSFR"] = ""+localStorage.getItem("csfrToken");
     return config;
   }, function (error) {
@@ -14,7 +15,12 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
   return response;
 }, function (error) {
-  window.location.href = window.location.origin + "/login"
+  // navigate to /login
+  window.location.href = window.location.origin + "/login";
+
+  // remove csfrToken from localStorage
+  localStorage.removeItem("csfrToken");
+
   return Promise.reject(error);
 });
 

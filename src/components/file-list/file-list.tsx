@@ -11,9 +11,7 @@ export default function FileList() {
   const [itemList, setItemList] = useState([]);
 
   useEffect(() => {
-    axios.get("/uiapi/BoxAPI/v1/rest/boxes/" + params.boxId, {
-      headers: { "X-IDGARD-CSFR": ""+localStorage.getItem("csfrToken") }
-    })
+    axios.get("/uiapi/BoxAPI/v1/rest/boxes/" + params.boxId, {})
     .then((res) => {
       setItemList(res.data.rootFolder.entries);
     })
