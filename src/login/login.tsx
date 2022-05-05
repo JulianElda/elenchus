@@ -21,6 +21,7 @@ export default function Login() {
 
     axios.post("/uiapi/AccountsAPI/v1/rest/login/", payload)
     .then((res) => {
+      localStorage.setItem("csfrToken", res.data.csfrToken)
       navigate("/list")
     })
     .catch((res) => {
