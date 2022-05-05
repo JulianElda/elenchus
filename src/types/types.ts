@@ -1,4 +1,4 @@
-export type BoxList = {
+export type BoxListType = {
   id: string;
   name: string;
   description: string;

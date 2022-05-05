@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import BoxListItem from "./box-list-item";
-import { BoxList } from "./../types/types";
+import { BoxListType } from "./../../types/types";
 
-export default function List() {
+export default function BoxList() {
 
   const [boxList, setBoxList] = useState([]);
 
@@ -22,16 +22,17 @@ export default function List() {
   }, [])
 
   const mapBoxList = () => {
-    return boxList.map((box: BoxList) => {
+    return boxList.map((box: BoxListType) => {
       return (
-        <BoxListItem key={box.id} name={box.name}/>
+        <BoxListItem key={box.id}
+          id={box.id} name={box.name}/>
       )
     })
   }
 
   return (
     <div>
-      <h2>List</h2>
+      <h2>box-list</h2>
       <ul className="list-group">
         {mapBoxList()}
       </ul>

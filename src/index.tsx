@@ -7,8 +7,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import './index.css';
 import App from './App';
-import List from "./list/list";
-import Login from "./login/login";
+import BoxList from "./components/box-list/box-list";
+import FileList from "./components/file-list/file-list";
+import Login from "./components/login/login";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -19,7 +20,10 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="login" element={<Login />}/>
-          <Route path="list" element={<List />}/>
+          <Route path="list" element={<BoxList />}/>
+          <Route path="file" element={<FileList />}>
+            <Route path=":boxId" element={<FileList />}/>
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
