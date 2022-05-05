@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "api/axios";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -25,7 +25,6 @@ export default function Login() {
       navigate("/list")
     })
     .catch((res) => {
-      console.log("catch " + res)
     })
   }
 

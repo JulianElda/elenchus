@@ -1,23 +1,19 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "api/axios";
 
 import BoxListItem from "./box-list-item";
-import { BoxListType } from "./../../types/types";
+import { BoxListType } from "types";
 
 export default function BoxList() {
 
   const [boxList, setBoxList] = useState([]);
 
   useEffect(() => {
-    axios.get("/uiapi/BoxAPI/v1/rest/boxes", {
-      headers: { "X-IDGARD-CSFR": ""+localStorage.getItem("csfrToken") }
-    })
+    axios.get("/uiapi/BoxAPI/v1/rest/boxes")
     .then((res) => {
       setBoxList(res.data);
-
     })
     .catch((res) => {
-      console.log("catch " + res.data);
     })
   }, [])
 

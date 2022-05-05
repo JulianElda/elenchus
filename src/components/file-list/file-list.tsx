@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import axios from "axios";
 
 import FileListItem from "./file-list-item";
-//import { ItemList } from "./../../types/types";
 
 export default function FileList() {
 
@@ -18,18 +16,15 @@ export default function FileList() {
     })
     .then((res) => {
       setItemList(res.data.rootFolder.entries);
-      console.log(JSON.stringify(itemList));
-
     })
     .catch((res) => {
-      console.log("catch " + res.data);
     })
   }, [])
 
   const mapitemList = () => {
     return itemList.map((item: any) => {
       return (
-        <FileListItem key={item.id} name={item.name}/>
+        <FileListItem key={item.id} name={item.name} />
       )
     })
   }
