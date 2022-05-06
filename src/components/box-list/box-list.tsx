@@ -28,7 +28,7 @@ export default function BoxList() {
 
   return (
     <div>
-      <h2>box-list</h2>
+      <h3>box-list</h3>
       <ul className="list-group">
         {mapBoxList()}
       </ul>

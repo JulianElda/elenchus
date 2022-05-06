@@ -15,11 +15,14 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
   return response;
 }, function (error) {
-  // navigate to /login
-  window.location.href = window.location.origin + "/login";
+  if (error.response.status === 401 &&
+      error.response.data.error === "NoSessionException") {
+    // navigate to /login
+    window.location.href = window.location.origin + "/login";
 
-  // remove csfrToken from localStorage
-  localStorage.removeItem("csfrToken");
+    // remove csfrToken from localStorage
+    localStorage.removeItem("csfrToken");
+  }
 
   return Promise.reject(error);
 });

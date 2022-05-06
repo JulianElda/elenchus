@@ -16,11 +16,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <h1>index</h1>
     <BrowserRouter>
       <Routes>
         <Route path="" element={<Navigate to="/list" />}/>
+        <Route path="login" element={<Login />}/>
         <Route path="/" element={<App />}>
-          <Route path="login" element={<Login />}/>
           <Route path="list" element={<BoxList />}/>
           <Route path="file" element={<FileList />}>
             <Route path=":boxId" element={<FileList />}/>

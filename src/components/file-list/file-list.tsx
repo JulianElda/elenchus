@@ -29,7 +29,7 @@ export default function FileList() {
 
   return (
     <div>
-      <h2>file-list</h2>
+      <h3>file-list</h3>
       <ul className="list-group">
         {mapitemList()}
       </ul>
