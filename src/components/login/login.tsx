@@ -22,14 +22,14 @@ export default function Login() {
     axios.post("/uiapi/AccountsAPI/v1/rest/login/", payload)
     .then((res) => {
       localStorage.setItem("csfrToken", res.data.csfrToken)
-      navigate("/list")
+      navigate("/box")
     })
     .catch((res) => {
     })
   }
 
   return (
-    <>
+    <div className="container">
       <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
@@ -53,6 +53,6 @@ export default function Login() {
         <button type="submit"
           className="btn btn-primary">Login</button>
       </form>
-    </>
+    </div>
   );
 }

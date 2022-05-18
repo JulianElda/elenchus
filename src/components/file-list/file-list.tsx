@@ -8,36 +8,38 @@ export default function FileList() {
 
   let params = useParams();
 
-  const [itemList, setItemList] = useState([]);
+  const [itemList, setItemList] = useState<Array<any>>([]);
 
-  const loadBoxItems = () => {
-    console.log("FileList.loadBoxItems()")
+  useEffect(() => {
+    console.log("FileList.loadBoxItems() " + params.boxId)
     axios.get("/uiapi/BoxAPI/v1/rest/boxes/" + params.boxId, {})
     .then((res) => {
       setItemList(res.data.rootFolder.entries);
     })
     .catch((res) => {
     })
-  }
+  }, [params.boxId])
 
-  useEffect(() => {
-    loadBoxItems();
-  }, [])
+  if (itemList.length === 0) {
+    return (
+      <p>loading items...</p>
+    );
+  }
+  else {
+    return (
+      <FileListLayout items={itemList} />
+    );
+  }
+}
+
+function FileListLayout(props) {
 
   const mapitemList = () => {
-    return itemList.map((item: any) => {
+    return props.items.map((item: any) => {
       return (
         <FileListItem key={item.id} name={item.name} />
       )
     })
-  }
-
-  if (itemList.length == 0) {
-    return (
-      <>
-        <p>loading items...</p>
-      </>
-    );
   }
 
   return (
