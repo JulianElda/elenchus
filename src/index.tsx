@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-import { AppRouting } from './App';
+import AppRouting from './AppRouting';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

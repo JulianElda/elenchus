@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "api/axios";
-import { Navigate, Routes, Route, Outlet } from "react-router-dom";
-
-import BoxList from "./components/box-list/box-list";
-import FileList from "./components/file-list/file-list";
-import Login from "./components/login/login";
+import { Outlet } from "react-router-dom";
 
 import './App.css';
 
-export function App() {
+export default function App() {
 
   const [clientConfiguration, setClientConfiguration] = useState<any>(null);
   const [currentUser, setCurrentUser] = useState<any>(null);
@@ -52,15 +48,3 @@ export function App() {
   );
 }
 
-export function AppRouting() {
-  return(
-    <Routes>
-      <Route path="" element={<Navigate to="/box" />}/>
-      <Route path="/" element={<App />}>
-        <Route path="box" element={<BoxList />} />
-        <Route path="box/:boxId" element={<FileList />}/>
-      </Route>
-      <Route path="login" element={<Login />}/>
-    </Routes>
-  )
-}
