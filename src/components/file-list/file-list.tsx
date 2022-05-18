@@ -10,13 +10,18 @@ export default function FileList() {
 
   const [itemList, setItemList] = useState([]);
 
-  useEffect(() => {
+  const loadBoxItems = () => {
+    console.log("FileList.loadBoxItems()")
     axios.get("/uiapi/BoxAPI/v1/rest/boxes/" + params.boxId, {})
     .then((res) => {
       setItemList(res.data.rootFolder.entries);
     })
     .catch((res) => {
     })
+  }
+
+  useEffect(() => {
+    loadBoxItems();
   }, [])
 
   const mapitemList = () => {
@@ -25,6 +30,14 @@ export default function FileList() {
         <FileListItem key={item.id} name={item.name} />
       )
     })
+  }
+
+  if (itemList.length == 0) {
+    return (
+      <>
+        <p>loading items...</p>
+      </>
+    );
   }
 
   return (

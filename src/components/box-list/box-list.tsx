@@ -8,13 +8,18 @@ export default function BoxList() {
 
   const [boxList, setBoxList] = useState([]);
 
-  useEffect(() => {
+  const loadBoxes = () => {
+    console.log("BoxList.loadBoxes()")
     axios.get("/uiapi/BoxAPI/v1/rest/boxes")
     .then((res) => {
       setBoxList(res.data);
     })
     .catch((res) => {
     })
+  }
+
+  useEffect(() => {
+    loadBoxes();
   }, [])
 
   const mapBoxList = () => {
@@ -24,6 +29,14 @@ export default function BoxList() {
           id={box.id} name={box.name}/>
       )
     })
+  }
+
+  if (boxList.length == 0) {
+    return (
+      <>
+        <p>loading boxes...</p>
+      </>
+    );
   }
 
   return (

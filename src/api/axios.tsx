@@ -18,7 +18,7 @@ axios.interceptors.response.use(function (response) {
   if (error.response.status === 401 &&
       error.response.data.error === "NoSessionException") {
     // navigate to /login
-    window.location.href = window.location.origin + "/login";
+    //window.location.href = window.location.origin + "/login";
 
     // remove csfrToken from localStorage
     localStorage.removeItem("csfrToken");

@@ -6,7 +6,7 @@ import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 
 import './index.css';
-import App from './App';
+import { App, AppRouting } from './App';
 import BoxList from "./components/box-list/box-list";
 import FileList from "./components/file-list/file-list";
 import Login from "./components/login/login";
@@ -15,21 +15,22 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <>
     <h1>index</h1>
     <BrowserRouter>
       <Routes>
-        <Route path="" element={<Navigate to="/list" />}/>
+        <Route path="" element={<Navigate to="/box" />}/>
         <Route path="login" element={<Login />}/>
-        <Route path="/" element={<App />}>
-          <Route path="list" element={<BoxList />}/>
-          <Route path="file" element={<FileList />}>
-            <Route path=":boxId" element={<FileList />}/>
-          </Route>
-        </Route>
+        <Route path="/*"
+          element={
+            <React.Suspense fallback={<>...</>}>
+              <AppRouting />
+            </React.Suspense>
+          }
+        />
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function

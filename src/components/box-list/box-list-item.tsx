@@ -5,7 +5,7 @@ export default function BoxListItem(props) {
   const navigate = useNavigate();
 
   const onNavigateBox = () => {
-    navigate("/file/" + props.id)
+    navigate("/box/" + props.id)
   }
 
   return (
