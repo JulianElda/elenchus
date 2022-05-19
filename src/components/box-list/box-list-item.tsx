@@ -10,7 +10,7 @@ export default function BoxListItem(props) {
 
   return (
     <li className="list-group-item" onClick={onNavigateBox}>
-      {props.name}
+      ({props.type}) - {props.name}
     </li>
   );
 }
