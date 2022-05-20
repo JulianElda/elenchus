@@ -22,8 +22,9 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "gandoo-react/*": ["app/*"],
-      "@gandoo-types": ["app/types/types"]
+      "@api/*": ["api/*"],
+      "@components/*": ["components/*"],
+      "@types": ["types"],
     }
   },
   "include": [

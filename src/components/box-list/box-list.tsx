@@ -1,38 +1,11 @@
-import { useEffect, useState } from "react";
-import axios from "api/axios";
+import { useState } from "react";
 
 import BoxListSortSelect, { boxListSorterFunction } from "./box-list-sorter";
 import BoxListSearcher, { boxListSearcherFunction } from "./box-list-searcher";
 import BoxListItem from "./box-list-item";
-import { BoxListType } from "types";
+import { BoxListType } from "@types";
 
-export default function BoxList() {
-
-  const [boxList, setBoxList] = useState([]);
-
-  useEffect(() => {
-    console.log("BoxList.loadBoxes()")
-    axios.get("/uiapi/BoxAPI/v1/rest/boxes")
-    .then((res) => {
-      setBoxList(res.data);
-    })
-    .catch((res) => {
-    })
-  }, [])
-
-  if (boxList.length === 0) {
-    return (
-      <p>loading boxes...</p>
-    );
-  }
-  else {
-    return (
-      <BoxListLayout boxes={boxList}/>
-    );
-  }
-}
-
-function BoxListLayout(props) {
+export default function BoxList(props) {
 
   const [boxListSort, setBoxListSort] = useState("name");
   const [boxListSearch, setBoxListSearch] = useState("");
