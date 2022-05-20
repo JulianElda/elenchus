@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import reportWebVitals from './reportWebVitals';
@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './index.css';
 
-import AppRouting from './AppRouting';
+import AppRouting from './app-routing';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

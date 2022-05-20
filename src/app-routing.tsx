@@ -1,6 +1,6 @@
 import { Navigate, Routes, Route } from "react-router-dom";
 
-import App from "./App";
+import App from "@components/app";
 import BoxListResolver from "@components/box-list/box-list-resolver";
 import FileListResolver from "./components/file-list/file-list-resolver";
 import Login from "./components/login/login";

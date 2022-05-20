@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import axios from "@api/axios";
 
-import './App.css';
+import './app.css';
 
 export default function App() {
 
