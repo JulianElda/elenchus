@@ -5,7 +5,9 @@ export default function FileList(props) {
   const mapitemList = () => {
     return props.items.map((item: any) => {
       return (
-        <FileListItem key={item.id} name={item.name} />
+        <FileListItem key={item.id}
+          type={item.type}
+          name={item.name} />
       )
     })
   }

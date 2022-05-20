@@ -34,8 +34,14 @@ export default function BoxList(props) {
   return (
     <div>
       <h3>box-list</h3>
-      <BoxListSortSelect onChangeSort={onChangeSort} />
-      <BoxListSearcher onChangeSearch={onChangeSearch} />
+      <div className="row">
+        <div className="col-md-6">
+          <BoxListSearcher onChangeSearch={onChangeSearch} />
+        </div>
+        <div className="col-md-6">
+          <BoxListSortSelect onChangeSort={onChangeSort} />
+        </div>
+      </div>
       <ul className="list-group">
         {mapBoxList()}
       </ul>

@@ -1,4 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
+
+const boxIcons = {
+  "FILE": solid("dog"),
+  "DATAROOM": solid("euro-sign"),
+  "TEMPORARY": solid("bugs")
+}
 
 export default function BoxListItem(props) {
 
@@ -10,7 +18,8 @@ export default function BoxListItem(props) {
 
   return (
     <li className="list-group-item" onClick={onNavigateBox}>
-      ({props.type}) - {props.name}
+      <FontAwesomeIcon icon={boxIcons[props.type]} />
+      <span>{props.name}</span>
     </li>
   );
 }

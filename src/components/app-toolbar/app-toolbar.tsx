@@ -17,7 +17,7 @@ export default function AppToolbar(props) {
               <li>
                 <span className="dropdown-item"
                   data-bs-toggle="modal"
-                  data-bs-target="#logout-modal">Logout</span>
+                  data-bs-target="#logout-confirm-modal">Logout</span>
               </li>
             </ul>
           </li>
