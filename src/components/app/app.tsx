@@ -1,50 +1,22 @@
-import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import axios from "@api/axios";
 
 import './app.css';
 
-export default function App() {
+import AppToolbar from "@components/app-toolbar";
+import Logout from "@components/logout";
 
-  const [clientConfiguration, setClientConfiguration] = useState<any>(null);
-  const [currentUser, setCurrentUser] = useState<any>(null);
-  const [nick, setNick] = useState<string>("")
+export default function App(props) {
 
-  useEffect(() => {
-    if (clientConfiguration &&
-        (clientConfiguration.userType === "ADMIN" ||
-        clientConfiguration.userType === "FULL_LICENSE"))
-    axios.get("/uiapi/UserManagementAPI/v1/rest/users/" + clientConfiguration.id)
-    .then((res) => {
-      setCurrentUser(res.data);
-    })
-    .catch((res) => {
-    })
-  }, [clientConfiguration])
-
-  useEffect(() => {
-    axios.get("/uiapi/AccountsAPI/v1/rest/configuration")
-    .then((res) => {
-      setClientConfiguration(res.data);
-      setNick(res.data.nick);
-    })
-    .catch((res) => {
-    })
-  }, [])
-
-  if (!clientConfiguration || !currentUser) {
-    return (
-      <div className="app-container container">
-        <p>loading app...</p>
-      </div>
-    );
-  }
+  const clientConfiguration = props.clientConfiguration;
 
   return (
-    <div className="app-container container">
-      <h2>Welcome {nick}</h2>
+    <>
+    <AppToolbar nick={clientConfiguration.nick}/>
+    <Logout />
+    <main className="app-container container">
       <Outlet />
-    </div>
+    </main>
+    </>
   );
 }
 
