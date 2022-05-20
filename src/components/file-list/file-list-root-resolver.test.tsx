@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from '@testing-library/react';
-import FileListResolver from './file-list-resolver';
+import FileListRootResolver from './file-list-root-resolver';
 
 test('renders loading', () => {
-  render(<FileListResolver />);
+  render(<FileListRootResolver />);
   const nameElement = screen.getByText(/loading items/i);
   expect(nameElement).toBeInTheDocument();
 });

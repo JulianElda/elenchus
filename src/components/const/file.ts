@@ -18,7 +18,7 @@ export const mimes = {
   img: ["png", "jpg", "jpeg", "bmp", "gif", "svg"],
   pdf: ["pdf"],
   txt: ["txt"],
-  src: ["js", "java", "css", "html", "src", "class", "c", "sh", "php"],
+  src: ["conf", "js", "java", "css", "html", "src", "class", "c", "sh", "php"],
   doc: ["doc", "docx", "dotx"],
   xls: ["xls", "xlsx", "xlsm"],
   ppt: ["ppt", "pptx", "pps", "ppsx"],

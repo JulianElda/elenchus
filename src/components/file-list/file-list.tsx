@@ -1,11 +1,15 @@
 import FileListItem from "./file-list-item";
+import { fileListSorterFunction } from "./file-list-sorter";
 
 export default function FileList(props) {
 
   const mapitemList = () => {
-    return props.items.map((item: any) => {
+    return props.items
+      .sort(fileListSorterFunction())
+      .map((item: any) => {
       return (
         <FileListItem key={item.id}
+          id={item.id}
           type={item.type}
           name={item.name} />
       )
@@ -14,7 +18,6 @@ export default function FileList(props) {
 
   return (
     <div>
-      <h3>file-list</h3>
       <ul className="list-group">
         {mapitemList()}
       </ul>

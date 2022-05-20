@@ -4,21 +4,21 @@ import axios from "@api/axios";
 
 import FileList from "./file-list";
 
-export default function FileListResolver() {
+export default function FileListResolver(props) {
 
   let params = useParams();
 
   const [itemList, setItemList] = useState<Array<any>>([]);
 
   useEffect(() => {
-    console.log("FileList.loadBoxItems() " + params.boxId)
-    axios.get("/uiapi/BoxAPI/v1/rest/boxes/" + params.boxId, {})
+    console.log("FileList.loadChildren() " + params.boxId + "/" + params.folderId)
+    axios.get("/uiapi/BoxAPI/v1/rest/children/" + params.boxId + "/" + params.folderId, {})
     .then((res) => {
-      setItemList(res.data.rootFolder.entries);
+      setItemList(res.data.entries);
     })
     .catch((res) => {
     })
-  }, [params.boxId])
+  }, [params.boxId, params.folderId])
 
   if (itemList.length === 0) {
     return (
@@ -27,7 +27,7 @@ export default function FileListResolver() {
   }
   else {
     return (
-      <FileList items={itemList} />
+      <FileList items={itemList}/>
     );
   }
 }
