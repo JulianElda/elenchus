@@ -6,6 +6,7 @@ import BoxList from "./box-list";
 export default function BoxListResolver() {
 
   const [boxList, setBoxList] = useState([]);
+  const [boxLoading, setBoxLoading] = useState(true);
 
   // TODO paginator
 
@@ -14,12 +15,13 @@ export default function BoxListResolver() {
     axios.get("/uiapi/BoxAPI/v1/rest/boxes")
     .then((res) => {
       setBoxList(res.data);
+      setBoxLoading(false);
     })
     .catch((res) => {
     })
   }, [])
 
-  if (boxList.length === 0) {
+  if (boxLoading) {
     return (
       <p>loading boxes...</p>
     );

@@ -1,29 +1,36 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import axios from "@api/axios";
 
 import FileList from "./file-list";
+import FileListEmpty from "./file-list-empty";
 
 export default function FileListResolver(props) {
 
   let params = useParams();
 
   const [itemList, setItemList] = useState<Array<any>>([]);
+  const [itemsLoading, setItemsLoading] = useState(true);
 
   useEffect(() => {
     console.log("FileList.loadChildren() " + params.boxId + "/" + params.folderId)
     axios.get("/uiapi/BoxAPI/v1/rest/children/" + params.boxId + "/" + params.folderId, {})
     .then((res) => {
       setItemList(res.data.entries);
+      setItemsLoading(false);
     })
     .catch((res) => {
     })
   }, [params.boxId, params.folderId])
 
-  if (itemList.length === 0) {
+  if (itemsLoading) {
     return (
       <p>loading items...</p>
     );
+  }
+  else if (itemList.length === 0) {
+    return (<FileListEmpty />);
   }
   else {
     return (
@@ -31,3 +38,4 @@ export default function FileListResolver(props) {
     );
   }
 }
+
