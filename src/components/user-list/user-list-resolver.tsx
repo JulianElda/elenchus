@@ -31,15 +31,6 @@ export default function UserListResolver() {
     loadUsers(0)
   }, []);
 
-  /*
-  return (
-    <>
-      { paginating ? <p>loading users...</p> : <UserList users={userList}/> }
-    </>
-  );
-  */
-
-
   if (paginating) {
     return (
       <p>loading users...</p>

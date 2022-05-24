@@ -9,10 +9,10 @@ export default function BoxList(props) {
 
   const [boxListSort, setBoxListSort] = useState("name");
   const [boxListSearch, setBoxListSearch] = useState("");
-  const [boxList] = useState<any[]>(props.boxes);
+  //const [boxList] = useState<any[]>(props.boxes);
 
   const mapBoxList = () => {
-    return boxList
+    return props.boxes
       .filter(boxListSearcherFunction(boxListSearch))
       .sort(boxListSorterFunction(boxListSort))
       .map((box: BoxListType) => {

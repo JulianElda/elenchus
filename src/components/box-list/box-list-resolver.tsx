@@ -5,7 +5,7 @@ import BoxList from "./box-list";
 
 export default function BoxListResolver() {
 
-  const [boxList, setBoxList] = useState([]);
+  const [boxList, setBoxList] = useState<Array<any>>([]);
   const [boxLoading, setBoxLoading] = useState(true);
 
   // TODO paginator

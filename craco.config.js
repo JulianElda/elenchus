@@ -10,4 +10,16 @@ module.exports = {
       '@types': path.resolve(__dirname, 'src/types'),
     },
   },
+  jest: {
+    configure: {
+      moduleNameMapper: {
+        "^\@api\/(.*)$": "<rootDir>/src/api/$1",
+        "^\@common\/(.*)$": "<rootDir>/src/components/common/$1",
+        "^\@const\/(.*)$": "<rootDir>/src/components/const/$1",
+      },
+      rootDir: "./",
+      testMatch: ["./**/?(*.)+(spec|test).[jt]s?(x)"],
+      setupFilesAfterEnv: "<rootDir>/src/setupTests.ts"
+    }
+  },
 };

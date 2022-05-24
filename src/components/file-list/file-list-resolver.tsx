@@ -14,6 +14,8 @@ export default function FileListResolver(props) {
   const [itemsLoading, setItemsLoading] = useState(true);
 
   useEffect(() => {
+    if (!params.boxId || !params.folderId)
+      return
     console.log("FileList.loadChildren() " + params.boxId + "/" + params.folderId)
     axios.get("/uiapi/BoxAPI/v1/rest/children/" + params.boxId + "/" + params.folderId, {})
     .then((res) => {

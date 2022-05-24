@@ -13,7 +13,7 @@ export default function FileList(props) {
           type={item.type}
           name={item.name} />
       )
-    })
+    });
   }
 
   return (

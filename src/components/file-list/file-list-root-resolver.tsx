@@ -6,8 +6,8 @@ import FileListResolver from "./file-list-resolver";
 
 export default function FileListRootResolver() {
 
-  let params = useParams();
   const navigate = useNavigate();
+  const params = useParams();
 
   const [rootFolderId, setRootFolderId] = useState("");
 
@@ -22,7 +22,7 @@ export default function FileListRootResolver() {
   }, [params.boxId])
 
   useEffect(() => {
-    navigate("/box/" + params.boxId + "/" + rootFolderId)
+    navigate("/box/" + params.boxId + "/" + rootFolderId, {replace: true})
   }, [rootFolderId]);
 
   if (rootFolderId === "") {
