@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "@api/axios";
+import { Authentication } from "@types";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function Login() {
 
   const onSubmit = (data) => {
 
-    let payload = {
+    let payload: Authentication = {
       username: username,
       password: password,
       clientSecret: "gandooahmedabad",

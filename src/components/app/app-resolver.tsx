@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "@api/axios";
-
+import { ClientConfiguration, UserWrapper } from "@types";
 import App from "./app";
 
 export default function AppResolver() {
 
-  const [clientConfiguration, setClientConfiguration] = useState<any>(null);
-  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [clientConfiguration, setClientConfiguration] = useState<ClientConfiguration>();
+  const [currentUser, setCurrentUser] = useState<UserWrapper>();
   
   useEffect(() => {
     if (clientConfiguration &&

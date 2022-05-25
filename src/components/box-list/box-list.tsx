@@ -3,7 +3,7 @@ import { useState } from "react";
 import BoxListSortSelect, { boxListSorterFunction } from "./box-list-sorter";
 import BoxListSearcher, { boxListSearcherFunction } from "./box-list-searcher";
 import BoxListItem from "./box-list-item";
-import { BoxListType } from "@types";
+import { IdgardBox } from "@types";
 
 export default function BoxList(props) {
 
@@ -15,7 +15,7 @@ export default function BoxList(props) {
     return props.boxes
       .filter(boxListSearcherFunction(boxListSearch))
       .sort(boxListSorterFunction(boxListSort))
-      .map((box: BoxListType) => {
+      .map((box: IdgardBox) => {
       return (
         <BoxListItem key={box.id}
           id={box.id} name={box.name} type={box.type}/>

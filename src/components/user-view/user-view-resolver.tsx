@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "@api/axios";
 
 export default function UserViewResolver() {
 
-  const navigate = useNavigate();
   const params = useParams();
 
   const [user, setUser] = useState<any>();

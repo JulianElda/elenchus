@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import { Entry } from "@types";
 import axios from "@api/axios";
 
 import FileList from "./file-list";
@@ -10,7 +10,7 @@ export default function FileListResolver(props) {
 
   let params = useParams();
 
-  const [itemList, setItemList] = useState<Array<any>>([]);
+  const [itemList, setItemList] = useState<Array<Entry>>([]);
   const [itemsLoading, setItemsLoading] = useState(true);
 
   useEffect(() => {

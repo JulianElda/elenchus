@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "@api/axios";
-
+import { IdgardBox } from "@types";
 import BoxList from "./box-list";
 
 export default function BoxListResolver() {
 
-  const [boxList, setBoxList] = useState<Array<any>>([]);
+  const [boxList, setBoxList] = useState<Array<IdgardBox>>([]);
   const [boxLoading, setBoxLoading] = useState(true);
 
   // TODO paginator
