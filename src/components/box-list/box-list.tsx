@@ -5,10 +5,14 @@ import BoxListSearcher, { boxListSearcherFunction } from "./box-list-searcher";
 import BoxListItem from "./box-list-item";
 import { IdgardBox } from "@types";
 
-export default function BoxList(props) {
+type BoxListProp = {
+  boxes: IdgardBox[];
+};
 
-  const [boxListSort, setBoxListSort] = useState("name");
-  const [boxListSearch, setBoxListSearch] = useState("");
+export default function BoxList(props: BoxListProp) {
+
+  const [boxListSort, setBoxListSort] = useState<string>("name");
+  const [boxListSearch, setBoxListSearch] = useState<string>("");
   //const [boxList] = useState<any[]>(props.boxes);
 
   const mapBoxList = () => {

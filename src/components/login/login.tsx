@@ -8,8 +8,8 @@ export default function Login() {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const onSubmit = (data) => {
 

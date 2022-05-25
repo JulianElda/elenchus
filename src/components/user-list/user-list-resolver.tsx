@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "@api/axios";
-
+import { UserWrapper } from "@types";
 import UserList from "./user-list";
 
 export default function UserListResolver() {
 
-  const [userList, setUserList] = useState([]);
-  const [paginating, setPaginating] = useState(true);
+  const [userList, setUserList] = useState<UserWrapper[]>([]);
+  const [paginating, setPaginating] = useState<boolean>(true);
   const limit = 5;
   let tmp = []
 

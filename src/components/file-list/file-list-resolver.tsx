@@ -6,12 +6,12 @@ import axios from "@api/axios";
 import FileList from "./file-list";
 import FileListEmpty from "./file-list-empty";
 
-export default function FileListResolver(props) {
+export default function FileListResolver() {
 
   let params = useParams();
 
   const [itemList, setItemList] = useState<Array<Entry>>([]);
-  const [itemsLoading, setItemsLoading] = useState(true);
+  const [itemsLoading, setItemsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     if (!params.boxId || !params.folderId)

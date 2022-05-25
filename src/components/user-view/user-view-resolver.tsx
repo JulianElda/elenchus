@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "@api/axios";
+import { UserWrapper } from "@types";
 
 export default function UserViewResolver() {
 
   const params = useParams();
 
-  const [user, setUser] = useState<any>();
+  const [user, setUser] = useState<UserWrapper>();
 
   useEffect(() => {
-    console.log("FileList.loadBoxItems() " + params.userId)
     axios.get("/uiapi/UserManagementAPI/v1/rest/users/" + params.userId, {})
     .then((res) => {
       setUser(res.data)
@@ -18,14 +18,14 @@ export default function UserViewResolver() {
     })
   }, [params.userId])
 
-  if (user === {}) {
+  if (!user) {
     return (
       <p>loading user...</p>
     );
   }
   else {
     return (
-      <p>{user.userInfos.name}</p>
+      <p>{user?.userInfos?.name}</p>
     );
   }
 }

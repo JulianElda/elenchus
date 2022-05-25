@@ -1,4 +1,10 @@
-export default function BoxListSortSelect(props) {
+import { IdgardBox } from "@types";
+
+type BoxListSortSelectProps = {
+  onChangeSort: Function;
+};
+
+export default function BoxListSortSelect(props: BoxListSortSelectProps) {
 
   const { onChangeSort } = props;
 
@@ -14,8 +20,8 @@ export default function BoxListSortSelect(props) {
   );
 }
 
-export function boxListSorterFunction(sortCategory) {
-  return function(a, b) {
+export function boxListSorterFunction(sortCategory: string) {
+  return function(a: IdgardBox, b: IdgardBox) {
     if (a[sortCategory] < b[sortCategory])
       return -1
     else

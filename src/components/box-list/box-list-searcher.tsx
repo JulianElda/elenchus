@@ -1,4 +1,10 @@
-export default function BoxListSearcher(props) {
+import { IdgardBox } from "@types";
+
+type BoxListSearcherProps = {
+  onChangeSearch: Function;
+};
+
+export default function BoxListSearcher(props: BoxListSearcherProps) {
 
   const { onChangeSearch } = props;
 
@@ -12,8 +18,8 @@ export default function BoxListSearcher(props) {
   );
 }
 
-export function boxListSearcherFunction(query) {
-  return function(box) {
+export function boxListSearcherFunction(query: string) {
+  return function(box: IdgardBox) {
     let searchable = box.name + "" + box.description;
     return searchable.toLowerCase().indexOf(query.toLowerCase()) >= 0;
   }

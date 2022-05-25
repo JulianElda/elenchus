@@ -23,6 +23,11 @@ const iconIndex = {
   }
 }
 
+type FAIconProps = {
+  type: "FILE" | "BOX";
+  icon: string;
+};
+
 export default function FAIcon(props) {
   return (
     <FontAwesomeIcon icon={iconIndex[props.type][props.icon]} />
