@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Entry } from "@types";
+import { Entry } from "types";
 import FileListItemIcon from "./file-list-item-icon";
 
 export default function FileListItem(props: Entry) {

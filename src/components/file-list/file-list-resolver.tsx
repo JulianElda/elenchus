@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Entry } from "@types";
-import axios from "@api/axios";
+import { Entry } from "types";
+import axios from "api/axios";
 
 import FileList from "./file-list";
 import FileListEmpty from "./file-list-empty";

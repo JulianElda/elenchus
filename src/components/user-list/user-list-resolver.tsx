@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "@api/axios";
-import { UserWrapper } from "@types";
+import axios from "api/axios";
+import { UserWrapper } from "types";
 import UserList from "./user-list";
 
 export default function UserListResolver() {

@@ -3,7 +3,7 @@ import { useState } from "react";
 import BoxListSortSelect, { boxListSorterFunction } from "./box-list-sorter";
 import BoxListSearcher, { boxListSearcherFunction } from "./box-list-searcher";
 import BoxListItem from "./box-list-item";
-import { IdgardBox } from "@types";
+import { IdgardBox } from "types";
 
 type BoxListProp = {
   boxes: IdgardBox[];

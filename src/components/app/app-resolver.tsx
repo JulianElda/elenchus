@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "@api/axios";
-import { ClientConfiguration, UserWrapper } from "@types";
+import axios from "api/axios";
+import { ClientConfiguration, UserWrapper } from "types";
 import App from "./app";
 
 export default function AppResolver() {

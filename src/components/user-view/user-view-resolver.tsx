@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "@api/axios";
-import { UserWrapper } from "@types";
+import axios from "api/axios";
+import { UserWrapper } from "types";
 
 export default function UserViewResolver() {
 

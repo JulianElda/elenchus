@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { IdgardBox } from "@types";
+import { IdgardBox } from "types";
 import BoxListItemIcon from "./box-list-item-icon";
 
 export default function BoxListItem(props: IdgardBox) {

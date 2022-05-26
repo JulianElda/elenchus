@@ -1,5 +1,5 @@
-import axios from "@api/axios";
-import ConfirmModal from "@common/confirm-modal";
+import axios from "api/axios";
+import ConfirmModal from "components/common/confirm-modal";
 
 export default function Logout() {
 

@@ -20,15 +20,7 @@
     "noEmit": true,
     "noImplicitAny": false,
     "jsx": "react-jsx",
-    "baseUrl": "./src",
-    "paths": {
-      "@api/*": ["api/*"],
-      "@common/*": ["components/common/*"],
-      "@components/*": ["components/*"],
-      "@const/*": ["const/*"],
-      "@icons/*": ["assets/icons/*"],
-      "@types": ["types"],
-    }
+    "baseUrl": "src"
   },
   "include": [
     "src"

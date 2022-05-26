@@ -1,4 +1,4 @@
-import { Entry } from "@types";
+import { Entry } from "types";
 import FileListItem from "./file-list-item";
 import { fileListSorterFunction } from "./file-list-sorter";
 

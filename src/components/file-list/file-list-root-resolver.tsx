@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "@api/axios";
+import axios from "api/axios";
 
 import FileListResolver from "./file-list-resolver";
 

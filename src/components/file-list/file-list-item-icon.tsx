@@ -1,5 +1,5 @@
-import FAIcon from "@common/fa-icon";
-import { mimes } from "@const/file";
+import FAIcon from "components/common/fa-icon";
+import { mimes } from "const/file";
 
 import "./file-list-item-icon.css";
 

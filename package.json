@@ -28,10 +28,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "craco eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -53,7 +53,6 @@
   },
   "devDependencies": {
     "babel-plugin-macros": "^3.1.0",
-    "craco": "^0.0.3",
     "history": "^5.3.0",
     "http-proxy-middleware": "^2.0.6"
   }

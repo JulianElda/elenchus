@@ -1,4 +1,4 @@
-import { IdgardBox } from "@types";
+import { IdgardBox } from "types";
 
 type BoxListSortSelectProps = {
   onChangeSort: Function;

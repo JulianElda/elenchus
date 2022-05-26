@@ -1,4 +1,4 @@
-import FAIcon from "@common/fa-icon";
+import FAIcon from "components/common/fa-icon";
 
 import "./box-list-item-icon.css";
 

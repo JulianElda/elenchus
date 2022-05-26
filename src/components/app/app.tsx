@@ -2,9 +2,9 @@ import { Outlet } from "react-router-dom";
 
 import './app.css';
 
-import AppToolbar from "@components/app-toolbar";
-//import Breadcrumb from "@components/breadcrumb";
-import Logout from "@components/logout";
+import AppToolbar from "components/app-toolbar";
+//import Breadcrumb from "components/breadcrumb";
+import Logout from "components/logout";
 
 export default function App(props) {
 

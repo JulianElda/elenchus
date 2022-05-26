@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { UserWrapper } from "@types";
+import { UserWrapper } from "types";
 import UserListItem from "./user-list-item";
 
 export default function UserList(props) {

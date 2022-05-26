@@ -3,7 +3,7 @@ import { Router } from "react-router-dom";
 import { createMemoryHistory } from 'history'
 import { act, render, screen } from '@testing-library/react';
 
-import axios from "@api/axios";
+import axios from "api/axios";
 import FileListRootResolver from './file-list-root-resolver';
 
 test('renders loading', () => {

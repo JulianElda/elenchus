@@ -3,7 +3,7 @@ import { Router } from "react-router-dom";
 import { createMemoryHistory } from 'history'
 import { act, render, screen } from '@testing-library/react';
 
-import axios from "@api/axios";
+import axios from "api/axios";
 import BoxListResolver from './box-list-resolver';
 
 test('renders loading', () => {
