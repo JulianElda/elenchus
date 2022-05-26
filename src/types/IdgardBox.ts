@@ -41,3 +41,24 @@ export namespace IdgardBox {
 
 
 }
+export namespace IdgardBox2 {
+
+    /**
+     * Role of current user in this box
+     */
+    export enum role {
+        OWNER = 'OWNER',
+        MANAGER = 'MANAGER',
+        MEMBER = 'MEMBER',
+        ASSISTANT = 'ASSISTANT',
+        ANONYMOUS = 'ANONYMOUS',
+    }
+
+    export enum type {
+        FILE = 'FILE',
+        DATAROOM = 'DATAROOM',
+        TEMPORARY = 'TEMPORARY',
+    }
+
+
+}

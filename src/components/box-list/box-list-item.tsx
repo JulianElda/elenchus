@@ -7,6 +7,7 @@ export default function BoxListItem(props: IdgardBox) {
   const navigate = useNavigate();
 
   const onNavigateBox = () => {
+    console.log("onnavigatebox")
     navigate("/box/" + props.id)
   }
 

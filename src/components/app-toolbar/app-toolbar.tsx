@@ -1,6 +1,8 @@
-export default function AppToolbar(props) {
+type AppToolbarProps = {
+  nick: string;
+};
 
-  const nick = props.nick;
+export default function AppToolbar(props: AppToolbarProps) {
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -11,7 +13,7 @@ export default function AppToolbar(props) {
             <a className="nav-link dropdown-toggle"
               id="app-toolbar-dropdown" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
-              {nick}
+              {props.nick}
             </a>
             <ul className="dropdown-menu" aria-labelledby="app-toolbar-dropdown">
               <li>

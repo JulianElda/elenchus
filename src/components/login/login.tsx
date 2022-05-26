@@ -31,7 +31,7 @@ export default function Login() {
 
   return (
     <div className="container">
-      <h2>Login</h2>
+      <h2 data-testid="login-header">Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
           <label htmlFor="username-input"

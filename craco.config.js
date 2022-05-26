@@ -15,7 +15,9 @@ module.exports = {
       moduleNameMapper: {
         "^\@api\/(.*)$": "<rootDir>/src/api/$1",
         "^\@common\/(.*)$": "<rootDir>/src/components/common/$1",
+        "^\@components\/(.*)$": "<rootDir>/src/components/$1",
         "^\@const\/(.*)$": "<rootDir>/src/const/$1",
+        "^\@types\/(.*)$": "<rootDir>/src/types/$1",
       },
       rootDir: "./",
       testMatch: ["./**/?(*.)+(spec|test).[jt]s?(x)"],

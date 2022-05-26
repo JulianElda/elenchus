@@ -1,3 +1,5 @@
+import { IdgardBox } from "./IdgardBox";
+
 // login payload
 export type { Authentication } from "./Authentication";
 
