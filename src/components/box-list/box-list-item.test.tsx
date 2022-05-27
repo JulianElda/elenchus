@@ -1,21 +1,20 @@
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import BoxListItem from "./box-list-item";
-/*
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => (jest.fn())
-}));
-*/
-test("renders BoxListItem name", async () => {
+
+test("render box name and navigate", async () => {
+  const user = userEvent.setup();
   const history = createMemoryHistory();
   render(
     <Router location="/" navigator={history}>
-      <BoxListItem name="test-name" />
+      <BoxListItem name="test-name" id="test-id"/>
     </Router>
   );
   const nameElement = screen.getByText(/test-name/i);
   expect(nameElement).toBeInTheDocument();
+  await user.click(screen.getByText(/test-name/i))
+  expect(history.location.pathname).toEqual("/box/test-id");
 });

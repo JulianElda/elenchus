@@ -39,7 +39,7 @@ export default function BoxList(props: BoxListProp) {
 
   return (
     <div>
-      <div className="row">
+      <div className="row mb-2">
         <div className="col-md-6">
           <BoxListSearcher onChangeSearch={onChangeSearch} />
         </div>

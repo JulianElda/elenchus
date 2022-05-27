@@ -25,7 +25,10 @@ export default function BoxListSortSelect(props: BoxListSortSelectProps) {
 
 export function boxListSorterFunction(sortCategory: string) {
   return function (a: IdgardBox, b: IdgardBox) {
-    if (a[sortCategory] < b[sortCategory]) return -1;
-    else return 1;
+    if (a[sortCategory].toLowerCase() < b[sortCategory].toLowerCase())
+      return -1;
+    else if (a[sortCategory].toLowerCase() > b[sortCategory].toLowerCase())
+      return 1;
+    else return 0;
   };
 }
