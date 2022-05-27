@@ -1,14 +1,14 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
 
 import AppResolver from "components/app/app-resolver";
-import BoxListResolver from "components/box-list/box-list-resolver";
-import FileListResolver from "components/file-list/file-list-resolver";
-import FileListRootResolver from "components/file-list/file-list-root-resolver";
-import UserListResolver from "components/user-list/user-list-resolver";
-import UserViewResolver from "components/user-view/user-view-resolver";
-
 import Login from "components/login/login";
+
+const BoxListResolver = lazy(() => import("components/box-list/box-list-resolver"));
+const FileListResolver = lazy(() => import("components/file-list/file-list-resolver"));
+const FileListRootResolver = lazy(() => import("components/file-list/file-list-root-resolver"));
+const UserListResolver = lazy(() => import("components/user-list/user-list-resolver"));
+const UserViewResolver = lazy(() => import("components/user-view/user-view-resolver"));
 
 export default function AppRouting() {
   return(
