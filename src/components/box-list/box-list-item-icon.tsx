@@ -1,6 +1,6 @@
 import FAIcon from "components/common/fa-icon";
 
-import "./box-list-item-icon.css";
+import "./box-list-item-icon.scss";
 
 export default function BoxListItemIcon(props) {
   return (

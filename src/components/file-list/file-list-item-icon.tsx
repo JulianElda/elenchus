@@ -1,22 +1,18 @@
 import FAIcon from "components/common/fa-icon";
 import { mimes } from "const/file";
 
-import "./file-list-item-icon.css";
+import "./file-list-item-icon.scss";
 
 export default function FileListItemIcon(props) {
-
-  const getItemIcon = (type, name) => {
-    if (type === "DIR"){
+  const getItemIcon = (type: string, name: string) => {
+    if (type === "DIR") {
       return "dir";
-    }
-    else if (type === "NOTE"){
+    } else if (type === "NOTE") {
       return "note";
-    }
-    else {
-      let extension = name.split(".").pop().toLowerCase();      
-      for(let mime in mimes) 
-        if (mimes[mime].indexOf(extension) >= 0)
-          return mime;
+    } else {
+      let extension = name?.split(".")?.pop()?.toLowerCase();
+      for (let mime in mimes)
+        if (mimes[mime].indexOf(extension) >= 0) return mime;
       return "gen";
     }
   };

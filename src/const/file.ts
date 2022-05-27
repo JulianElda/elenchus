@@ -23,5 +23,5 @@ export const mimes = {
   xls: ["xls", "xlsx", "xlsm"],
   ppt: ["ppt", "pptx", "pps", "ppsx"],
   odx: ["odt", "odp", "ods"],
-  zip: ["zip", "7z", "rar"]
-}
+  zip: ["zip", "7z", "rar"],
+};

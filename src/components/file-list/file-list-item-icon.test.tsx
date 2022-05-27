@@ -1,8 +1,6 @@
-import React from "react";
-import { render, screen } from '@testing-library/react';
-import FileListItemIcon from './file-list-item-icon';
+import { render } from "@testing-library/react";
+import FileListItemIcon from "./file-list-item-icon";
 
-test('renders icon', () => {
-  let icon = render(<FileListItemIcon name="test.pdf" type="FILE"/>);
-  expect(icon).toBeTruthy();
+test("renders icon", () => {
+  expect(render(<FileListItemIcon name="test.pdf" type="FILE" />)).toBeTruthy();
 });

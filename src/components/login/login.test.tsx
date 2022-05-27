@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, unstable_HistoryRouter } from "react-router-dom";
+import { Router} from "react-router-dom";
 import { createMemoryHistory } from 'history'
 import { act, render, screen } from '@testing-library/react';
 import userEvent from "@testing-library/user-event";

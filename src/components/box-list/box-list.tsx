@@ -10,30 +10,32 @@ type BoxListProp = {
 };
 
 export default function BoxList(props: BoxListProp) {
-
   const [boxListSort, setBoxListSort] = useState<string>("name");
   const [boxListSearch, setBoxListSearch] = useState<string>("");
-  //const [boxList] = useState<any[]>(props.boxes);
 
   const mapBoxList = () => {
     return props.boxes
       .filter(boxListSearcherFunction(boxListSearch))
       .sort(boxListSorterFunction(boxListSort))
       .map((box: IdgardBox) => {
-      return (
-        <BoxListItem key={box.id}
-          id={box.id} name={box.name} type={box.type}/>
-      )
-    })
-  }
+        return (
+          <BoxListItem
+            key={box.id}
+            id={box.id}
+            name={box.name}
+            type={box.type}
+          />
+        );
+      });
+  };
 
   const onChangeSort = (cat: string) => {
     setBoxListSort(cat);
-  }
+  };
 
   const onChangeSearch = (query: string) => {
     setBoxListSearch(query);
-  }
+  };
 
   return (
     <div>
@@ -45,9 +47,7 @@ export default function BoxList(props: BoxListProp) {
           <BoxListSortSelect onChangeSort={onChangeSort} />
         </div>
       </div>
-      <ul className="list-group">
-        {mapBoxList()}
-      </ul>
+      <ul className="list-group">{mapBoxList()}</ul>
     </div>
   );
 }
