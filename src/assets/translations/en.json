@@ -1,5 +1,9 @@
 {
   "login": {
-    "header": "Login"
+    "header": "Login",
+    "error": {
+      "wrong-cred": "Wrong credentials",
+      "default": "Login failed"
+    }
   }
 }
