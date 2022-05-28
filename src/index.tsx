@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.scss";
 
+import "./i18n";
 import AppRouting from "./app-routing";
 
 const root = ReactDOM.createRoot(
@@ -14,8 +15,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <BrowserRouter>
-    <Routes> 
-      <Route path="/*"
+    <Routes>
+      <Route
+        path="/*"
         element={
           <React.Suspense fallback={<></>}>
             <AppRouting />

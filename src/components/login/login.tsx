@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import axios from "api/axios";
 import { Authentication } from "types";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { register, handleSubmit } = useForm();
 
   const [username, setUsername] = useState<string>("");
@@ -30,7 +32,7 @@ export default function Login() {
 
   return (
     <div className="container">
-      <h2 data-testid="login-header">Login</h2>
+      <h2 data-testid="login-header">{t("login.header")}</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
           <label htmlFor="username-input" className="form-label">
