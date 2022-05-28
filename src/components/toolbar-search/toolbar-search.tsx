@@ -45,12 +45,14 @@ export default function ToolbarSearch(props) {
   };
 
   useEffect(() => {
+    /*
     axios
       .get("/uiapi/BoxAPI/v1/rest/boxes")
       .then((res) => {
         setBoxList(res.data);
       })
       .catch((res) => {});
+      */
   }, []);
 
   return (
