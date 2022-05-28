@@ -11,10 +11,15 @@ test("renders loading", () => {
   expect(nameElement).toBeInTheDocument();
 });
 
-test("renders boxes", async () => {
+test("paginates once", async () => {
   const history = createMemoryHistory();
 
-  let boxes = { data: [{ id: 1, name: "test-box", type: "DATAROOM" }] };
+  let boxes = {
+    data: {
+      hasNext: false,
+      listBoxes: [{ id: 1, name: "test-box", type: "DATAROOM" }],
+    },
+  };
   jest.spyOn(axios, "get").mockImplementation(() => {
     return Promise.resolve({
       then: (callback: any) => {

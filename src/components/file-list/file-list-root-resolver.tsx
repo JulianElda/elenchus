@@ -11,7 +11,6 @@ export default function FileListRootResolver() {
   const [rootFolderId, setRootFolderId] = useState<string>("");
 
   useEffect(() => {
-    console.log("FileList.loadBoxItems() " + params.boxId);
     axios
       .get("/uiapi/BoxAPI/v1/rest/boxes/" + params.boxId, {})
       .then((res) => {

@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import { Entry } from "types";
 import axios from "api/axios";
 
 import FileList from "./file-list";
 import FileListEmpty from "./file-list-empty";
 
+import { breadcrumbState } from "components/breadcrumb/breadcrumb.atom";
+
 export default function FileListResolver() {
   let params = useParams();
 
   const [itemList, setItemList] = useState<Array<Entry>>([]);
   const [itemsLoading, setItemsLoading] = useState<boolean>(true);
+  const [, setBreadcrumbs] = useRecoilState<any>(breadcrumbState);
 
   useEffect(() => {
     if (!params.boxId || !params.folderId) return;
-    console.log(
-      "FileList.loadChildren() " + params.boxId + "/" + params.folderId
-    );
+
     axios
       .get(
         "/uiapi/BoxAPI/v1/rest/children/" +
@@ -28,6 +30,13 @@ export default function FileListResolver() {
       .then((res) => {
         setItemList(res.data.entries);
         setItemsLoading(false);
+        setBreadcrumbs((prev) => [
+          ...prev,
+          {
+            url: "/" + params.boxId + "/" + params.folderId,
+            name: res.data.name,
+          },
+        ]);
       })
       .catch((res) => {});
   }, [params.boxId, params.folderId]);

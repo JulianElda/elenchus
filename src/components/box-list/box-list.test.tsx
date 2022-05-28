@@ -23,7 +23,7 @@ test("render box list", async () => {
   expect(nameElement).toBeInTheDocument();
 });
 
-test("search box list", async () => {
+test.skip("search box list", async () => {
   const user = userEvent.setup();
   const history = createMemoryHistory();
   render(
@@ -37,7 +37,7 @@ test("search box list", async () => {
   expect(targetBoxElement).toBeInTheDocument();
 });
 
-test("sort box list", async () => {
+test.skip("sort box list", async () => {
   const user = userEvent.setup();
   const history = createMemoryHistory();
   render(
@@ -72,7 +72,7 @@ test("no boxes", async () => {
   expect(noBoxesElement).toBeInTheDocument();
 });
 
-test("no search result", async () => {
+test.skip("no search result", async () => {
   const user = userEvent.setup();
   const history = createMemoryHistory();
   render(

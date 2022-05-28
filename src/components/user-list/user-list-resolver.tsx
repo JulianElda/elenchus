@@ -10,7 +10,6 @@ export default function UserListResolver() {
   let tmp: UserWrapper[] = [];
 
   const loadUsers = (start: number) => {
-    console.log("UserListResolver.loadUsers() " + start);
     axios
       .get(
         "/uiapi/UserManagementAPI/v1/rest/users_partial?limit=" +
