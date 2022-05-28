@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import axios from "api/axios";
@@ -6,17 +6,26 @@ import { Entry, IdgardBox } from "types";
 
 import FileList from "components/file-list/file-list";
 
-export default function ToolbarSearch(props) {
+type FinderProps = {
+  boxes: IdgardBox[];
+};
+
+export default function Finder(props: FinderProps) {
   const { handleSubmit } = useForm();
   const [query, setQuery] = useState<string>("");
   const [searchResult, setSearchResult] = useState<Array<Entry>>([]);
-  const [boxList, setBoxList] = useState<Array<IdgardBox>>([]);
 
   const onSearch = () => {
-    //findItemsInBox()
+    console.log(props.boxes);
+    /*
+    findItemsInBox(props.boxes[0].id);
+    */
+    props.boxes.forEach(function (box: IdgardBox) {
+      findItemsInBox(box.id);
+    });
   };
 
-  const findItemsInBox = (boxId) => {
+  const findItemsInBox = async (boxId) => {
     // TODO: types to radio select
     let types = "types=file,folder,note";
     let name = "name=" + query;
@@ -31,29 +40,20 @@ export default function ToolbarSearch(props) {
           name
       )
       .then((res) => {
-        setSearchResult(
-          res.data.map(function (item) {
-            return {
-              id: item.node.id,
-              type: item.type,
-              name: item.node.name,
-            };
-          })
+        setSearchResult((old) =>
+          old.concat(
+            res.data.map(function (item) {
+              return {
+                id: item.node.id,
+                type: item.type,
+                name: item.node.name,
+              };
+            })
+          )
         );
       })
       .catch((res) => {});
   };
-
-  useEffect(() => {
-    /*
-    axios
-      .get("/uiapi/BoxAPI/v1/rest/boxes")
-      .then((res) => {
-        setBoxList(res.data);
-      })
-      .catch((res) => {});
-      */
-  }, []);
 
   return (
     <>
