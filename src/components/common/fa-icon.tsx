@@ -17,9 +17,9 @@ const iconIndex = {
     note: regular("note-sticky"),
   },
   BOX: {
-    FILE: solid("dog"),
-    DATAROOM: solid("euro-sign"),
-    TEMPORARY: solid("bugs"),
+    FILE: solid("folder"),
+    DATAROOM: solid("folder"),
+    TEMPORARY: solid("folder"),
   },
   GENERAL: {
     MENU: solid("ellipsis-vertical"),

@@ -9,7 +9,7 @@ export default function UserListResolver() {
   const limit = 5;
   let tmp: UserWrapper[] = [];
 
-  const loadUsers = (start) => {
+  const loadUsers = (start: number) => {
     console.log("UserListResolver.loadUsers() " + start);
     axios
       .get(
