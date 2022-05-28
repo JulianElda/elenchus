@@ -23,6 +23,7 @@ const iconIndex = {
   },
   GENERAL: {
     MENU: solid("ellipsis-vertical"),
+    SEARCH: solid("magnifying-glass"),
   },
 };
 
