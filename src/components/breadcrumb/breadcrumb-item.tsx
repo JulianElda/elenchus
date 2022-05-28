@@ -16,8 +16,8 @@ export default function BreadcrumbItem(props: BreadcrumbItemType) {
   };
 
   return (
-    <li className="breadcrumb-item font-monospace">
-      <span onClick={onClick}>{props.name}</span>
+    <li className="breadcrumb-item font-monospace" onClick={onClick}>
+      <span>{props.name}</span>
     </li>
   );
 }
