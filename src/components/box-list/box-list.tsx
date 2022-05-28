@@ -3,6 +3,9 @@ import { useState } from "react";
 import BoxListSortSelect, { boxListSorterFunction } from "./box-list-sorter";
 import BoxListSearcher, { boxListSearcherFunction } from "./box-list-searcher";
 import BoxListItem from "./box-list-item";
+import BoxListNoboxes from "./box-list-noboxes";
+import BoxListNoresult from "./box-list-noresult";
+
 import { IdgardBox } from "types";
 
 type BoxListProp = {
@@ -37,6 +40,13 @@ export default function BoxList(props: BoxListProp) {
     setBoxListSearch(query);
   };
 
+  const boxListWithoutResult = <BoxListNoresult />;
+  const boxListWithResult = <ul className="list-group">{mapBoxList()}</ul>;
+
+  if (props.boxes.length === 0) {
+    return <BoxListNoboxes />;
+  }
+
   return (
     <div>
       <div className="row mb-2">
@@ -47,7 +57,7 @@ export default function BoxList(props: BoxListProp) {
           <BoxListSortSelect onChangeSort={onChangeSort} />
         </div>
       </div>
-      <ul className="list-group">{mapBoxList()}</ul>
+      {mapBoxList().length > 0 ? boxListWithResult : boxListWithoutResult}
     </div>
   );
 }

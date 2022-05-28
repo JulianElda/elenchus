@@ -21,10 +21,13 @@ const iconIndex = {
     DATAROOM: solid("euro-sign"),
     TEMPORARY: solid("bugs"),
   },
+  GENERAL: {
+    MENU: solid("ellipsis-vertical"),
+  },
 };
 
 type FAIconProps = {
-  type: "FILE" | "BOX";
+  type: "FILE" | "BOX" | "GENERAL";
   icon: string;
 };
 

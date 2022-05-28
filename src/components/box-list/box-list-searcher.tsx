@@ -16,6 +16,7 @@ export default function BoxListSearcher(props: BoxListSearcherProps) {
       type="text"
       className="form-control"
       id="box-list-searcher"
+      placeholder="Search"
       onChange={(e) => onChangeText(e.target.value)}
     />
   );
