@@ -21,7 +21,7 @@ export default function FileListRootResolver() {
 
   useEffect(() => {
     navigate("/box/" + params.boxId + "/" + rootFolderId, { replace: true });
-  }, [rootFolderId]);
+  }, [navigate, params.boxId, rootFolderId]);
 
   if (rootFolderId === "") {
     return <p>loading items...</p>;

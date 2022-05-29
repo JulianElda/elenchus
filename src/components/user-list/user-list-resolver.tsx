@@ -6,7 +6,7 @@ import UserList from "./user-list";
 export default function UserListResolver() {
   const [userList, setUserList] = useState<UserWrapper[]>([]);
   const [paginating, setPaginating] = useState<boolean>(true);
-  const limit = 5;
+  const limit = 50;
   let tmp: UserWrapper[] = [];
 
   const loadUsers = (start: number) => {

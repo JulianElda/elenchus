@@ -5,18 +5,14 @@ import "./app.scss";
 
 import AppToolbar from "components/app-toolbar";
 import Breadcrumb from "components/breadcrumb";
-import Logout from "components/logout";
 
 export default function App(props) {
-  const clientConfiguration = props.clientConfiguration;
-
   return (
     <RecoilRoot>
-      <AppToolbar nick={clientConfiguration.nick} />
-      <Logout />
+      <AppToolbar nick={props.clientConfiguration.nick} />
       <main className="app-container container">
         <Breadcrumb />
-        <Outlet />
+        <Outlet context={[props.clientConfiguration]} />
       </main>
     </RecoilRoot>
   );

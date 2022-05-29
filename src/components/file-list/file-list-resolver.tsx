@@ -39,7 +39,7 @@ export default function FileListResolver() {
         ]);
       })
       .catch((res) => {});
-  }, [params.boxId, params.folderId]);
+  }, [params.boxId, params.folderId, setBreadcrumbs]);
 
   if (itemsLoading) {
     return <p>loading items...</p>;
