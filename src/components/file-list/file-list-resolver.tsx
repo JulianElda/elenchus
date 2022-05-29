@@ -9,12 +9,23 @@ import FileListEmpty from "./file-list-empty";
 
 import { breadcrumbState } from "components/breadcrumb/breadcrumb.atom";
 
-export default function FileListResolver() {
+export default function FileListResolver(props) {
   let params = useParams();
 
   const [itemList, setItemList] = useState<Array<Entry>>([]);
   const [itemsLoading, setItemsLoading] = useState<boolean>(true);
+  const [box, setBox] = useState<any>(props.box);
   const [, setBreadcrumbs] = useRecoilState<any>(breadcrumbState);
+
+  useEffect(() => {
+    if (props.box) return;
+    axios
+      .get("/uiapi/BoxAPI/v1/rest/boxes/" + params.boxId, {})
+      .then((res) => {
+        setBox(res.data);
+      })
+      .catch((res) => {});
+  }, [params.boxId, props.box]);
 
   useEffect(() => {
     if (!params.boxId || !params.folderId) return;
@@ -46,6 +57,6 @@ export default function FileListResolver() {
   } else if (itemList.length === 0) {
     return <FileListEmpty />;
   } else {
-    return <FileList items={itemList} />;
+    return <FileList items={itemList} box={box} />;
   }
 }

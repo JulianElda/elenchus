@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "api/axios";
 import { Entry, IdgardBox } from "types";
 
-import FileList from "components/file-list/file-list";
+import NodeList from "components/node-list/node-list";
 
 type FinderProps = {
   boxes: IdgardBox[];
@@ -83,7 +83,7 @@ export default function Finder(props: FinderProps) {
               </form>
             </div>
 
-            <FileList items={searchResult} />
+            <NodeList items={searchResult} />
           </div>
         </div>
       </div>

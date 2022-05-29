@@ -1,28 +1,17 @@
-import { Entry } from "types";
-import FileListItem from "./file-list-item";
-import { fileListSorterFunction } from "./file-list-sorter";
+import { Entry, IdgardBox } from "types";
+
+import NodeListItem from "components/node-list/node-list";
 
 type FileListProp = {
   items: Entry[];
+  box: IdgardBox;
 };
 
 export default function FileList(props: FileListProp) {
-  const mapitemList = () => {
-    return props.items.sort(fileListSorterFunction()).map((item: Entry) => {
-      return (
-        <FileListItem
-          key={item.id}
-          id={item.id}
-          type={item.type}
-          name={item.name}
-        />
-      );
-    });
-  };
-
   return (
     <div>
-      <ul className="list-group">{mapitemList()}</ul>
+      <p>{props.box?.role}</p>
+      <NodeListItem items={props.items} />
     </div>
   );
 }

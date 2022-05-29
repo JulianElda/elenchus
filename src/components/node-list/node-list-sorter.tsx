@@ -4,7 +4,7 @@ const typeWeight = {
   DIR: 2,
 };
 
-export function fileListSorterFunction() {
+export function nodeListSorterFunction() {
   return function (a, b) {
     return (
       typeWeight[b.type] - typeWeight[a.type] || a.name.localeCompare(b.name)

@@ -9,12 +9,14 @@ export default function FileListRootResolver() {
   const params = useParams();
 
   const [rootFolderId, setRootFolderId] = useState<string>("");
+  const [box, setBox] = useState<any>();
 
   useEffect(() => {
     axios
       .get("/uiapi/BoxAPI/v1/rest/boxes/" + params.boxId, {})
       .then((res) => {
         setRootFolderId(res.data.rootFolder.id);
+        setBox(res.data);
       })
       .catch((res) => {});
   }, [params.boxId]);
@@ -26,6 +28,6 @@ export default function FileListRootResolver() {
   if (rootFolderId === "") {
     return <p>loading items...</p>;
   } else {
-    return <FileListResolver />;
+    return <FileListResolver box={{ box }} />;
   }
 }

@@ -1,9 +1,9 @@
 import FAIcon from "components/common/fa-icon";
 import { mimes } from "const/file";
 
-import "./file-list-item-icon.scss";
+import "./node-list-item-icon.scss";
 
-export default function FileListItemIcon(props) {
+export default function NodeListItemIcon(props) {
   const getItemIcon = (type: string, name: string) => {
     if (type === "DIR") {
       return "dir";
@@ -18,7 +18,7 @@ export default function FileListItemIcon(props) {
   };
 
   return (
-    <span className="file-list-item-icon">
+    <span className="node-list-item-icon">
       <FAIcon type="FILE" icon={getItemIcon(props.type, props.name)} />
     </span>
   );
