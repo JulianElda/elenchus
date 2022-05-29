@@ -22,6 +22,8 @@ export default function FileListResolver(props) {
     axios
       .get("/uiapi/BoxAPI/v1/rest/boxes/" + params.boxId, {})
       .then((res) => {
+        let tmp = res.data;
+        tmp.id = params.boxId;
         setBox(res.data);
       })
       .catch((res) => {});

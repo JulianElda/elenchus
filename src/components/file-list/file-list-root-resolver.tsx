@@ -16,7 +16,9 @@ export default function FileListRootResolver() {
       .get("/uiapi/BoxAPI/v1/rest/boxes/" + params.boxId, {})
       .then((res) => {
         setRootFolderId(res.data.rootFolder.id);
-        setBox(res.data);
+        let tmp = res.data;
+        tmp.id = params.boxId;
+        setBox(tmp);
       })
       .catch((res) => {});
   }, [params.boxId]);
