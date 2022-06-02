@@ -1,14 +1,13 @@
+import { memo } from "react";
 import { IdgardBox } from "types";
 
 type BoxListSearcherProps = {
   onChangeSearch: Function;
 };
 
-export default function BoxListSearcher(props: BoxListSearcherProps) {
-  const { onChangeSearch } = props;
-
+const BoxListSearcher = memo(function (props: BoxListSearcherProps) {
   const onChangeText = (query: string) => {
-    onChangeSearch(query);
+    props.onChangeSearch(query);
   };
 
   return (
@@ -20,7 +19,7 @@ export default function BoxListSearcher(props: BoxListSearcherProps) {
       onChange={(e) => onChangeText(e.target.value)}
     />
   );
-}
+});
 
 export function boxListSearcherFunction(query: string) {
   return function (box: IdgardBox) {
@@ -28,3 +27,4 @@ export function boxListSearcherFunction(query: string) {
     return searchable.toLowerCase().indexOf(query.toLowerCase()) >= 0;
   };
 }
+export default BoxListSearcher;

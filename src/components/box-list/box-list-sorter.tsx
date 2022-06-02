@@ -1,14 +1,13 @@
+import { memo } from "react";
 import { IdgardBox } from "types";
 
 type BoxListSortSelectProps = {
   onChangeSort: Function;
 };
 
-export default function BoxListSortSelect(props: BoxListSortSelectProps) {
-  const { onChangeSort } = props;
-
+export const BoxListSortSelect = memo(function(props: BoxListSortSelectProps) {
   const onChangeDropdown = (cat: string) => {
-    onChangeSort(cat);
+    props.onChangeSort(cat);
   };
 
   return (
@@ -21,7 +20,7 @@ export default function BoxListSortSelect(props: BoxListSortSelectProps) {
       </option>
     </select>
   );
-}
+})
 
 export function boxListSorterFunction(sortCategory: string) {
   return function (a: IdgardBox, b: IdgardBox) {
@@ -32,3 +31,5 @@ export function boxListSorterFunction(sortCategory: string) {
     else return 0;
   };
 }
+
+export default BoxListSortSelect;
