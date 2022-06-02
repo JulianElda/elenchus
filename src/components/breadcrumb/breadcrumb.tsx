@@ -1,22 +1,35 @@
-import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
 
-import { BreadcrumbItemType, breadcrumbState } from "./breadcrumb.atom";
-import BreadcrumbItem from "./breadcrumb-item";
+type BreadcrumbProp = {
+  id: string;
+  name: string;
+};
+type BreadcrumbsProps = {
+  items: BreadcrumbProp[];
+  setItems: Function;
+  onClick: Function;
+};
 
-const boxUrl = "/box";
-
-export default function Breadcrumb() {
-  const [breadcrumbs] = useRecoilState(breadcrumbState);
+export default function Breadcrumbs(props: BreadcrumbsProps) {
+  const navigate = useNavigate();
+  const onClickBreadcrumb = function (item: BreadcrumbProp, index) {
+    props.setItems(() => {
+      return props.items.slice(0, index);
+    });
+    props.onClick?.(item.id, item.name);
+  };
 
   const mapBreadcrumbs = () => {
-    return breadcrumbs.map(function (item: BreadcrumbItemType, index: number) {
+    return props.items.map(function (item: BreadcrumbProp, index) {
       return (
-        <BreadcrumbItem
+        <li
+          className="breadcrumb-item font-monospace"
           key={index}
-          index={index + 1}
-          url={boxUrl + item.url}
-          name={item.name}
-        />
+          onClick={() => {
+            onClickBreadcrumb(item, index);
+          }}>
+          <span>{item.name}</span>
+        </li>
       );
     });
   };
@@ -24,7 +37,13 @@ export default function Breadcrumb() {
   return (
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">
-        <BreadcrumbItem index={0} url={boxUrl} name="/ home" />
+        <li
+          className="breadcrumb-item font-monospace"
+          onClick={() => {
+            navigate("/box/");
+          }}>
+          <span>/ home</span>
+        </li>
         {mapBreadcrumbs()}
       </ol>
     </nav>

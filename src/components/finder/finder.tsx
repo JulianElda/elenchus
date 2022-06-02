@@ -83,7 +83,7 @@ export default function Finder(props: FinderProps) {
               </form>
             </div>
 
-            <NodeList items={searchResult} />
+            <NodeList items={searchResult} onNavigateFolder={() => {}} />
           </div>
         </div>
       </div>

@@ -7,10 +7,7 @@ type FileListToolbarProps = {
 
 export default function FileListToolbar(props: FileListToolbarProps) {
   return (
-    <div
-      className="btn-toolbar mb-2"
-      role="toolbar"
-      aria-label="Toolbar with button groups">
+    <div className="btn-toolbar mb-2" role="toolbar" aria-label="Toolbar">
       <div className="btn-group me-2" role="group" aria-label="New folder">
         <button type="button" className="btn btn-dark">
           New folder

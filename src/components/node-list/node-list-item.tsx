@@ -1,17 +1,19 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { Entry } from "types";
 import NodeListItemIcon from "./node-list-item-icon";
 
-export default function NodeListItem(props: Entry) {
-  const navigate = useNavigate();
-  const params = useParams();
+type NodeListItemProps = {
+  id?: string;
+  name?: string;
+  type?: string;
+  onClick?: Function;
+};
 
+export default function NodeListItem(props: NodeListItemProps) {
   const onClick = () => {
-    if (props.type === "DIR") navigate("/box/" + params.boxId + "/" + props.id);
+    if (props.type === "DIR") props.onClick?.(props.id, props.name);
   };
 
   return (
-    <li className="list-group-item" onClick={(e) => onClick()}>
+    <li className="list-group-item node-list-item" onClick={(e) => onClick()}>
       <NodeListItemIcon type={props.type} name={props.name} />
       <span>{props.name}</span>
     </li>

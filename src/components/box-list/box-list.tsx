@@ -1,9 +1,9 @@
-import { useCallback, useState } from "react";
-import BoxListSortSelect, { boxListSorterFunction } from "./box-list-sorter";
+import { boxListSorterFunction } from "./box-list-sorter";
+//import { boxListSearcherFunction } from "./box-list-searcher";
 import BoxListItem from "./box-list-item";
 import BoxListNoboxes from "./box-list-noboxes";
 import BoxListNoresult from "./box-list-noresult";
-import BoxListSearcher, { boxListSearcherFunction } from "./box-list-searcher";
+import BoxListToolbar from "components/box-list-toolbar";
 import Finder from "components/finder/finder";
 import { IdgardBox } from "types";
 
@@ -12,25 +12,25 @@ type BoxListProp = {
 };
 
 export default function BoxList(props: BoxListProp) {
-  const [boxListSort, setBoxListSort] = useState<string>("name");
-  const [boxListSearch, setBoxListSearch] = useState<string>("");
-
-  const mapBoxList = () => {
-    return props.boxes
-      .filter(boxListSearcherFunction(boxListSearch))
-      .sort(boxListSorterFunction(boxListSort))
-      .map((box: IdgardBox) => {
-        return (
-          <BoxListItem
-            key={box.id}
-            id={box.id}
-            name={box.name}
-            type={box.type}
-          />
-        );
-      });
+  const mapBoxList = function () {
+    return (
+      props.boxes
+        //.filter(boxListSearcherFunction(boxListSearch))
+        .sort(boxListSorterFunction("name"))
+        .map((box: IdgardBox) => {
+          return (
+            <BoxListItem
+              key={box.id}
+              id={box.id}
+              name={box.name}
+              type={box.type}
+            />
+          );
+        })
+    );
   };
 
+  /*
   const onChangeSort = useCallback((cat: string) => {
     setBoxListSort(cat);
   }, []);
@@ -38,16 +38,28 @@ export default function BoxList(props: BoxListProp) {
   const onChangeSearch = useCallback((query: string) => {
     setBoxListSearch(query);
   }, []);
+  */
 
-  const boxListWithoutResult = <BoxListNoresult />;
-  const boxListWithResult = <ul className="list-group">{mapBoxList()}</ul>;
+  const getBoxListContent = function () {
+    const list = mapBoxList();
+    if (list.length === 0) return <BoxListNoresult />;
+    else return <ul className="list-group">{list}</ul>;
+  };
 
   if (props.boxes.length === 0) {
     return <BoxListNoboxes />;
   } else {
     return (
       <>
-        <div>
+        <BoxListToolbar />
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item font-monospace">
+              <span>/ home</span>
+            </li>
+          </ol>
+        </nav>
+        {/**
           <div className="row mb-2">
             <div className="col-md-6">
               <BoxListSearcher onChangeSearch={onChangeSearch} />
@@ -56,9 +68,9 @@ export default function BoxList(props: BoxListProp) {
               <BoxListSortSelect onChangeSort={onChangeSort} />
             </div>
           </div>
+           */}
 
-          {mapBoxList().length > 0 ? boxListWithResult : boxListWithoutResult}
-        </div>
+        {getBoxListContent()}
         <Finder boxes={props.boxes} />
       </>
     );

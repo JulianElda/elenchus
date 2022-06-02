@@ -4,6 +4,7 @@ import { nodeListSorterFunction } from "./node-list-sorter";
 
 type FileListProp = {
   items: Entry[];
+  onNavigateFolder: Function;
 };
 
 export default function NodeList(props: FileListProp) {
@@ -15,6 +16,7 @@ export default function NodeList(props: FileListProp) {
           id={item.id}
           type={item.type}
           name={item.name}
+          onClick={props.onNavigateFolder}
         />
       );
     });

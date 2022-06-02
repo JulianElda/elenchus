@@ -3,39 +3,42 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 
 import axios from "api/axios";
-import BoxListResolver from "./box-list-resolver";
+import FileListResolver from "./file-list-resolver";
 
 test("renders loading", () => {
-  render(<BoxListResolver />);
-  const loadingElement = screen.getByText(/loading boxes/i);
+  render(<FileListResolver />);
+  const loadingElement = screen.getByText(/loading items/i);
   expect(loadingElement).toBeInTheDocument();
 });
 
-test("paginates once", async () => {
+test("loads rootfolder", async () => {
   const history = createMemoryHistory();
 
-  let boxes = {
+  let mockRoot = {
     data: {
-      hasNext: false,
-      listBoxes: [{ id: 1, name: "test-box", type: "DATAROOM" }],
+      rootFolder: {
+        id: "root-id",
+        name: "root-name",
+        entries: [{ id: 1, name: "test-file.pdf", type: "FILE" }],
+      },
     },
   };
   jest.spyOn(axios, "get").mockImplementation(() => {
     return Promise.resolve({
       then: (callback: any) => {
-        callback(boxes);
+        callback(mockRoot);
       },
     });
   });
 
   render(
-    <Router location="/" navigator={history}>
-      <BoxListResolver />
+    <Router location="/box/gandoo" navigator={history}>
+      <FileListResolver />
     </Router>
   );
 
   await waitFor(async () => {
-    const nameElement = screen.getByText(/test-box/i);
+    const nameElement = screen.getByText(/test-file.pdf/i);
     expect(nameElement).toBeInTheDocument();
   });
 });
