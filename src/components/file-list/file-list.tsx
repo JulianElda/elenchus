@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useCallback, useMemo, useReducer, useState } from "react";
 import axios from "api/axios";
 import { Entry, IdgardBox } from "types";
 import FileListEmpty from "./file-list-empty";
@@ -11,6 +11,23 @@ type FileListProp = {
   box: IdgardBox;
 };
 
+const selectedItemsReducer = function (state, action) {
+  switch (action.type) {
+    case "add":
+      return [...state, action.id];
+    case "remove":
+      return state.filter(function (i) {
+        return i !== action.id;
+      });
+    case "clear":
+      return [];
+    default:
+      return state;
+  }
+};
+
+export const FileListContext = React.createContext({});
+
 export default function FileList(props: FileListProp) {
   const [items, setItems] = useState<Entry[]>(props.rootFolder.entries);
   const [loading, setLoading] = useState<boolean>(false);
@@ -20,10 +37,23 @@ export default function FileList(props: FileListProp) {
       name: props.rootFolder.name,
     },
   ]);
-  const loadDirectory = function (folderId: string, folderName: string) {
+  const [selectedItems, dispatchSelectedItems] = useReducer(
+    selectedItemsReducer,
+    []
+  );
+
+  const handleSelectedItems = useCallback(dispatchSelectedItems, [
+    dispatchSelectedItems,
+  ]);
+
+  const loadDirectory = useCallback(function (
+    folderId: string,
+    folderName: string
+  ) {
     setBreadcrumbs((old) => {
       return old.concat({ id: folderId, name: folderName });
     });
+    dispatchSelectedItems({type: "clear"})
     setLoading(true);
     axios
       .get(
@@ -35,7 +65,8 @@ export default function FileList(props: FileListProp) {
         setLoading(false);
       })
       .catch((res) => {});
-  };
+  },
+  []);
 
   const getFileListContent = function () {
     if (items.length === 0) {
@@ -47,15 +78,29 @@ export default function FileList(props: FileListProp) {
     }
   };
 
+  // values to pass down the FileListContext,
+  // use useMemo so the reference of the object does not change
+  const contextValue = useMemo(
+    () =>
+      // return context value
+      ({
+        box: props.box,
+        onHandleSelected: handleSelectedItems,
+      }),
+    [handleSelectedItems, props.box]
+  );
+
   return (
-    <div>
-      <FileListToolbar box={props.box} />
-      <Breadcrumbs
-        items={breadcrumbs}
-        onClick={loadDirectory}
-        setItems={setBreadcrumbs}
-      />
-      {getFileListContent()}
-    </div>
+    <FileListContext.Provider value={contextValue}>
+      <div>
+        <FileListToolbar selectedItems={selectedItems} />
+        <Breadcrumbs
+          items={breadcrumbs}
+          onClick={loadDirectory}
+          setItems={setBreadcrumbs}
+        />
+        {getFileListContent()}
+      </div>
+    </FileListContext.Provider>
   );
 }

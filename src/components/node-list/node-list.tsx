@@ -1,49 +1,34 @@
-import { useContext } from "react";
-import axios from "api/axios";
-
+import { memo, useCallback, useContext } from "react";
 import { Entry } from "types";
 import { AppContext } from "components/app/app.context";
 import NodeListItem from "./node-list-item";
 import { nodeListSorterFunction } from "./node-list-sorter";
+import {downloadFromId, getDownloadId} from "components/common/download"
 
 type NodelistProp = {
   items: Entry[];
   onHandleFolder: Function;
 };
 
-export default function NodeList(props: NodelistProp) {
+const NodeList = memo(function (props: NodelistProp) {
   const clientConfiguration = useContext<any>(AppContext).clientConfiguration;
 
-  const downloadFromId = function (downloadId, csfr) {
-    const url =
-      "/uiapi/FileAPI/v1/rest/dnld?downloadId=" +
-      downloadId +
-      "&type=''&csfr=" +
-      csfr;
-    window.location.href = url;
-  };
-
-  const getDownloadId = function (payload, override) {
-    return axios.post(
-      "/uiapi/FileAPI/v1/rest/gdid?" +
-        (override == null ? "" : "&override=" + encodeURIComponent(override)),
-      payload
-    );
-  };
-
-  const downloadItem = function (itemId, itemName) {
-    const payload = [
-      {
-        itemId: itemId,
-        itemName: itemName,
-      },
-    ];
-    getDownloadId(payload, null)
-      .then((res) => {
-        downloadFromId(res.data, clientConfiguration.csfrToken);
-      })
-      .catch(() => {});
-  };
+  // download a single item
+  const downloadItem = useCallback(
+    function (itemId, itemName) {
+      const payload = [
+        {
+          itemId: itemId,
+        },
+      ];
+      getDownloadId(payload, null)
+        .then((res) => {
+          downloadFromId(res.data, clientConfiguration.csfrToken);
+        })
+        .catch(() => {});
+    },
+    [clientConfiguration.csfrToken]
+  );
 
   const mapitemList = () => {
     return props.items.sort(nodeListSorterFunction()).map((item: Entry) => {
@@ -61,4 +46,6 @@ export default function NodeList(props: NodelistProp) {
   };
 
   return <ul className="list-group">{mapitemList()}</ul>;
-}
+});
+
+export default NodeList;
