@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "./breadcrumbs.scss";
 
 type BreadcrumbProp = {
   id: string;

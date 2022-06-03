@@ -3,7 +3,7 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axios from "api/axios";
-import Breadcrumbs from "./breadcrumb";
+import Breadcrumbs from "./breadcrumbs";
 import FileList from "components/file-list/file-list";
 
 test("navigate to home", async () => {
