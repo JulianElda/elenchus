@@ -38,6 +38,6 @@ export default function AppResolver() {
       </div>
     );
   } else {
-    return <App clientConfiguration={clientConfiguration} />;
+    return <App clientConfiguration={clientConfiguration} user={currentUser} />;
   }
 }

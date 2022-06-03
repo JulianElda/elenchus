@@ -1,7 +1,8 @@
-import { useOutletContext } from "react-router-dom";
+import { useContext } from "react";
 import axios from "api/axios";
 
 import { Entry } from "types";
+import { AppContext } from "components/app/app.context";
 import NodeListItem from "./node-list-item";
 import { nodeListSorterFunction } from "./node-list-sorter";
 
@@ -11,7 +12,7 @@ type NodelistProp = {
 };
 
 export default function NodeList(props: NodelistProp) {
-  const clientConfiguration = useOutletContext<any>()?.[0];
+  const clientConfiguration = useContext<any>(AppContext).clientConfiguration;
 
   const downloadFromId = function (downloadId, csfr) {
     const url =

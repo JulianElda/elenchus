@@ -3,6 +3,7 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 
 import axios from "api/axios";
+import { AppContext, AppContextType } from "components/app/app.context";
 import FileListResolver from "./file-list-resolver";
 
 test("renders loading", () => {
@@ -11,8 +12,7 @@ test("renders loading", () => {
   expect(loadingElement).toBeInTheDocument();
 });
 
-// TODO: useOutletContext
-test.skip("loads rootfolder", async () => {
+test("loads rootfolder", async () => {
   const history = createMemoryHistory();
 
   let mockRoot = {
@@ -32,9 +32,21 @@ test.skip("loads rootfolder", async () => {
     });
   });
 
+  const mockAppContextValue: AppContextType = {
+    clientConfiguration: {
+      nick: "test-nick",
+      csfrToken: "test-csfr",
+    },
+    user: {
+      id: "test-user-id",
+    },
+  };
+
   render(
     <Router location="/box/gandoo" navigator={history}>
-      <FileListResolver />
+      <AppContext.Provider value={mockAppContextValue}>
+        <FileListResolver />
+      </AppContext.Provider>
     </Router>
   );
 
