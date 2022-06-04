@@ -3,23 +3,26 @@ import { createMemoryHistory } from "history";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+import { AppContext } from "components/app/app.context";
 import BoxList from "./box-list";
-import { IdgardBox } from "types/IdgardBox";
 
-const mockBoxes = [
-  { id: "1", name: "box-B", type: IdgardBox.type.DATAROOM },
-  { id: "2", name: "box-A", type: IdgardBox.type.FILE },
-  { id: "3", name: "box-C", type: IdgardBox.type.TEMPORARY },
-];
+import { mock_clientConfiguration_admin } from "mocks/clientConfiguration";
+import { mock_boxes_partial } from "mocks/box";
+
+const mockAppContextValue = {
+  clientConfiguration: mock_clientConfiguration_admin,
+};
 
 test("render box list", async () => {
   const history = createMemoryHistory();
   render(
-    <Router location="/" navigator={history}>
-      <BoxList boxes={mockBoxes} />
-    </Router>
+    <AppContext.Provider value={mockAppContextValue}>
+      <Router location="/" navigator={history}>
+        <BoxList boxes={mock_boxes_partial.listBoxes} />
+      </Router>
+    </AppContext.Provider>
   );
-  const nameElement = screen.getByText(/box-a/i);
+  const nameElement = screen.getByText(mock_boxes_partial.listBoxes[0].name);
   expect(nameElement).toBeInTheDocument();
 });
 
@@ -27,9 +30,11 @@ test.skip("search box list", async () => {
   const user = userEvent.setup();
   const history = createMemoryHistory();
   render(
-    <Router location="/" navigator={history}>
-      <BoxList boxes={mockBoxes} />
-    </Router>
+    <AppContext.Provider value={mockAppContextValue}>
+      <Router location="/" navigator={history}>
+        <BoxList boxes={mock_boxes_partial.listBoxes} />
+      </Router>
+    </AppContext.Provider>
   );
 
   await user.type(screen.getByPlaceholderText("Search"), "box-a");
@@ -41,9 +46,11 @@ test.skip("sort box list", async () => {
   const user = userEvent.setup();
   const history = createMemoryHistory();
   render(
-    <Router location="/" navigator={history}>
-      <BoxList boxes={mockBoxes} />
-    </Router>
+    <AppContext.Provider value={mockAppContextValue}>
+      <Router location="/" navigator={history}>
+        <BoxList boxes={mock_boxes_partial.listBoxes} />
+      </Router>
+    </AppContext.Provider>
   );
 
   await user.click(screen.getByRole("option", { name: "Name" }));
@@ -64,11 +71,13 @@ test.skip("sort box list", async () => {
 test("no boxes", async () => {
   const history = createMemoryHistory();
   render(
-    <Router location="/" navigator={history}>
-      <BoxList boxes={[]} />
-    </Router>
+    <AppContext.Provider value={mockAppContextValue}>
+      <Router location="/" navigator={history}>
+        <BoxList boxes={[]} />
+      </Router>
+    </AppContext.Provider>
   );
-  const noBoxesElement = screen.getByText(/no boxes/i);
+  const noBoxesElement = screen.getByText(/no items/i);
   expect(noBoxesElement).toBeInTheDocument();
 });
 
@@ -76,9 +85,11 @@ test.skip("no search result", async () => {
   const user = userEvent.setup();
   const history = createMemoryHistory();
   render(
-    <Router location="/" navigator={history}>
-      <BoxList boxes={mockBoxes} />
-    </Router>
+    <AppContext.Provider value={mockAppContextValue}>
+      <Router location="/" navigator={history}>
+        <BoxList boxes={mock_boxes_partial.listBoxes} />
+      </Router>
+    </AppContext.Provider>
   );
 
   await user.type(screen.getByPlaceholderText("Search"), "box-x");

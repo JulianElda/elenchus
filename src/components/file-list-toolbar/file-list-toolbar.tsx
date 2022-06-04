@@ -38,7 +38,7 @@ export default function FileListToolbar(props: FileListToolbarProps) {
         </button>
       </div>
       {props.selectedItems.length > 0 && (
-        <div className="btn-group me-2" role="group" aria-label="Upload">
+        <div className="btn-group me-2" role="group" aria-label="Download">
           <button
             type="button"
             className="btn btn-dark"

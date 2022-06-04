@@ -1,12 +1,25 @@
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
-
 import axios from "api/axios";
+
+import { AppContext } from "components/app/app.context";
 import BoxListResolver from "./box-list-resolver";
 
+import { mock_clientConfiguration_admin } from "mocks/clientConfiguration";
+import { mock_boxes_partial } from "mocks/box";
+
+const mockAppContextValue = {
+  clientConfiguration: mock_clientConfiguration_admin
+}
+
 test("renders loading", () => {
-  render(<BoxListResolver />);
+  render(
+    <AppContext.Provider
+      value={mockAppContextValue}
+      children={<BoxListResolver />}
+    />
+  );
   const loadingElement = screen.getByText(/loading boxes/i);
   expect(loadingElement).toBeInTheDocument();
 });
@@ -14,28 +27,24 @@ test("renders loading", () => {
 test("paginates once", async () => {
   const history = createMemoryHistory();
 
-  let boxes = {
-    data: {
-      hasNext: false,
-      listBoxes: [{ id: 1, name: "test-box", type: "DATAROOM" }],
-    },
-  };
   jest.spyOn(axios, "get").mockImplementation(() => {
     return Promise.resolve({
       then: (callback: any) => {
-        callback(boxes);
+        callback({data: mock_boxes_partial});
       },
     });
   });
 
   render(
-    <Router location="/" navigator={history}>
-      <BoxListResolver />
-    </Router>
+    <AppContext.Provider value={mockAppContextValue}>
+      <Router location="/" navigator={history}>
+        <BoxListResolver />
+      </Router>
+    </AppContext.Provider>
   );
 
   await waitFor(async () => {
-    const nameElement = screen.getByText(/test-box/i);
+    const nameElement = screen.getByText(mock_boxes_partial.listBoxes[0].name);
     expect(nameElement).toBeInTheDocument();
   });
 });

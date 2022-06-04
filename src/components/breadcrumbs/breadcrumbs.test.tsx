@@ -3,8 +3,16 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axios from "api/axios";
+
+import { AppContext } from "components/app/app.context";
 import Breadcrumbs from "./breadcrumbs";
 import FileList from "components/file-list/file-list";
+
+import { mock_clientConfiguration_admin } from "mocks/clientConfiguration";
+
+const mockAppContextValue = {
+  clientConfiguration: mock_clientConfiguration_admin,
+};
 
 test("navigate to home", async () => {
   const user = userEvent.setup();
@@ -44,9 +52,11 @@ test("sliced bread", async () => {
     });
   });
   render(
-    <Router location="/" navigator={history}>
-      <FileList box={{}} rootFolder={mockRoot} />
-    </Router>
+    <AppContext.Provider value={mockAppContextValue}>
+      <Router location="/" navigator={history}>
+        <FileList box={{}} rootFolder={mockRoot} />
+      </Router>
+    </AppContext.Provider>
   );
   const homeElement = screen.getByText(/home/i);
   expect(homeElement).toBeInTheDocument();

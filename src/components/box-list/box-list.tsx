@@ -8,7 +8,7 @@ import Finder from "components/finder/finder";
 import { IdgardBox } from "types";
 
 type BoxListProp = {
-  boxes: IdgardBox[];
+  boxes: any[];
 };
 
 export default function BoxList(props: BoxListProp) {
