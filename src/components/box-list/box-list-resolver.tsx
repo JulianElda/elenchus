@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "api/axios";
 
 import { IdgardBox } from "types";
@@ -9,30 +9,28 @@ export default function BoxListResolver() {
   const [paginating, setPaginating] = useState<boolean>(true);
 
   const limit = 50;
-  let tmp: IdgardBox[] = [];
-
-  const loadBoxes = (start: number) => {
-    axios
-      .get(
-        "/uiapi/BoxAPI/v1/rest/partial_boxes?nbBoxes=" +
-          limit +
-          "&offset=" +
-          start
-      )
-      .then((res) => {
-        tmp = tmp.concat(res.data.listBoxes);
-
-        if (res.data.hasNext) {
-          loadBoxes(start + limit);
-        } else {
-          setBoxList(tmp);
-          setPaginating(false);
-        }
-      })
-      .catch((res) => {});
-  };
+  let tmp = useRef<IdgardBox[]>([]);
 
   useEffect(() => {
+    const loadBoxes = (start: number) => {
+      axios
+        .get(
+          "/uiapi/BoxAPI/v1/rest/partial_boxes?nbBoxes=" +
+            (limit - 1) +
+            "&offset=" +
+            start
+        )
+        .then((res) => {
+          tmp.current = tmp.current.concat(res.data.listBoxes);
+          if (res.data.hasNext) {
+            loadBoxes(start + limit);
+          } else {
+            setBoxList(tmp.current);
+            setPaginating(false);
+          }
+        })
+        .catch((res) => {});
+    };
     loadBoxes(0);
   }, []);
 

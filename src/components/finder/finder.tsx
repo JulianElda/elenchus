@@ -16,10 +16,6 @@ export default function Finder(props: FinderProps) {
   const [searchResult, setSearchResult] = useState<Array<Entry>>([]);
 
   const onSearch = () => {
-    console.log(props.boxes);
-    /*
-    findItemsInBox(props.boxes[0].id);
-    */
     props.boxes.forEach(function (box: IdgardBox) {
       findItemsInBox(box.id);
     });
@@ -40,8 +36,8 @@ export default function Finder(props: FinderProps) {
           name
       )
       .then((res) => {
-        setSearchResult((old) =>
-          old.concat(
+        setSearchResult((previousResult) =>
+          previousResult.concat(
             res.data.map(function (item) {
               return {
                 id: item.node.id,
@@ -83,7 +79,11 @@ export default function Finder(props: FinderProps) {
               </form>
             </div>
 
-            <NodeList items={searchResult} onHandleFolder={() => {}} />
+            <NodeList
+              items={searchResult}
+              onHandleFolder={() => {}}
+              showCheckbox={false}
+            />
           </div>
         </div>
       </div>

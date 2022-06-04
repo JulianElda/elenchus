@@ -8,6 +8,7 @@ import {downloadFromId, getDownloadId} from "components/common/download"
 type NodelistProp = {
   items: Entry[];
   onHandleFolder: Function;
+  showCheckbox: boolean;
 };
 
 const NodeList = memo(function (props: NodelistProp) {
@@ -40,6 +41,7 @@ const NodeList = memo(function (props: NodelistProp) {
           name={item.name}
           onHandleFile={downloadItem}
           onHandleFolder={props.onHandleFolder}
+          showCheckbox={props.showCheckbox}
         />
       );
     });

@@ -1,5 +1,3 @@
-import { IdgardBox } from "types";
-
 type FileListToolbarShareProps = {
   boxId?: string;
   sharingConfig?: any;
