@@ -14,6 +14,7 @@ const iconIndex = {
     img: regular("file-image"),
     aud: regular("file-audio"),
     src: regular("file-code"),
+    txt: regular("file-lines"),
     note: regular("note-sticky"),
   },
   BOX: {

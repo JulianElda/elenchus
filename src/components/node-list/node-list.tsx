@@ -8,7 +8,6 @@ import {downloadFromId, getDownloadId} from "components/common/download"
 type NodelistProp = {
   items: Entry[];
   onHandleFolder: Function;
-  showCheckbox: boolean;
 };
 
 const NodeList = memo(function (props: NodelistProp) {
@@ -31,7 +30,7 @@ const NodeList = memo(function (props: NodelistProp) {
     [clientConfiguration.csfrToken]
   );
 
-  const mapitemList = () => {
+  const mapItemList = () => {
     return props.items.sort(nodeListSorterFunction()).map((item: Entry) => {
       return (
         <NodeListItem
@@ -41,13 +40,12 @@ const NodeList = memo(function (props: NodelistProp) {
           name={item.name}
           onHandleFile={downloadItem}
           onHandleFolder={props.onHandleFolder}
-          showCheckbox={props.showCheckbox}
         />
       );
     });
   };
 
-  return <ul className="list-group">{mapitemList()}</ul>;
+  return <ul className="list-group">{mapItemList()}</ul>;
 });
 
 export default NodeList;

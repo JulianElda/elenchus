@@ -9,7 +9,6 @@ type NodeListItemProps = {
   type?: string;
   onHandleFile?: Function;
   onHandleFolder?: Function;
-  showCheckbox?: boolean;
 };
 
 const NodeListItem = memo(function (props: NodeListItemProps) {
@@ -32,7 +31,6 @@ const NodeListItem = memo(function (props: NodeListItemProps) {
 
   return (
     <li className="list-group-item node-list-item" onClick={onClick}>
-      {props.showCheckbox && (
         <input
           className="form-check-input me-2"
           type="checkbox"
@@ -40,7 +38,6 @@ const NodeListItem = memo(function (props: NodeListItemProps) {
           aria-label="selected"
           onChange={onSelectItem}
         />
-      )}
       <NodeListItemIcon type={props.type} name={props.name} />
       <label className="node-list-item-name">{props.name}</label>
     </li>

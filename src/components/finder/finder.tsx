@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "api/axios";
 import { Entry, IdgardBox } from "types";
 
-import NodeList from "components/node-list/node-list";
+import FinderList from "components/finder-list/finder-list";
 
 type FinderProps = {
   boxes: IdgardBox[];
@@ -17,11 +17,21 @@ export default function Finder(props: FinderProps) {
 
   const onSearch = () => {
     props.boxes.forEach(function (box: IdgardBox) {
-      findItemsInBox(box.id);
+      findItemsInBox(box.id, box.name);
     });
   };
 
-  const findItemsInBox = async (boxId) => {
+  const getPath = function (boxName, itemName, itemParent) {
+    const location: any = [];
+    let parent = itemParent;
+    while (parent !== null) {
+      location.unshift(parent.node.name);
+      parent = parent.parent;
+    }
+    return boxName + "/" +location.join("/") + "/" + itemName;
+  }
+
+  const findItemsInBox = async (boxId, boxName) => {
     // TODO: types to radio select
     let types = "types=file,folder,note";
     let name = "name=" + query;
@@ -43,6 +53,10 @@ export default function Finder(props: FinderProps) {
                 id: item.node.id,
                 type: item.type,
                 name: item.node.name,
+                parent: item.parent,
+                boxId: boxId,
+                boxName: boxName,
+                path: getPath(boxName, item.node.name, item.parent)
               };
             })
           )
@@ -79,11 +93,7 @@ export default function Finder(props: FinderProps) {
               </form>
             </div>
 
-            <NodeList
-              items={searchResult}
-              onHandleFolder={() => {}}
-              showCheckbox={false}
-            />
+            <FinderList items={searchResult} />
           </div>
         </div>
       </div>

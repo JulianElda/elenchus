@@ -6,7 +6,6 @@ import AppToolbar from "components/app-toolbar";
 import "./app.scss";
 
 export default function App(props) {
-  console.log("APP")
   const appContextValue: AppContextType = useMemo(
     () => ({
       clientConfiguration: props.clientConfiguration,

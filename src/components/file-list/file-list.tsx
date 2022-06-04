@@ -6,11 +6,6 @@ import Breadcrumbs from "components/breadcrumbs";
 import FileListToolbar from "components/file-list-toolbar/file-list-toolbar";
 import NodeList from "components/node-list/node-list";
 
-type FileListProp = {
-  rootFolder: any;
-  box: IdgardBox;
-};
-
 const selectedItemsReducer = function (state, action) {
   switch (action.type) {
     case "add":
@@ -27,6 +22,11 @@ const selectedItemsReducer = function (state, action) {
 };
 
 export const FileListContext = React.createContext({});
+
+type FileListProp = {
+  rootFolder: any;
+  box: IdgardBox;
+};
 
 export default function FileList(props: FileListProp) {
   const [items, setItems] = useState<Entry[]>(props.rootFolder.entries);
@@ -77,7 +77,6 @@ export default function FileList(props: FileListProp) {
         <NodeList
           items={items}
           onHandleFolder={loadDirectory}
-          showCheckbox={true}
         />
       );
     }
