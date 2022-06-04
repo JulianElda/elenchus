@@ -1,43 +1,28 @@
 import { useEffect, useState } from "react";
-import axios from "api/axios";
-import { ClientConfiguration, UserWrapper } from "types";
-import App from "./app";
+import { getClientConfiguration } from "api/api";
+import { ClientConfiguration } from "types";
+import { AppUserResolver } from "./app-user-resolver";
 
 export default function AppResolver() {
   const [clientConfiguration, setClientConfiguration] =
     useState<ClientConfiguration>();
-  const [currentUser, setCurrentUser] = useState<UserWrapper>();
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (
-      clientConfiguration &&
-      (clientConfiguration.userType === "ADMIN" ||
-        clientConfiguration.userType === "FULL_LICENSE")
-    )
-      axios
-        .get("/uiapi/UserManagementAPI/v1/rest/users/" + clientConfiguration.id)
-        .then((res) => {
-          setCurrentUser(res.data);
-        })
-        .catch((res) => {});
-  }, [clientConfiguration]);
-
-  useEffect(() => {
-    axios
-      .get("/uiapi/AccountsAPI/v1/rest/configuration")
-      .then((res) => {
-        setClientConfiguration(res.data);
-      })
-      .catch((res) => {});
+    const successCallback = async (res) => {
+      setClientConfiguration(res);
+      setLoading(false);
+    };
+    getClientConfiguration(successCallback);
   }, []);
 
-  if (!clientConfiguration || !currentUser) {
+  if (loading === true) {
     return (
       <div className="app-container container">
         <p>loading app...</p>
       </div>
     );
   } else {
-    return <App clientConfiguration={clientConfiguration} user={currentUser} />;
+    return <AppUserResolver clientConfiguration={clientConfiguration} />;
   }
 }

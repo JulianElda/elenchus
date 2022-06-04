@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { UserWrapper } from "types";
 import UserListItem from "./user-list-item";
 
@@ -18,10 +18,12 @@ export default function UserList(props: UserListProps) {
   };
 
   return (
-    <div>
-      <table className="table table-hover">
-        <tbody>{mapUserList()}</tbody>
-      </table>
-    </div>
+    <React.StrictMode>
+      <div>
+        <table className="table table-hover">
+          <tbody>{mapUserList()}</tbody>
+        </table>
+      </div>
+    </React.StrictMode>
   );
 }

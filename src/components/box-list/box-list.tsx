@@ -1,3 +1,4 @@
+import React from "react";
 import { boxListSorterFunction } from "./box-list-sorter";
 //import { boxListSearcherFunction } from "./box-list-searcher";
 import BoxListItem from "./box-list-item";
@@ -50,7 +51,7 @@ export default function BoxList(props: BoxListProp) {
     return <BoxListNoboxes />;
   } else {
     return (
-      <>
+      <React.StrictMode>
         <BoxListToolbar />
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
@@ -72,7 +73,7 @@ export default function BoxList(props: BoxListProp) {
 
         {getBoxListContent()}
         <Finder boxes={props.boxes} />
-      </>
+      </React.StrictMode>
     );
   }
 }

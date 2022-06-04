@@ -96,16 +96,18 @@ export default function FileList(props: FileListProp) {
   );
 
   return (
-    <FileListContext.Provider value={contextValue}>
-      <div>
-        <FileListToolbar selectedItems={selectedItems} />
-        <Breadcrumbs
-          items={breadcrumbs}
-          onClick={loadDirectory}
-          setItems={setBreadcrumbs}
-        />
-        {getFileListContent()}
-      </div>
-    </FileListContext.Provider>
+    <React.StrictMode>
+      <FileListContext.Provider value={contextValue}>
+        <div>
+          <FileListToolbar selectedItems={selectedItems} />
+          <Breadcrumbs
+            items={breadcrumbs}
+            onClick={loadDirectory}
+            setItems={setBreadcrumbs}
+          />
+          {getFileListContent()}
+        </div>
+      </FileListContext.Provider>
+    </React.StrictMode>
   );
 }
