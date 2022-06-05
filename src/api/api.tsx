@@ -54,3 +54,14 @@ export function getSoftwareSettings(successCallback?, errorCallback?) {
       errorCallback?.(res.data);
     });
 }
+
+export function getDefaultSessionTimeout(successCallback?, errorCallback?) {
+  axios
+    .get("/uiapi/EnterpriseAPI/v1/rest/settings/session")
+    .then((res) => {
+      successCallback?.(res.data);
+    })
+    .catch((res) => {
+      errorCallback?.(res.data);
+    });
+}
