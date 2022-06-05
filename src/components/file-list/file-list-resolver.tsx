@@ -4,9 +4,9 @@ import axios from "api/axios";
 
 import FileList from "./file-list";
 
-export default function FileListResolver(props) {
-  let params = useParams();
-  const [itemsLoading, setItemsLoading] = useState<boolean>(true);
+export default function FileListResolver() {
+  const params = useParams();
+  const [loading, setLoading] = useState<boolean>(true);
   const [box, setBox] = useState<any>();
 
   useEffect(() => {
@@ -16,12 +16,12 @@ export default function FileListResolver(props) {
         let tmp = res.data;
         tmp.id = params.boxId;
         setBox(res.data);
-        setItemsLoading(false);
+        setLoading(false);
       })
       .catch((res) => {});
   }, [params.boxId]);
 
-  if (itemsLoading) {
+  if (loading) {
     return <p>loading items...</p>;
   } else {
     return <FileList rootFolder={box.rootFolder} box={box} />;

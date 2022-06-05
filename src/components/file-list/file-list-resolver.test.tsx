@@ -43,7 +43,7 @@ test("loads rootfolder", async () => {
   };
 
   render(
-    <Router location="/box/gandoo" navigator={history}>
+    <Router location="/" navigator={history}>
       <AppContext.Provider value={mockAppContextValue}>
         <FileListResolver />
       </AppContext.Provider>
