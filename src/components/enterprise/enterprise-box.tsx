@@ -20,7 +20,7 @@ export default function EnterpriseBox(props: BoxSettings) {
     props.quarantinePolicy?.minDays || 0
   );
   const [tempBoxesPolicy, setTempBoxesPolicy] = useState<number>(
-    (props.tempBoxesPolicy?.lifeTime  || 0) / 86400000
+    (props.tempBoxesPolicy?.lifeTime || 0) / 86400000
   );
 
   const [canCreatePrivacyBoxes, setCanCreatePrivacyBoxes] = useState<boolean>(

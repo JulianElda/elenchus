@@ -169,7 +169,7 @@ export default function EnterprisePassword(props: PasswordPolicy) {
                 className="form-control"
                 id="norepeatcount-input"
                 value={noRepeatCount}
-                {...register("minlength", {
+                {...register("norepeatcount", {
                   min: 1,
                 })}
                 onChange={(e) => {
@@ -187,7 +187,7 @@ export default function EnterprisePassword(props: PasswordPolicy) {
                 className="form-control"
                 id="warnbeforechange-input"
                 value={warnBeforeChange}
-                {...register("minlength", {
+                {...register("warnbeforechange", {
                   min: 1,
                 })}
                 onChange={(e) => {

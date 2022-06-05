@@ -16,7 +16,7 @@ export default function EnterprisePasswordResolver() {
   }, []);
 
   if (loading === true) {
-    return (<p>loading password policy...</p>);
+    return <p>loading password policy...</p>;
   } else {
     return <EnterprisePassword {...passwordPolicy} />;
   }

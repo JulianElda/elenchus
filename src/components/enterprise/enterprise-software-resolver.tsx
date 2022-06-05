@@ -4,7 +4,9 @@ import { SoftwareSettings } from "types";
 import EnterpriseSoftware from "./enterprise-software";
 
 export default function EnterpriseSoftwareResolver() {
-  const [SoftwareSettings, setSoftwareSettings] = useState<SoftwareSettings>({});
+  const [SoftwareSettings, setSoftwareSettings] = useState<SoftwareSettings>(
+    {}
+  );
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -16,7 +18,7 @@ export default function EnterpriseSoftwareResolver() {
   }, []);
 
   if (loading === true) {
-    return (<p>loading software policy...</p>);
+    return <p>loading software policy...</p>;
   } else {
     return <EnterpriseSoftware {...SoftwareSettings} />;
   }
