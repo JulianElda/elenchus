@@ -1,19 +1,26 @@
 import { useNavigate } from "react-router-dom";
+import { UserWrapper } from "types";
 
-export default function UserListItem(props) {
+type UserListItemProps = {
+  user: UserWrapper;
+}
+
+export default function UserListItem(props: UserListItemProps) {
   const navigate = useNavigate();
 
   const onClick = (id: string) => {
-    navigate("/user/" + id);
+    navigate(id);
   };
 
   return (
     <tr
       onClick={(e) => {
-        onClick(props.id);
+        onClick(props.user.id);
       }}>
-      <td>{props.id}</td>
-      <td>{props.name}</td>
+      <td>{props.user.id}</td>
+      <td>{props.user.userInfos?.name}</td>
+      <td>{props.user.userInfos?.email}</td>
+      <td>{props.user.userInfos?.type}</td>
     </tr>
   );
 }

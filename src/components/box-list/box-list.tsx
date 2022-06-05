@@ -13,7 +13,6 @@ type BoxListProp = {
 };
 
 export default function BoxList(props: BoxListProp) {
-  console.log("BoxList")
   const mapBoxList = function () {
     return (
       props.boxes
