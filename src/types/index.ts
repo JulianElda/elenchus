@@ -18,3 +18,12 @@ export type { UserWrapper } from "./UserWrapper";
 
 // login response
 export type { SimpleUserInfo } from "./SimpleUserInfo";
+
+// enterprise settings - box response
+export type { BoxSettings } from "./BoxSettings";
+
+// enterprise settings - password response
+export type { PasswordPolicy } from "./PasswordPolicy"
+
+// enterprise settings - software settings response
+export type { SoftwareSettings } from "./SoftwareSettings"

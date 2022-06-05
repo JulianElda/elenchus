@@ -17,7 +17,6 @@ export default function UserListItem(props: UserListItemProps) {
       onClick={(e) => {
         onClick(props.user.id);
       }}>
-      <td>{props.user.id}</td>
       <td>{props.user.userInfos?.name}</td>
       <td>{props.user.userInfos?.email}</td>
       <td>{props.user.userInfos?.type}</td>

@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import AdminResolver from "components/admin/admin.resolver";
 import UserListResolver from "components/user-list/user-list-resolver";
 import UserViewResolver from "components/user-view/user-view-resolver";
+import EnterpriseSettings from "components/enterprise-settings/enterprise-settings"
 // TODO: stuff ran twice when lazy loaded
 /**
 import { lazy } from "react";
@@ -21,6 +22,7 @@ export default function AdminRouting() {
       <Route path="/" element={<AdminResolver />}>
         <Route path="user" element={<UserListResolver />} />
         <Route path="user/:userId" element={<UserViewResolver />} />
+        <Route path="enterprise" element={<EnterpriseSettings />} />
       </Route>
     </Routes>
   );
