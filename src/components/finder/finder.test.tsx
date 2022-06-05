@@ -21,6 +21,7 @@ test("show items", async () => {
         id: "test-file-1",
         name: "test-file-1.pdf",
       },
+      parent: null
     },
     {
       type: "FOLDER",
@@ -28,6 +29,7 @@ test("show items", async () => {
         id: "test-folder-1",
         name: "test-folder-1",
       },
+      parent: null
     },
   ];
 
