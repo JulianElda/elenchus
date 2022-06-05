@@ -1,23 +1,30 @@
+import { LoginValidationTypeOrNone } from "types/LoginValidationTypeOrNone";
+import { UserInfos } from "types/UserInfos";
+
 export const mock_user_admin = {
   id: "3cnfl",
   userInfos: {
     personalId: "gandoo",
     name: "Jönö Bängsät",
     email: "trap@uniscon-obas.de",
-    type: "FULL_LICENSE",
-    status: "ACTIVE",
-    dailyNotification: false,
+    type: UserInfos.type.FULL_LICENSE,
+    status: UserInfos.status.ACTIVE,
+    dailyNotification: true,
     hourlyNotification: false,
     admin: true,
   },
   userCreation: {
-    phoneNumber: null,
-    note: null,
-    registrationLink: null,
-    registrationDate: 1576844956000,
-    expirationDate: null,
-    loginValidation: { forced: false, type: "NONE", value: null },
-    registrationValidation: null,
+    phoneNumber: undefined,
+    note: undefined,
+    registrationLink: undefined,
+    registrationDate: "1576844956000",
+    expirationDate: undefined,
+    loginValidation: {
+      forced: false,
+      type: LoginValidationTypeOrNone.NONE,
+      value: "",
+    },
+    registrationValidation: undefined,
   },
   userPermissions: {
     visibility: "ALL",
@@ -32,7 +39,7 @@ export const mock_user_admin = {
       canInviteMembers: true,
     },
     tempBoxPolicy: { lifeTime: 7776000000 },
-    adminPermissions: ["BILLING_ADMIN", "TECHNICAL_ADMIN", "ROOM_ASSISTANT"],
+    adminPermissions: ["BILLING_ADMIN", "TECHNICAL_ADMIN", "ROOM_ASSISTANT"]
   },
   statisticsUserStorage: {
     own: 1667042124,
@@ -44,10 +51,10 @@ export const mock_user_admin = {
     bookedAccountStorage: 644245094400,
   },
   statisticsUserInfos: {
-    creationDate: 1576844956000,
-    lastChanged: 1634733285000,
-    lastLogin: 1654317683000,
-    creatorUUID: null,
+    creationDate: "1576844956000",
+    lastChanged: "1634733285000",
+    lastLogin: "1654317683000",
+    creatorUUID: undefined,
     editable: true,
   },
   statisticsUserBox: { countDatarooms: 18, countGuests: 7 },
@@ -70,7 +77,7 @@ export const mock_user_full = {
     note: null,
     registrationLink: null,
     registrationDate: 1651653906000,
-    expirationDate: null,
+    expirationDate: undefined,
     loginValidation: { forced: false, type: "NONE", value: null },
     registrationValidation: null,
   },

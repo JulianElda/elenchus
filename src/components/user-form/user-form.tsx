@@ -193,7 +193,7 @@ export default function UserForm(props: UserFormProps) {
 
                 <div className="mb-3">
                   <label htmlFor="type-input" className="form-label">
-                    Type
+                    License type
                   </label>
                   <select
                     className="form-select"
@@ -351,7 +351,7 @@ export default function UserForm(props: UserFormProps) {
                   <label
                     htmlFor="loginvalidationtype-input"
                     className="form-label">
-                    Type
+                    2fa login type
                   </label>
                   <select
                     className="form-select"
@@ -392,7 +392,7 @@ export default function UserForm(props: UserFormProps) {
                   <label
                     htmlFor="registrationvalidationtype-input"
                     className="form-label">
-                    Type
+                    2fa registration type
                   </label>
                   <select
                     className="form-select"

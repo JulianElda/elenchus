@@ -1,34 +1,38 @@
 import React, { useState } from "react";
 import { UserWrapper } from "types";
+import { formatDate, formatSize } from "components/common/util";
+
 type UserFormStatisticsProps = {
   user?: UserWrapper;
 };
 
 export default function UserFormStatistics(props: UserFormStatisticsProps) {
   //* UserStorageStatistics */
-  const [bookedAccountStorage] = useState<number>(
-    props.user?.statisticsUserStorage?.bookedAccountStorage || 0
+  const [bookedAccountStorage] = useState<string>(
+    formatSize(props.user?.statisticsUserStorage?.bookedAccountStorage || 0)
   );
-  const [accountUsed] = useState<number>(
-    props.user?.statisticsUserStorage?.accountUsed || 0
+  const [accountUsed] = useState<string>(
+    formatSize(props.user?.statisticsUserStorage?.accountUsed || 0)
   );
-  const [invited] = useState<number>(
-    props.user?.statisticsUserStorage?.invited || 0
+  const [invited] = useState<string>(
+    formatSize(props.user?.statisticsUserStorage?.invited || 0)
   );
-  const [own] = useState<number>(props.user?.statisticsUserStorage?.own || 0);
+  const [own] = useState<string>(
+    formatSize(props.user?.statisticsUserStorage?.own || 0)
+  );
 
   //* UserInfoStatistics */
   const [creationDate] = useState<string>(
-    props.user?.statisticsUserInfos?.creationDate || ""
+    formatDate(props.user?.statisticsUserInfos?.creationDate || "")
   );
   const [creatorUUID] = useState<string>(
     props.user?.statisticsUserInfos?.creatorUUID || ""
   );
   const [lastChanged] = useState<string>(
-    props.user?.statisticsUserInfos?.lastChanged || ""
+    formatDate(props.user?.statisticsUserInfos?.lastChanged || "")
   );
   const [lastLogin] = useState<string>(
-    props.user?.statisticsUserInfos?.lastLogin || ""
+    formatDate(props.user?.statisticsUserInfos?.lastLogin || "")
   );
   const [countDatarooms] = useState<number>(
     props.user?.statisticsUserBox?.countDatarooms || 0
@@ -103,7 +107,7 @@ export default function UserFormStatistics(props: UserFormStatisticsProps) {
                   Booked account storage
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   readOnly
                   className="form-control"
                   id="bookedaccountstorage-input"
@@ -116,7 +120,7 @@ export default function UserFormStatistics(props: UserFormStatisticsProps) {
                   Account
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   readOnly
                   className="form-control"
                   id="accountused-input"
@@ -129,7 +133,7 @@ export default function UserFormStatistics(props: UserFormStatisticsProps) {
                   Invited
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   readOnly
                   className="form-control"
                   id="invitedstorage-input"
@@ -142,7 +146,7 @@ export default function UserFormStatistics(props: UserFormStatisticsProps) {
                   Own
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   readOnly
                   className="form-control"
                   id="ownstorage-input"
