@@ -21,3 +21,36 @@ export function getUser(id, successCallback?, errorCallback?) {
       errorCallback?.(res.data);
     });
 }
+
+export function getPasswordPolicy(successCallback?, errorCallback?) {
+  axios
+    .get("/uiapi/EnterpriseAPI/v1/rest/settings/password")
+    .then((res) => {
+      successCallback?.(res.data);
+    })
+    .catch((res) => {
+      errorCallback?.(res.data);
+    });
+}
+
+export function getBoxSettings(successCallback?, errorCallback?) {
+  axios
+    .get("/uiapi/EnterpriseAPI/v1/rest/settings/box")
+    .then((res) => {
+      successCallback?.(res.data);
+    })
+    .catch((res) => {
+      errorCallback?.(res.data);
+    });
+}
+
+export function getSoftwareSettings(successCallback?, errorCallback?) {
+  axios
+    .get("/uiapi/EnterpriseAPI/v1/rest/settings/software")
+    .then((res) => {
+      successCallback?.(res.data);
+    })
+    .catch((res) => {
+      errorCallback?.(res.data);
+    });
+}

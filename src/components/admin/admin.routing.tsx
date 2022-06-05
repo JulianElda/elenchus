@@ -1,20 +1,14 @@
+import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import AdminResolver from "components/admin/admin.resolver";
-import UserListResolver from "components/user-list/user-list-resolver";
-import UserViewResolver from "components/user-view/user-view-resolver";
-import EnterpriseSettings from "components/enterprise-settings/enterprise-settings"
-// TODO: stuff ran twice when lazy loaded
-/**
-import { lazy } from "react";
 const AdminResolver = lazy(() => import("components/admin/admin.resolver"));
+const EnterpriseSettings = lazy(() => import("components/enterprise/enterprise"))
 const UserListResolver = lazy(
   () => import("components/user-list/user-list-resolver")
 );
 const UserViewResolver = lazy(
   () => import("components/user-view/user-view-resolver")
 );
-*/
 
 export default function AdminRouting() {
   return (
