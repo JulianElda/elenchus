@@ -28,7 +28,7 @@ export default function Finder(props: FinderProps) {
       location.unshift(parent.node.name);
       parent = parent.parent;
     }
-    return boxName + "/" +location.join("/") + "/" + itemName;
+    return location.join("/") + "/" + itemName;
   }
 
   const findItemsInBox = async (boxId, boxName) => {
