@@ -1,3 +1,5 @@
+import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axios from "api/axios";
@@ -11,7 +13,7 @@ const mockAppContextValue = {
 
 test("show items", async () => {
   const user = userEvent.setup();
-
+  const history = createMemoryHistory();
   const mockBoxes = [{ id: "test-box-id-1" }];
 
   const mockResults = [
@@ -21,7 +23,7 @@ test("show items", async () => {
         id: "test-file-1",
         name: "test-file-1.pdf",
       },
-      parent: null
+      parent: null,
     },
     {
       type: "FOLDER",
@@ -29,7 +31,7 @@ test("show items", async () => {
         id: "test-folder-1",
         name: "test-folder-1",
       },
-      parent: null
+      parent: null,
     },
   ];
 
@@ -42,9 +44,11 @@ test("show items", async () => {
   });
 
   render(
-    <AppContext.Provider value={mockAppContextValue}>
-      <Finder boxes={mockBoxes} />
-    </AppContext.Provider>
+    <Router location="/" navigator={history}>
+      <AppContext.Provider value={mockAppContextValue}>
+        <Finder boxes={mockBoxes} />
+      </AppContext.Provider>
+    </Router>
   );
   await user.type(screen.getByPlaceholderText(/Find/i), "test-query");
   await user.click(screen.getByRole("button", { name: "Find", hidden: true }));

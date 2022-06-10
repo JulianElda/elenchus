@@ -15,10 +15,11 @@ const NodeList = memo(function (props: NodelistProp) {
 
   // download a single item
   const downloadItem = useCallback(
-    function (itemId, itemName) {
+    function (itemId: string, itemName: string) {
       const payload = [
         {
           itemId: itemId,
+          itemName: itemName
         },
       ];
       getDownloadId(payload, null)

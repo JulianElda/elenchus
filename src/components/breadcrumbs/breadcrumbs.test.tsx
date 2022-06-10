@@ -54,7 +54,7 @@ test("sliced bread", async () => {
   render(
     <AppContext.Provider value={mockAppContextValue}>
       <Router location="/" navigator={history}>
-        <FileList box={{}} rootFolder={mockRoot} />
+        <FileList box={{}} items={mockRoot.entries} breadcrumbs={[{id: "test-id", name: "test-name"}]} />
       </Router>
     </AppContext.Provider>
   );

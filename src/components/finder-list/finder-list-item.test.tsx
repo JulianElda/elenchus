@@ -57,5 +57,5 @@ test("calls folder type callback", async () => {
   );
   await user.click(screen.getByText("test-name"));
   expect(fileCallback).not.toHaveBeenCalled();
-  expect(folderCallback).toHaveBeenCalledWith("test-node-id", "test-name", "test-box-id")
+  expect(folderCallback).toHaveBeenCalledWith("test-node-id", "test-box-id")
 });

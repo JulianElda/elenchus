@@ -24,19 +24,15 @@ const selectedItemsReducer = function (state, action) {
 export const FileListContext = React.createContext({});
 
 type FileListProp = {
-  rootFolder: any;
+  breadcrumbs: any;
+  items: any[];
   box: IdgardBox;
 };
 
 export default function FileList(props: FileListProp) {
-  const [items, setItems] = useState<Entry[]>(props.rootFolder.entries);
+  const [items, setItems] = useState<Entry[]>(props.items);
   const [loading, setLoading] = useState<boolean>(false);
-  const [breadcrumbs, setBreadcrumbs] = useState<any[]>([
-    {
-      id: props.rootFolder.id,
-      name: props.rootFolder.name,
-    },
-  ]);
+  const [breadcrumbs, setBreadcrumbs] = useState<any[]>(props.breadcrumbs);
   const [selectedItems, dispatchSelectedItems] = useReducer(
     selectedItemsReducer,
     []

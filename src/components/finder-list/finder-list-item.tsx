@@ -6,7 +6,6 @@ type FinderListItemProps = {
   id?: string;
   name?: string;
   type?: string;
-  parent?: any;
   boxId?: string;
   path?: string;
   onHandleFile?: Function;
@@ -15,7 +14,7 @@ type FinderListItemProps = {
 
 const FinderListItem = memo(function (props: FinderListItemProps) {
   const onClick = () => {
-    if (props.type === "DIR") props.onHandleFolder?.(props.id, props.name, props.boxId);
+    if (props.type === "DIR") props.onHandleFolder?.(props.id, props.boxId);
     else if (props.type === "FILE") props.onHandleFile?.(props.id, props.name);
   };
 
