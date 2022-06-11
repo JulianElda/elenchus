@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { finderListSorterFunction } from "./finder-list-sorter";
 import FinderListItem from "./finder-list-item";
 import { AppContext } from "components/app/app.context";
-import {downloadFromId, getDownloadId} from "components/common/download"
+import { downloadFromId, getDownloadId } from "components/common/download";
+import { BreadcrumbItem } from "components/breadcrumbs/breadcrumbs";
+import { NodeInfo } from "types/NodeInfo";
 
 type FinderListItemType = {
-  item: any;
+  item: NodeInfo;
   boxId: string;
 };
 
@@ -19,8 +21,10 @@ export default function FinderList(props: FinderListProps) {
   const clientConfiguration = useContext<any>(AppContext).clientConfiguration;
 
   const handleFolder = useCallback(
-    function (folderId: string, boxId: string) {
-      navigate("/box/" + boxId, { state: { folderId: folderId } });
+    function (folderId: string, boxId: string, breadcrumbs: BreadcrumbItem[]) {
+      navigate("/box/" + boxId, {
+        state: { folderId: folderId, breadcrumbs: breadcrumbs },
+      });
     },
     [navigate]
   );
@@ -30,7 +34,7 @@ export default function FinderList(props: FinderListProps) {
       const payload = [
         {
           itemId: itemId,
-          itemName: itemName
+          itemName: itemName,
         },
       ];
       getDownloadId(payload, null)
@@ -42,29 +46,47 @@ export default function FinderList(props: FinderListProps) {
     [clientConfiguration.csfrToken]
   );
 
-  const getPath = function (itemName: string, itemParent: any) {
-    const location: any = [];
-    let parent = itemParent;
+  const getBreadcrumbs = function (item: NodeInfo) {
+    const breadcrumbs: BreadcrumbItem[] = [
+      {
+        id: item.node?.id || "",
+        name: item.node?.name || "",
+      },
+    ];
+    let parent = item.parent;
     while (parent !== null) {
-      location.unshift(parent.node.name);
-      parent = parent.parent;
+      breadcrumbs.unshift({
+        id: parent?.node?.id || "",
+        name: parent?.node?.name || "",
+      });
+      parent = parent?.parent;
     }
-    return location.join("/") + "/" + itemName;
+    return breadcrumbs;
   };
 
-  const mapFinderItem = function (item, boxId: string) {
+  const getPath = function (breadcrumbs: BreadcrumbItem[]) {
+    return breadcrumbs
+      .map(function (breadcrumb: BreadcrumbItem) {
+        return breadcrumb.name;
+      })
+      .join("/");
+  };
+
+  const mapFinderItem = function (item: NodeInfo, boxId: string) {
+    let breadcrumbs = getBreadcrumbs(item);
     return {
-      id: item.node.id,
-      name: item.node.name,
+      id: item.node?.id,
+      name: item.node?.name,
       type: item.type,
-      path: getPath(item.node.name, item.parent),
+      breadcrumbs: breadcrumbs,
+      path: getPath(breadcrumbs),
       boxId: boxId,
     };
   };
 
   const mapItemList = function () {
     return props.items
-      .map(function (item) {
+      .map(function (item: FinderListItemType) {
         return mapFinderItem(item.item, item.boxId);
       })
       .sort(finderListSorterFunction())
@@ -76,6 +98,7 @@ export default function FinderList(props: FinderListProps) {
             name={item.name}
             type={item.type}
             boxId={item.boxId}
+            breadcrumbs={item.breadcrumbs}
             path={item.path}
             onHandleFile={handleFile}
             onHandleFolder={handleFolder}

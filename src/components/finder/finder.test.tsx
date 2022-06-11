@@ -23,7 +23,13 @@ test("show items", async () => {
         id: "test-file-1",
         name: "test-file-1.pdf",
       },
-      parent: null,
+      parent: {
+        node: {
+          id: "test-parent-node",
+          name: "test-parent-name"
+        },
+        parent: null
+      },
     },
     {
       type: "FOLDER",
@@ -54,7 +60,12 @@ test("show items", async () => {
   await user.click(screen.getByRole("button", { name: "Find", hidden: true }));
 
   await waitFor(async () => {
-    const pdfElement = screen.getByText(mockResults[0].node.name);
+    const pdfElement = screen.getByText("test-file-1.pdf");
     expect(pdfElement).toBeInTheDocument();
+  });
+
+  await waitFor(async () => {
+    const pathElement = screen.getByText("test-parent-name/test-file-1.pdf");
+    expect(pathElement).toBeInTheDocument();
   });
 });

@@ -7,6 +7,7 @@ import FileList from "./file-list";
 export default function FileListResolver() {
   const { state } = useLocation();
   const params = useParams();
+
   const [loading, setLoading] = useState<boolean>(true);
   const [box, setBox] = useState<any>();
   const [items, setItems] = useState<any[]>([]);
@@ -31,11 +32,11 @@ export default function FileListResolver() {
   }, [params.boxId]);
 
   useEffect(() => {
-    if (!state) return;
-    const { folderId } = state as any;
-    if (!folderId) return;
-
     setLoading(true);
+    if (!state) return;
+    const { folderId, breadcrumbs } = state as any
+    if (!folderId) return
+
     axios
       .get(
         "/uiapi/BoxAPI/v1/rest/children/" + params.boxId + "/" + folderId,
@@ -43,6 +44,7 @@ export default function FileListResolver() {
       )
       .then((res) => {
         setItems(() => (res.data.entries));
+        setBreadcrumbs(breadcrumbs);
         setLoading(false);
       })
       .catch((res) => {});

@@ -17,11 +17,11 @@ export default function Finder(props: FinderProps) {
 
   const onSearch = () => {
     props.boxes.forEach(function (box: IdgardBox) {
-      findItemsInBox(box.id, box.name);
+      findItemsInBox(box.id);
     });
   };
 
-  const findItemsInBox = async (boxId, boxName) => {
+  const findItemsInBox = async (boxId) => {
     // TODO: types to radio select
     let types = "types=file,folder,note";
     let name = "name=" + query;

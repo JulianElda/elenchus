@@ -1,19 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import "./breadcrumbs.scss";
 
-type BreadcrumbProp = {
+export type BreadcrumbItem = {
   id: string;
   name: string;
 };
+
 type BreadcrumbsProps = {
-  items: BreadcrumbProp[];
+  items: BreadcrumbItem[];
   setItems: Function;
   onClick: Function;
 };
 
 export default function Breadcrumbs(props: BreadcrumbsProps) {
   const navigate = useNavigate();
-  const onClickBreadcrumb = function (item: BreadcrumbProp, index) {
+  const onClickBreadcrumb = function (item: BreadcrumbItem, index) {
     props.setItems(() => {
       return props.items.slice(0, index);
     });
@@ -21,7 +22,7 @@ export default function Breadcrumbs(props: BreadcrumbsProps) {
   };
 
   const mapBreadcrumbs = () => {
-    return props.items.map(function (item: BreadcrumbProp, index) {
+    return props.items.map(function (item: BreadcrumbItem, index) {
       return (
         <li
           className="breadcrumb-item font-monospace"

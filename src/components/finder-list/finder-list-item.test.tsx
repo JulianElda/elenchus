@@ -44,6 +44,10 @@ test("calls folder type callback", async () => {
   const user = userEvent.setup();
   const fileCallback = jest.fn();
   const folderCallback = jest.fn();
+  const mockBreadcrumbs = [{
+    id: "test-bread-id",
+    name: "test-bread-name"
+  }]
   render(
     <FinderListItem
       id="test-node-id"
@@ -51,11 +55,12 @@ test("calls folder type callback", async () => {
       name="test-name"
       boxId="test-box-id"
       path="test-path"
+      breadcrumbs={mockBreadcrumbs}
       onHandleFile={fileCallback}
       onHandleFolder={folderCallback}
     />
   );
   await user.click(screen.getByText("test-name"));
   expect(fileCallback).not.toHaveBeenCalled();
-  expect(folderCallback).toHaveBeenCalledWith("test-node-id", "test-box-id")
+  expect(folderCallback).toHaveBeenCalledWith("test-node-id", "test-box-id", mockBreadcrumbs)
 });
