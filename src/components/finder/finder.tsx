@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import axios from "api/axios";
+import api from "api/api";
 import { IdgardBox } from "types";
 
 import FinderList from "components/finder-list/finder-list";
@@ -26,28 +26,20 @@ export default function Finder(props: FinderProps) {
     let types = "types=file,folder,note";
     let name = "name=" + query;
 
-    axios
-      .get(
-        "/uiapi/FilterAPI/v1/rest/boxes/" +
-          boxId +
-          "/nodes?" +
-          types +
-          "&" +
-          name
-      )
-      .then((res) => {
-        setSearchResult((previousResult) =>
-          previousResult.concat(
-            res.data.map(function (item) {
-              return {
-                item: item,
-                boxId: boxId
-              }
-            })
-          )
-        );
-      })
-      .catch((res) => {});
+    const findCallback = function (res) {
+      setSearchResult((previousResult) =>
+        previousResult.concat(
+          res.map(function (item) {
+            return {
+              item: item,
+              boxId: boxId,
+            };
+          })
+        )
+      );
+    };
+
+    api.findItemsInBox(boxId, types, name, findCallback);
   };
 
   return (

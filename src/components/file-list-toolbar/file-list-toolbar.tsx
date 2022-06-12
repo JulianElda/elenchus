@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { AppContext } from "components/app/app.context";
 import { FileListContext } from "components/file-list/file-list";
-import { downloadFromId, getDownloadId } from "components/common/download";
+import api from "api/api";
+import { downloadFromId } from "components/common/download";
 
 import FileListToolbarShare from "./file-list-toolbar-share";
 import "./file-list-toolbar.scss";
@@ -18,11 +19,10 @@ export default function FileListToolbar(props: FileListToolbarProps) {
     const payload = props.selectedItems.map(function (item) {
       return { itemId: item };
     });
-    getDownloadId(payload, null)
-      .then((res) => {
-        downloadFromId(res.data, clientConfiguration.csfrToken);
-      })
-      .catch(() => {});
+    const downloadItemsCallback = function (res) {
+      downloadFromId(res, clientConfiguration.csfrToken);
+    };
+    api.getDownloadId(payload, null, downloadItemsCallback);
   };
 
   return (

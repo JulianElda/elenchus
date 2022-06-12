@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "api/axios";
+import api from "api/api";
 import { UserWrapper } from "types";
-import UserView from "components/user-view/user-view"
+import UserView from "components/user-view/user-view";
 
 export default function UserViewResolver() {
   const params = useParams();
@@ -10,18 +10,16 @@ export default function UserViewResolver() {
   const [user, setUser] = useState<UserWrapper>();
 
   useEffect(() => {
-    axios
-      .get("/uiapi/UserManagementAPI/v1/rest/users/" + params.userId, {})
-      .then((res) => {
-        setUser(res.data);
-        setLoading(false);
-      })
-      .catch((res) => {});
+    const getUserCallback = function (res) {
+      setUser(res);
+      setLoading(false);
+    };
+    api.getUser(params.userId || "", getUserCallback);
   }, [params.userId]);
 
   if (loading) {
     return <p>loading user...</p>;
   } else {
-    return <UserView user={user}/>;
+    return <UserView user={user} />;
   }
 }

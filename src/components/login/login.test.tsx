@@ -3,7 +3,7 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import axios from "api/axios";
+import api from "api/api";
 import Login from "./login";
 import { LoginErrorResponses } from "const/login";
 
@@ -23,14 +23,6 @@ test("form minimal length", async () => {
   const user = userEvent.setup();
   const history = createMemoryHistory();
 
-  jest.spyOn(axios, "post").mockImplementation(() => {
-    return Promise.resolve({
-      then: (callback: any) => {
-        callback({ data: { csfrToken: "test-csfr" } });
-      },
-    });
-  });
-
   render(
     <Router location="/" navigator={history}>
       <Login />
@@ -47,11 +39,11 @@ test("wrong credentials", async () => {
   const user = userEvent.setup();
   const history = createMemoryHistory();
 
-  jest.spyOn(axios, "post").mockImplementation(() => {
-    return Promise.reject({
-      response: { data: { payload: LoginErrorResponses.WRONG_CRED } },
+  jest
+    .spyOn(api, "login")
+    .mockImplementation((payload, successCallback, errorCallback) => {
+      errorCallback?.({ payload: LoginErrorResponses.WRONG_CRED });
     });
-  });
 
   render(
     <Router location="/" navigator={history}>
@@ -73,13 +65,11 @@ test("submit callback to box", async () => {
   const user = userEvent.setup();
   const history = createMemoryHistory();
 
-  jest.spyOn(axios, "post").mockImplementation(() => {
-    return Promise.resolve({
-      then: (callback: any) => {
-        callback({ data: { csfrToken: "test-csfr" } });
-      },
+  jest
+    .spyOn(api, "login")
+    .mockImplementation((payload, successCallback, errorCallback) => {
+      successCallback?.({ csfrToken: "test-csfr" });
     });
-  });
 
   render(
     <Router location="/" navigator={history}>

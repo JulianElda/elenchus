@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import axios from "api/axios";
+import api from "api/api";
 
 import { Authentication } from "types";
 import { LoginErrorResponses } from "const/login";
@@ -28,23 +28,24 @@ export default function Login() {
       version: "uiapi(gandoo)-0.0.0",
     };
 
-    axios
-      .post("/uiapi/AccountsAPI/v1/rest/login/", payload)
-      .then((res) => {
-        localStorage.setItem("csfrToken", res.data.csfrToken);
-        navigate("/box");
-      })
-      .catch((res) => {
-        setShowError(true);
-        switch (res.response.data.payload) {
-          case LoginErrorResponses.WRONG_CRED:
-            setErrorMessage(t("login.error.wrong-cred"));
-            break;
-          default:
-            setErrorMessage(t("login.error.default"));
-            break;
-        }
-      });
+    const loginSuccessCallback = function (res) {
+      localStorage.setItem("csfrToken", res.csfrToken);
+      navigate("/box");
+    };
+
+    const loginErrorCallback = function (res) {
+      setShowError(true);
+      switch (res.payload) {
+        case LoginErrorResponses.WRONG_CRED:
+          setErrorMessage(t("login.error.wrong-cred"));
+          break;
+        default:
+          setErrorMessage(t("login.error.default"));
+          break;
+      }
+    };
+
+    api.login(payload, loginSuccessCallback, loginErrorCallback);
   };
 
   return (

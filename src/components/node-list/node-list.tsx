@@ -3,7 +3,8 @@ import { Entry } from "types";
 import { AppContext } from "components/app/app.context";
 import NodeListItem from "./node-list-item";
 import { nodeListSorterFunction } from "./node-list-sorter";
-import {downloadFromId, getDownloadId} from "components/common/download"
+import api from "api/api";
+import { downloadFromId } from "components/common/download";
 
 type NodelistProp = {
   items: Entry[];
@@ -19,14 +20,13 @@ const NodeList = memo(function (props: NodelistProp) {
       const payload = [
         {
           itemId: itemId,
-          itemName: itemName
+          itemName: itemName,
         },
       ];
-      getDownloadId(payload, null)
-        .then((res) => {
-          downloadFromId(res.data, clientConfiguration.csfrToken);
-        })
-        .catch(() => {});
+      const downloadItemsCallback = function (res) {
+        downloadFromId(res, clientConfiguration.csfrToken);
+      };
+      api.getDownloadId(payload, null, downloadItemsCallback);
     },
     [clientConfiguration.csfrToken]
   );

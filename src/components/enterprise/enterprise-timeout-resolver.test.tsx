@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import * as api from "api/api";
+import api from "api/api";
 import { mock_enterprise_timeout } from "mocks/enterprise";
 
 import EnterpriseTimeoutResolver from "./enterprise-timeout-resolver";

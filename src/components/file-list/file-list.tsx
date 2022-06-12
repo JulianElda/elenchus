@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useReducer, useState } from "react";
-import axios from "api/axios";
+import api from "api/api";
 import { Entry, IdgardBox } from "types";
 import FileListEmpty from "./file-list-empty";
 import Breadcrumbs from "components/breadcrumbs";
@@ -44,21 +44,16 @@ export default function FileList(props: FileListProp) {
 
   const loadDirectory = useCallback(
     function (folderId: string, folderName: string) {
+      const getBoxChildrenCallback = function (res) {
+        setItems(res.entries);
+        setLoading(false);
+      };
       setBreadcrumbs((old) => {
         return old.concat({ id: folderId, name: folderName });
       });
       dispatchSelectedItems({ type: "clear" });
       setLoading(true);
-      axios
-        .get(
-          "/uiapi/BoxAPI/v1/rest/children/" + props.box.id + "/" + folderId,
-          {}
-        )
-        .then((res) => {
-          setItems(res.data.entries);
-          setLoading(false);
-        })
-        .catch((res) => {});
+      api.getBoxChildren(props.box.id || "", folderId, getBoxChildrenCallback);
     },
     [props.box.id]
   );
@@ -69,12 +64,7 @@ export default function FileList(props: FileListProp) {
     } else if (loading) {
       return <p>loading items...</p>;
     } else {
-      return (
-        <NodeList
-          items={items}
-          onHandleFolder={loadDirectory}
-        />
-      );
+      return <NodeList items={items} onHandleFolder={loadDirectory} />;
     }
   };
 

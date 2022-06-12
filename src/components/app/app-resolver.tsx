@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getClientConfiguration } from "api/api";
+import api from "api/api";
 import { ClientConfiguration } from "types";
 import { AppUserResolver } from "./app-user-resolver";
 
@@ -13,15 +13,11 @@ export default function AppResolver() {
       setClientConfiguration(res);
       setLoading(false);
     };
-    getClientConfiguration(successCallback);
+    api.getClientConfiguration(successCallback);
   }, []);
 
-  if (loading === true) {
-    return (
-      <div className="app-container container">
-        <p>loading app...</p>
-      </div>
-    );
+  if (loading) {
+    return <p>loading app...</p>;
   } else {
     return <AppUserResolver clientConfiguration={clientConfiguration} />;
   }

@@ -2,7 +2,7 @@ import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import axios from "api/axios";
+import api from "api/api";
 
 import { AppContext } from "components/app/app.context";
 import Breadcrumbs from "./breadcrumbs";
@@ -44,17 +44,19 @@ test("sliced bread", async () => {
     entries: [{ id: "test-1", name: "test-1", type: "DIR" }],
   };
   let mockEntries = [{ id: "test-2", name: "test-2", type: "DIR" }];
-  jest.spyOn(axios, "get").mockImplementation(() => {
-    return Promise.resolve({
-      then: (callback: any) => {
-        callback({ data: { entries: mockEntries } });
-      },
+  jest
+    .spyOn(api, "getBoxChildren")
+    .mockImplementation((boxId, folderId, successCallback) => {
+      successCallback?.({ entries: mockEntries });
     });
-  });
   render(
     <AppContext.Provider value={mockAppContextValue}>
       <Router location="/" navigator={history}>
-        <FileList box={{}} items={mockRoot.entries} breadcrumbs={[{id: "test-id", name: "test-name"}]} />
+        <FileList
+          box={{}}
+          items={mockRoot.entries}
+          breadcrumbs={[{ id: "test-id", name: "test-name" }]}
+        />
       </Router>
     </AppContext.Provider>
   );

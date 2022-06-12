@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPasswordPolicy } from "api/api";
+import api from "api/api";
 import { PasswordPolicy } from "types";
 import EnterprisePassword from "./enterprise-password";
 
@@ -8,11 +8,11 @@ export default function EnterprisePasswordResolver() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const callback = async (res) => {
+    const callback = function (res) {
       setPasswordPolicy(res);
       setLoading(false);
     };
-    getPasswordPolicy(callback);
+    api.getPasswordPolicy(callback);
   }, []);
 
   if (loading === true) {

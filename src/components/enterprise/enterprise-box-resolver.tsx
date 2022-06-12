@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getBoxSettings } from "api/api";
+import api from "api/api";
 import { BoxSettings } from "types";
 import EnterpriseBox from "./enterprise-box";
 
@@ -8,11 +8,11 @@ export default function EnterpriseBoxResolver() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const callback = async (res) => {
+    const callback = function (res) {
       setBoxSettings(res);
       setLoading(false);
     };
-    getBoxSettings(callback);
+    api.getBoxSettings(callback);
   }, []);
 
   if (loading === true) {

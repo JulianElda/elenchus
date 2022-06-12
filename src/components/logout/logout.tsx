@@ -1,17 +1,16 @@
-import axios from "api/axios";
+import api from "api/api";
 import ConfirmModal from "components/common/confirm-modal";
 
 export default function Logout() {
+  const logoutCallback = function () {
+    window.location.href = window.location.origin + "/login";
+    localStorage.removeItem("csfrToken");
+  };
+
   const cancel = () => {};
 
   const confirm = () => {
-    axios
-      .post("/uiapi/AccountsAPI/v1/rest/logout?opt=THIS")
-      .then((res) => {
-        window.location.href = window.location.origin + "/login";
-        localStorage.removeItem("csfrToken");
-      })
-      .catch((res) => {});
+    api.logout(logoutCallback);
   };
 
   return (

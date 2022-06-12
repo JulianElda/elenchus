@@ -1,7 +1,7 @@
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
-import axios from "api/axios";
+import api from "api/api";
 
 import { AppContext } from "components/app/app.context";
 import BoxListResolver from "./box-list-resolver";
@@ -27,12 +27,8 @@ test("renders loading", () => {
 test("paginates once", async () => {
   const history = createMemoryHistory();
 
-  jest.spyOn(axios, "get").mockImplementation(() => {
-    return Promise.resolve({
-      then: (callback: any) => {
-        callback({data: mock_boxes_partial});
-      },
-    });
+  jest.spyOn(api, "paginateBox").mockImplementation((limit, start, successCallback) => {
+    successCallback?.(mock_boxes_partial)
   });
 
   render(

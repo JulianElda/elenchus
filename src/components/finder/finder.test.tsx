@@ -2,7 +2,7 @@ import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import axios from "api/axios";
+import api from "api/api";
 import { AppContext } from "components/app/app.context";
 import Finder from "components/finder/finder";
 
@@ -26,9 +26,9 @@ test("show items", async () => {
       parent: {
         node: {
           id: "test-parent-node",
-          name: "test-parent-name"
+          name: "test-parent-name",
         },
-        parent: null
+        parent: null,
       },
     },
     {
@@ -41,13 +41,11 @@ test("show items", async () => {
     },
   ];
 
-  jest.spyOn(axios, "get").mockImplementation(() => {
-    return Promise.resolve({
-      then: (callback: any) => {
-        callback({ data: mockResults });
-      },
+  jest
+    .spyOn(api, "findItemsInBox")
+    .mockImplementation((boxId, types, name, successCallback) => {
+      successCallback?.(mockResults);
     });
-  });
 
   render(
     <Router location="/" navigator={history}>

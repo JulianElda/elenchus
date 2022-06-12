@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { getBox, getBoxChildren } from "api/api";
+import api from "api/api";
 
 import FileList from "./file-list";
 
@@ -43,10 +43,10 @@ export default function FileListResolver() {
         return;
       }
       setBreadcrumbs(breadcrumbs);
-      getBoxChildren(params.boxId || "", folderId, getBoxChildrenCallback);
+      api.getBoxChildren(params.boxId || "", folderId, getBoxChildrenCallback);
     };
 
-    getBox(params.boxId || "", getBoxCallback);
+    api.getBox(params.boxId || "", getBoxCallback);
   }, [params.boxId, state]);
 
   if (loading) {

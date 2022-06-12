@@ -30,16 +30,18 @@ const NodeListItem = memo(function (props: NodeListItemProps) {
   };
 
   return (
-    <li className="list-group-item node-list-item" onClick={onClick}>
-        <input
-          className="form-check-input me-2"
-          type="checkbox"
-          checked={selected}
-          aria-label="selected"
-          onChange={onSelectItem}
-        />
-      <NodeListItemIcon type={props.type} name={props.name} />
-      <label className="node-list-item-name">{props.name}</label>
+    <li className="list-group-item node-list-item">
+      <input
+        className="form-check-input me-2"
+        type="checkbox"
+        checked={selected}
+        aria-label="selected"
+        onChange={onSelectItem}
+      />
+      <NodeListItemIcon type={props.type} name={props.name} onClick={onClick} />
+      <label className="node-list-item-name" onClick={onClick}>
+        {props.name}
+      </label>
     </li>
   );
 });

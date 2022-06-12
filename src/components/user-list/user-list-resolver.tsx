@@ -1,35 +1,31 @@
 import { useEffect, useRef, useState } from "react";
-import axios from "api/axios";
 import { UserWrapper } from "types";
 import UserList from "./user-list";
+import api from "api/api";
 
 export default function UserListResolver() {
   const [userList, setUserList] = useState<UserWrapper[]>([]);
   const [paginating, setPaginating] = useState<boolean>(true);
+
   const limit = 50;
   let tmp = useRef<UserWrapper[]>([]);
+  let index = useRef<number>(0);
 
   useEffect(() => {
-    const loadUsers = (start: number) => {
-      axios
-        .get(
-          "/uiapi/UserManagementAPI/v1/rest/users_partial?limit=" +
-            limit +
-            "&offset=" +
-            start
-        )
-        .then((res) => {
-          tmp.current = tmp.current.concat(res.data);
-          if (res.data.length === limit) {
-            loadUsers(start + limit);
-          } else {
-            setUserList(tmp.current);
-            setPaginating(false);
-          }
-        })
-        .catch((res) => {});
+    const paginateUserCallback = function (res) {
+      tmp.current = tmp.current.concat(res);
+      if (res.length === limit) {
+        index.current += limit;
+        loadUsers(index.current);
+      } else {
+        setUserList(tmp.current);
+        setPaginating(false);
+      }
     };
-    loadUsers(0);
+    const loadUsers = function (start: number) {
+      api.paginateUser(limit, start, paginateUserCallback);
+    };
+    loadUsers(index.current);
   }, []);
 
   if (paginating) {

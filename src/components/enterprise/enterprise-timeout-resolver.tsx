@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getDefaultSessionTimeout } from "api/api";
+import api from "api/api";
 import EnterpriseTimeout from "./enterprise-timeout";
 
 export default function EnterpriseTimeoutResolver() {
@@ -7,11 +7,11 @@ export default function EnterpriseTimeoutResolver() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const callback = async (res) => {
+    const callback = function (res) {
       setSessionTimeout(res);
       setLoading(false);
     };
-    getDefaultSessionTimeout(callback);
+    api.getDefaultSessionTimeout(callback);
   }, []);
 
   if (loading === true) {

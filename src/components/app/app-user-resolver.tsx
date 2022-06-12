@@ -1,6 +1,6 @@
-import { getUser } from "api/api";
 import { useEffect, useState } from "react";
 import { UserWrapper } from "types";
+import api from "api/api";
 import App from "./app";
 
 export function AppUserResolver(props) {
@@ -17,7 +17,7 @@ export function AppUserResolver(props) {
       (props.clientConfiguration.userType === "ADMIN" ||
         props.clientConfiguration.userType === "FULL_LICENSE")
     ) {
-      getUser(props.clientConfiguration.id, getUserSuccessCallback);
+      api.getUser(props.clientConfiguration.id, getUserSuccessCallback);
     } else {
       setLoading(false);
     }

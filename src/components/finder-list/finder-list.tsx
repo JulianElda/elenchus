@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { finderListSorterFunction } from "./finder-list-sorter";
 import FinderListItem from "./finder-list-item";
 import { AppContext } from "components/app/app.context";
-import { downloadFromId, getDownloadId } from "components/common/download";
+import api from "api/api";
+import { downloadFromId } from "components/common/download";
 import { BreadcrumbItem } from "components/breadcrumbs/breadcrumbs";
 import { NodeInfo } from "types/NodeInfo";
 
@@ -37,11 +38,11 @@ export default function FinderList(props: FinderListProps) {
           itemName: itemName,
         },
       ];
-      getDownloadId(payload, null)
-        .then((res) => {
-          downloadFromId(res.data, clientConfiguration.csfrToken);
-        })
-        .catch(() => {});
+
+      const downloadItemsCallback = function (res) {
+        downloadFromId(res, clientConfiguration.csfrToken);
+      };
+      api.getDownloadId(payload, null, downloadItemsCallback);
     },
     [clientConfiguration.csfrToken]
   );
