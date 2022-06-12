@@ -5,7 +5,7 @@ export const mock_boxes_partial_once = {
   listBoxes: [
     {
       id: "box-1",
-      name: "Box-1",
+      name: "Box-A",
       description: "box-1-desc",
       type: Box.type.DATAROOM,
       attributes: {},
@@ -28,7 +28,7 @@ export const mock_boxes_partial = {
   listBoxes: [
     {
       id: "box-1",
-      name: "Box-1",
+      name: "Box-X",
       description: "box-1-desc",
       type: Box.type.DATAROOM,
       attributes: {},
@@ -45,7 +45,7 @@ export const mock_boxes_partial = {
     },
     {
       id: "box-2",
-      name: "Box-2",
+      name: "Box-A",
       description: "another",
       type: Box.type.DATAROOM,
       attributes: {},
@@ -62,7 +62,7 @@ export const mock_boxes_partial = {
     },
     {
       id: "box-3",
-      name: "Box-3",
+      name: "Box-N",
       description: "nothing",
       type: Box.type.FILE,
       attributes: {},
@@ -79,7 +79,7 @@ export const mock_boxes_partial = {
     },
     {
       id: "box-4",
-      name: "Box-4",
+      name: "Box-B",
       description: "",
       type: Box.type.DATAROOM,
       attributes: {},

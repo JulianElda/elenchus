@@ -3,9 +3,9 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import api from "api/api";
 import {
-  mock_clientConfiguration_admin,
-  mock_clientConfiguration_full,
-  mock_clientConfiguration_guest,
+  mock_clientconfig_admin,
+  mock_clientconfig_full,
+  mock_clientconfig_guest,
 } from "mocks/clientConfiguration";
 import { mock_user_admin, mock_user_full } from "mocks/user";
 import AppResolver from "./app-resolver";
@@ -22,7 +22,7 @@ test("shows app for admin type", async () => {
   jest
     .spyOn(api, "getClientConfiguration")
     .mockImplementation((successCallback) => {
-      successCallback?.(mock_clientConfiguration_admin);
+      successCallback?.(mock_clientconfig_admin);
     });
 
   jest.spyOn(api, "getUser").mockImplementation((id, successCallback) => {
@@ -36,7 +36,7 @@ test("shows app for admin type", async () => {
   );
 
   await waitFor(async () => {
-    const nickElement = screen.getByText(mock_clientConfiguration_admin.nick);
+    const nickElement = screen.getByText(mock_clientconfig_admin.nick);
     expect(nickElement).toBeInTheDocument();
   });
 });
@@ -47,7 +47,7 @@ test("shows app for full license", async () => {
   jest
     .spyOn(api, "getClientConfiguration")
     .mockImplementation((successCallback) => {
-      successCallback?.(mock_clientConfiguration_full);
+      successCallback?.(mock_clientconfig_full);
     });
 
   jest.spyOn(api, "getUser").mockImplementation((id, successCallback) => {
@@ -61,7 +61,7 @@ test("shows app for full license", async () => {
   );
 
   await waitFor(async () => {
-    const nickElement = screen.getByText(mock_clientConfiguration_full.nick);
+    const nickElement = screen.getByText(mock_clientconfig_full.nick);
     expect(nickElement).toBeInTheDocument();
   });
 });
@@ -71,7 +71,7 @@ test("shows no access for guest", async () => {
   jest
     .spyOn(api, "getClientConfiguration")
     .mockImplementation((successCallback) => {
-      successCallback?.(mock_clientConfiguration_guest);
+      successCallback?.(mock_clientconfig_guest);
     });
 
   render(

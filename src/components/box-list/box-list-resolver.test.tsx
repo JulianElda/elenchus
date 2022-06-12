@@ -6,12 +6,12 @@ import api from "api/api";
 import { AppContext } from "components/app/app.context";
 import BoxListResolver from "./box-list-resolver";
 
-import { mock_clientConfiguration_admin } from "mocks/clientConfiguration";
+import { mock_clientconfig_admin } from "mocks/clientConfiguration";
 import { mock_boxes_partial } from "mocks/box";
 
 const mockAppContextValue = {
-  clientConfiguration: mock_clientConfiguration_admin
-}
+  clientConfiguration: mock_clientconfig_admin,
+};
 
 test("renders loading", () => {
   render(
@@ -27,9 +27,11 @@ test("renders loading", () => {
 test("paginates once", async () => {
   const history = createMemoryHistory();
 
-  jest.spyOn(api, "paginateBox").mockImplementation((limit, start, successCallback) => {
-    successCallback?.(mock_boxes_partial)
-  });
+  jest
+    .spyOn(api, "paginateBox")
+    .mockImplementation((limit, start, successCallback) => {
+      successCallback?.(mock_boxes_partial);
+    });
 
   render(
     <AppContext.Provider value={mockAppContextValue}>

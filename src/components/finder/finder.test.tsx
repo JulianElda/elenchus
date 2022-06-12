@@ -6,10 +6,10 @@ import api from "api/api";
 import { AppContext } from "components/app/app.context";
 import Finder from "components/finder/finder";
 
-import { mock_clientConfiguration_admin } from "mocks/clientConfiguration";
+import { mock_clientconfig_admin } from "mocks/clientConfiguration";
 import { mock_boxes_partial_once } from "mocks/box";
 const mockAppContextValue = {
-  clientConfiguration: mock_clientConfiguration_admin,
+  clientConfiguration: mock_clientconfig_admin,
 };
 
 test("show items", async () => {

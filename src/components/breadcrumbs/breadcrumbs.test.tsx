@@ -8,10 +8,10 @@ import { AppContext } from "components/app/app.context";
 import Breadcrumbs from "./breadcrumbs";
 import FileList from "components/file-list/file-list";
 
-import { mock_clientConfiguration_admin } from "mocks/clientConfiguration";
+import { mock_clientconfig_admin } from "mocks/clientConfiguration";
 
 const mockAppContextValue = {
-  clientConfiguration: mock_clientConfiguration_admin,
+  clientConfiguration: mock_clientconfig_admin,
 };
 
 test("navigate to home", async () => {

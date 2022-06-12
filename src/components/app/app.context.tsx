@@ -1,8 +1,9 @@
 import React from "react";
-import { ClientConfiguration, UserWrapper } from "idg-types";
+import { UserWrapper } from "idg-types";
+import { ClientConfigType } from "types/client-config";
 
 export type AppContextType = {
-  clientConfiguration: ClientConfiguration;
+  clientConfiguration: ClientConfigType;
   user: UserWrapper;
 };
 export const AppContext = React.createContext({});

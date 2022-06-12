@@ -3,7 +3,7 @@ import { boxListSorterFunction } from "./box-list-sorter";
 //import { boxListSearcherFunction } from "./box-list-searcher";
 import BoxListItem from "./box-list-item";
 import BoxListNoboxes from "./box-list-noboxes";
-import BoxListNoresult from "./box-list-noresult";
+//import BoxListNoresult from "./box-list-noresult";
 import BoxListToolbar from "components/box-list-toolbar";
 import { BoxListType } from "types/box-list";
 
@@ -41,9 +41,12 @@ export default function BoxList(props: BoxListProp) {
   */
 
   const getBoxListContent = function () {
+    /*
     const list = mapBoxList();
     if (list.length === 0) return <BoxListNoresult />;
     else return <ul className="list-group">{list}</ul>;
+    */
+    return <ul className="list-group">{mapBoxList()}</ul>;
   };
 
   if (props.boxes.length === 0) {

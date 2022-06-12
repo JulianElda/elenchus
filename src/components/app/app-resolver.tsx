@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import api from "api/api";
-import { ClientConfiguration } from "idg-types";
+
+import { ClientConfigType } from "types/client-config";
 import { AppUserResolver } from "./app-user-resolver";
 
 export default function AppResolver() {
   const [clientConfiguration, setClientConfiguration] =
-    useState<ClientConfiguration>();
+    useState<ClientConfigType>();
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
