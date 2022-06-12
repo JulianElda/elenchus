@@ -14,7 +14,7 @@ test("shows software settings", async () => {
   jest
     .spyOn(api, "getSoftwareSettings")
     .mockImplementation((successCallback) => {
-      successCallback(mock_enterprise_software);
+      successCallback?.(mock_enterprise_software);
     });
 
   render(<EnterpriseSoftwareResolver />);

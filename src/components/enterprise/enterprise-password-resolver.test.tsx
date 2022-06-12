@@ -12,7 +12,7 @@ test("shows loading", () => {
 
 test("shows password settings", async () => {
   jest.spyOn(api, "getPasswordPolicy").mockImplementation((successCallback) => {
-    successCallback(mock_enterprise_password);
+    successCallback?.(mock_enterprise_password);
   });
 
   render(<EnterprisePasswordResolver />);

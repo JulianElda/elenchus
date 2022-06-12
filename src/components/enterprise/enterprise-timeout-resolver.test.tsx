@@ -14,7 +14,7 @@ test("shows timeout settings", async () => {
   jest
     .spyOn(api, "getDefaultSessionTimeout")
     .mockImplementation((successCallback) => {
-      successCallback(mock_enterprise_timeout);
+      successCallback?.(mock_enterprise_timeout);
     });
 
   render(<EnterpriseTimeoutResolver />);

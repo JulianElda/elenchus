@@ -13,7 +13,7 @@ test("renders loading", () => {
       <FileListResolver />
     </Router>
   );
-  const loadingElement = screen.getByText(/loading items/i);
+  const loadingElement = screen.getByText(/loading/i);
   expect(loadingElement).toBeInTheDocument();
 });
 

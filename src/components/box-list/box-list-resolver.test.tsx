@@ -20,7 +20,7 @@ test("renders loading", () => {
       children={<BoxListResolver />}
     />
   );
-  const loadingElement = screen.getByText(/loading boxes/i);
+  const loadingElement = screen.getByText(/loading/i);
   expect(loadingElement).toBeInTheDocument();
 });
 

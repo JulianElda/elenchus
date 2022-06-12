@@ -8,7 +8,7 @@ import {mock_userlist} from "mocks/user"
 
 test("renders loading", () => {
   render(<UserListResolver />);
-  const loadingElement = screen.getByText(/loading user/i);
+  const loadingElement = screen.getByText(/loading/i);
   expect(loadingElement).toBeInTheDocument();
 });
 

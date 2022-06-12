@@ -10,7 +10,7 @@ import AppResolver from "./app-resolver";
 
 test("shows loading", () => {
   render(<AppResolver />);
-  const loadingElement = screen.getByText(/loading app/i);
+  const loadingElement = screen.getByText(/loading/i);
   expect(loadingElement).toBeInTheDocument();
 });
 
@@ -18,11 +18,11 @@ test("shows app for admin type", async () => {
   jest
     .spyOn(api, "getClientConfiguration")
     .mockImplementation((successCallback) => {
-      successCallback(mock_clientConfiguration_admin);
+      successCallback?.(mock_clientConfiguration_admin);
     });
 
   jest.spyOn(api, "getUser").mockImplementation((id, successCallback) => {
-    successCallback(mock_user_admin);
+    successCallback?.(mock_user_admin);
   });
 
   render(<AppResolver />);
@@ -37,11 +37,11 @@ test("shows app for full license", async () => {
   jest
     .spyOn(api, "getClientConfiguration")
     .mockImplementation((successCallback) => {
-      successCallback(mock_clientConfiguration_full);
+      successCallback?.(mock_clientConfiguration_full);
     });
 
   jest.spyOn(api, "getUser").mockImplementation((id, successCallback) => {
-    successCallback(mock_user_full);
+    successCallback?.(mock_user_full);
   });
 
   render(<AppResolver />);
@@ -56,7 +56,7 @@ test("shows no access for guest", async () => {
   jest
     .spyOn(api, "getClientConfiguration")
     .mockImplementation((successCallback) => {
-      successCallback(mock_clientConfiguration_guest);
+      successCallback?.(mock_clientConfiguration_guest);
     });
 
   render(<AppResolver />);

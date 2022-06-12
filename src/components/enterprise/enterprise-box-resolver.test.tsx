@@ -12,7 +12,7 @@ test("shows loading", () => {
 
 test("shows box settings", async () => {
   jest.spyOn(api, "getBoxSettings").mockImplementation((successCallback) => {
-    successCallback(mock_enterprise_box);
+    successCallback?.(mock_enterprise_box);
   });
 
   render(<EnterpriseBoxResolver />);

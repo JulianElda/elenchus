@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import axios from "api/axios";
+import { getBox, getBoxChildren } from "api/api";
 
 import FileList from "./file-list";
 
@@ -8,55 +8,52 @@ export default function FileListResolver() {
   const { state } = useLocation();
   const params = useParams();
 
-  const [loading, setLoading] = useState<boolean>(true);
+  const [breadcrumbs, setBreadcrumbs] = useState<any>([]);
   const [box, setBox] = useState<any>();
   const [items, setItems] = useState<any[]>([]);
-  const [breadcrumbs, setBreadcrumbs] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>();
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get("/uiapi/BoxAPI/v1/rest/boxes/" + params.boxId, {})
-      .then((res) => {
-        let tmp = res.data;
-        tmp.id = params.boxId;
-        setBox(res.data);
-        setBreadcrumbs([{
-          id: res.data.rootFolder.id,
-          name: res.data.rootFolder.name,
-        }]);
-        setItems(res.data.rootFolder.entries);
-        setLoading(false);
-      })
-      .catch((res) => {});
-  }, [params.boxId]);
 
-  useEffect(() => {
-    setLoading(true);
-    if (!state) return;
-    const { folderId, breadcrumbs } = state as any
-    if (!folderId) return
+    const getBoxChildrenCallback = function (res) {
+      setItems(() => res.entries);
+      setLoading(false);
+    };
 
-    axios
-      .get(
-        "/uiapi/BoxAPI/v1/rest/children/" + params.boxId + "/" + folderId,
-        {}
-      )
-      .then((res) => {
-        setItems(() => (res.data.entries));
-        setBreadcrumbs(breadcrumbs);
+    const getBoxCallback = function (res) {
+      let tmp = res;
+      tmp.id = params.boxId;
+      setBox(res);
+      setItems(res.rootFolder.entries);
+      setBreadcrumbs([
+        {
+          id: res.rootFolder.id,
+          name: res.rootFolder.name,
+        },
+      ]);
+
+      if (!state) {
         setLoading(false);
-      })
-      .catch((res) => {});
+        return;
+      }
+      const { folderId, breadcrumbs } = state as any;
+      if (!folderId) {
+        setLoading(false);
+        return;
+      }
+      setBreadcrumbs(breadcrumbs);
+      getBoxChildren(params.boxId || "", folderId, getBoxChildrenCallback);
+    };
+
+    getBox(params.boxId || "", getBoxCallback);
   }, [params.boxId, state]);
 
   if (loading) {
-    return <p>loading items...</p>;
-  }
-  else if (!box?.id) {
     return <p>loading box...</p>;
-  }
-  else {
+  } else if (!box?.id || !items) {
+    return <p>loading items...</p>;
+  } else {
     return <FileList items={items} box={box} breadcrumbs={breadcrumbs} />;
   }
 }
