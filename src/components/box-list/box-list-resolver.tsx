@@ -1,31 +1,22 @@
-import { useEffect, useRef, useState } from "react";
-import api from "api/api";
+import { useEffect, useState } from "react";
 import { IdgardBox } from "types";
 import BoxList from "./box-list";
+
+import { resolveBoxes } from "components/common/resolve-boxes";
 
 export default function BoxListResolver() {
   const [boxList, setBoxList] = useState<Array<IdgardBox>>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const limit = 50;
-  let tmp = useRef<IdgardBox[]>([]);
-  let index = useRef<number>(0);
-
-  useEffect(() => {
-    const paginateBoxCallback = function (res) {
-      tmp.current = tmp.current.concat(res.listBoxes);
-      if (res.hasNext) {
-        index.current += limit;
-        loadBoxes(index.current);
-      } else {
-        setBoxList(tmp.current);
-        setLoading(false);
-      }
+  useEffect(function () {
+    const successCallback = function (res) {
+      setBoxList(res);
+      setLoading(false);
     };
-    const loadBoxes = function (start: number) {
-      api.paginateBox(limit, start, paginateBoxCallback);
+    const errorCallback = function (res) {
+      setLoading(false);
     };
-    loadBoxes(index.current);
+    resolveBoxes().then(successCallback).catch(errorCallback);
   }, []);
 
   if (loading) {

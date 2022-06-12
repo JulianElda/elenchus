@@ -1,0 +1,28 @@
+import api from "api/api";
+
+export const resolveBoxes = function () {
+  const limit = 50;
+  let tmp = [];
+  let index = 0;
+
+  return new Promise((resolve, reject) => {
+    const successCallback = function (res) {
+      tmp = tmp.concat(res.listBoxes);
+      if (res.hasNext) {
+        index += limit;
+        loadBoxes(index);
+      } else {
+        resolve(tmp);
+      }
+    };
+    const errorCallback = function (res) {
+      reject(res);
+    };
+
+    const loadBoxes = function (start: number) {
+      api.paginateBox(limit, start, successCallback, errorCallback);
+    };
+
+    loadBoxes(index);
+  });
+};
