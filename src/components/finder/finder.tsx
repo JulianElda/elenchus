@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import api from "api/api";
 import { BoxListType } from "types/box-list";
+import { FinderItemType } from "types/finder-item";
 import FinderList from "components/finder-list/finder-list";
 import { resolveBoxes } from "components/common/resolve-boxes";
 
@@ -27,7 +28,7 @@ export default function Finder() {
     const findCallback = function (res) {
       setSearchResult((previousResult) =>
         previousResult.concat(
-          res.map(function (item) {
+          res.map(function (item: FinderItemType) {
             return {
               item: item,
               boxId: boxId,

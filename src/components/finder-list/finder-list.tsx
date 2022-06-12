@@ -6,10 +6,10 @@ import { AppContext } from "components/app/app.context";
 import api from "api/api";
 import { downloadFromId } from "components/common/download";
 import { BreadcrumbItem } from "components/breadcrumbs/breadcrumbs";
-import { NodeInfo } from "idg-types/NodeInfo";
+import { FinderItemType } from "types/finder-item";
 
 type FinderListItemType = {
-  item: NodeInfo;
+  item: FinderItemType;
   boxId: string;
 };
 
@@ -47,7 +47,7 @@ export default function FinderList(props: FinderListProps) {
     [clientConfiguration.csfrToken]
   );
 
-  const getBreadcrumbs = function (item: NodeInfo) {
+  const getBreadcrumbs = function (item: FinderItemType) {
     const breadcrumbs: BreadcrumbItem[] = [
       {
         id: item.node?.id || "",
@@ -73,7 +73,7 @@ export default function FinderList(props: FinderListProps) {
       .join("/");
   };
 
-  const mapFinderItem = function (item: NodeInfo, boxId: string) {
+  const mapFinderItem = function (item: FinderItemType, boxId: string) {
     let breadcrumbs = getBreadcrumbs(item);
     return {
       id: item.node?.id,
@@ -82,6 +82,8 @@ export default function FinderList(props: FinderListProps) {
       breadcrumbs: breadcrumbs,
       path: getPath(breadcrumbs),
       boxId: boxId,
+      onHandleChange: handleFile,
+      onHandleFolder: handleFolder,
     };
   };
 
@@ -92,19 +94,7 @@ export default function FinderList(props: FinderListProps) {
       })
       .sort(finderListSorterFunction())
       .map(function (item) {
-        return (
-          <FinderListItem
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            type={item.type}
-            boxId={item.boxId}
-            breadcrumbs={item.breadcrumbs}
-            path={item.path}
-            onHandleFile={handleFile}
-            onHandleFolder={handleFolder}
-          />
-        );
+        return <FinderListItem key={item.id} {...item} />;
       });
   };
 

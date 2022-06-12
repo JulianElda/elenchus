@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useReducer, useState } from "react";
 import api from "api/api";
-import { Entry, IdgardBox } from "idg-types";
+import { IdgardBox } from "idg-types";
+import { EntryItemType } from "types/entry-item";
 import FileListEmpty from "./file-list-empty";
 import Breadcrumbs from "components/breadcrumbs";
 import FileListToolbar from "components/file-list-toolbar/file-list-toolbar";
@@ -25,12 +26,12 @@ export const FileListContext = React.createContext({});
 
 type FileListProp = {
   breadcrumbs: any;
-  items: any[];
+  items: EntryItemType[];
   box: IdgardBox;
 };
 
 export default function FileList(props: FileListProp) {
-  const [items, setItems] = useState<Entry[]>(props.items);
+  const [items, setItems] = useState<EntryItemType[]>(props.items);
   const [loading, setLoading] = useState<boolean>(false);
   const [breadcrumbs, setBreadcrumbs] = useState<any[]>(props.breadcrumbs);
   const [selectedItems, dispatchSelectedItems] = useReducer(

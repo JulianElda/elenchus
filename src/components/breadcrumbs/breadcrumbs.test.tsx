@@ -3,7 +3,7 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import api from "api/api";
-
+import { EntryItemTypes } from "types/entry-item";
 import { AppContext } from "components/app/app.context";
 import Breadcrumbs from "./breadcrumbs";
 import FileList from "components/file-list/file-list";
@@ -41,7 +41,18 @@ test("sliced bread", async () => {
   let mockRoot = {
     id: "test-id",
     name: "test-name",
-    entries: [{ id: "test-1", name: "test-1", type: "DIR" }],
+    entries: [
+      {
+        id: "test-1",
+        name: "test-1",
+        type: EntryItemTypes.DIR,
+        author: "",
+        dateCreated: 123123,
+        size: "",
+        description: "",
+        owner: true,
+      },
+    ],
   };
   let mockEntries = [{ id: "test-2", name: "test-2", type: "DIR" }];
   jest

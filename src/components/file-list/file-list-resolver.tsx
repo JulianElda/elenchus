@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import api from "api/api";
-
+import { EntryItemResponseType } from "types/entry-item";
 import FileList from "./file-list";
 
 export default function FileListResolver() {
@@ -16,7 +16,7 @@ export default function FileListResolver() {
   useEffect(() => {
     setLoading(true);
 
-    const getBoxChildrenCallback = function (res) {
+    const getBoxChildrenCallback = function (res: EntryItemResponseType) {
       setItems(() => res.entries);
       setLoading(false);
     };
