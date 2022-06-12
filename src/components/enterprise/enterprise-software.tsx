@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { SoftwareSettings } from "types";
-import { LoginValidationTypeOrNone } from "types/LoginValidationTypeOrNone";
+import { SoftwareSettings } from "idg-types";
+import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
 
 export default function EnterpriseSoftware(props: SoftwareSettings) {
   const { handleSubmit } = useForm();

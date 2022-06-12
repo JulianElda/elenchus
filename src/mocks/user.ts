@@ -1,5 +1,5 @@
-import { LoginValidationTypeOrNone } from "types/LoginValidationTypeOrNone";
-import { UserInfos } from "types/UserInfos";
+import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
+import { UserInfos } from "idg-types/UserInfos";
 
 export const mock_user_admin = {
   id: "3cnfl",
@@ -39,7 +39,7 @@ export const mock_user_admin = {
       canInviteMembers: true,
     },
     tempBoxPolicy: { lifeTime: 7776000000 },
-    adminPermissions: ["BILLING_ADMIN", "TECHNICAL_ADMIN", "ROOM_ASSISTANT"]
+    adminPermissions: ["BILLING_ADMIN", "TECHNICAL_ADMIN", "ROOM_ASSISTANT"],
   },
   statisticsUserStorage: {
     own: 1667042124,

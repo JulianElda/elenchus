@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { UserWrapper } from "types";
+import { UserWrapper } from "idg-types";
 import UserListItem from "./user-list-item";
 import { userListSorterFunction } from "./user-list-sorter";
 import UserListSearcher, {
@@ -24,10 +24,8 @@ export default function UserList(props: UserListProps) {
       .filter(userListSearcherFunction(search))
       .sort(userListSorterFunction())
       .map((user) => {
-      return (
-        <UserListItem key={user.id} user={user}/>
-      );
-    });
+        return <UserListItem key={user.id} user={user} />;
+      });
   };
 
   const getUserListContent = function () {
@@ -56,7 +54,7 @@ export default function UserList(props: UserListProps) {
             <UserListSearcher onChangeSearch={onChangeSearch} />
           </div>
         </div>
-      <div>{getUserListContent()}</div>
+        <div>{getUserListContent()}</div>
       </div>
     </React.StrictMode>
   );

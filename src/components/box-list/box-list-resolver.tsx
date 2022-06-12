@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { IdgardBox } from "types";
+import { BoxListType } from "types/box-list";
 import BoxList from "./box-list";
-
 import { resolveBoxes } from "components/common/resolve-boxes";
 
 export default function BoxListResolver() {
-  const [boxList, setBoxList] = useState<Array<IdgardBox>>([]);
+  const [boxList, setBoxList] = useState<BoxListType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(function () {

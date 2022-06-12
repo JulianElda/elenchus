@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "api/api";
-import { SoftwareSettings } from "types";
+import { SoftwareSettings } from "idg-types";
 import EnterpriseSoftware from "./enterprise-software";
 
 export default function EnterpriseSoftwareResolver() {

@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { UserWrapper } from "types"
+import { UserWrapper } from "idg-types";
 
 type UserListSearcherProps = {
   onChangeSearch: Function;

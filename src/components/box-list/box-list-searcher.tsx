@@ -1,6 +1,5 @@
 import { memo } from "react";
-import { IdgardBox } from "types";
-
+import { BoxListType } from "types/box-list";
 type BoxListSearcherProps = {
   onChangeSearch: Function;
 };
@@ -22,7 +21,7 @@ const BoxListSearcher = memo(function (props: BoxListSearcherProps) {
 });
 
 export function boxListSearcherFunction(query: string) {
-  return function (box: IdgardBox) {
+  return function (box: BoxListType) {
     let searchable = box.name + "" + box.description;
     return searchable.toLowerCase().indexOf(query.toLowerCase()) >= 0;
   };

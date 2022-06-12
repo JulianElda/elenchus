@@ -1,11 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { IdgardBox } from "types";
 import BoxListItemIcon from "components/box-list/box-list-item-icon";
 //import BoxListItemDropdown from "components/box-list/box-list-item-dropdown";
-
+import { Box } from "types/box-common";
 import "./box-list-item.scss";
 
-export default function BoxListItem(props: IdgardBox) {
+type BoxListItemType = {
+  id: string;
+  name: string;
+  type: Box.type;
+};
+
+export default function BoxListItem(props: BoxListItemType) {
   const navigate = useNavigate();
 
   const onNavigateBox = () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "api/api";
-import { ClientConfiguration } from "types";
+import { ClientConfiguration } from "idg-types";
 import { AppUserResolver } from "./app-user-resolver";
 
 export default function AppResolver() {

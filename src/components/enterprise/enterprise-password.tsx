@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { PasswordPolicy } from "types";
+import { PasswordPolicy } from "idg-types";
 
 export default function EnterprisePassword(props: PasswordPolicy) {
   const { register, handleSubmit } = useForm();

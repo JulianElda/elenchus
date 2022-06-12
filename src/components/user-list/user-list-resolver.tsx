@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { UserWrapper } from "types";
+import { UserWrapper } from "idg-types";
 import UserList from "./user-list";
 import api from "api/api";
 

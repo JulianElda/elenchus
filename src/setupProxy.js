@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     "/uiapi",
     createProxyMiddleware({
-      target: "https://app-shaun.itsmyprivacy.de",
+      target: "https://idgard.itsmyprivacy.de",
       secure: false,
       //changeOrigin: true,
     })

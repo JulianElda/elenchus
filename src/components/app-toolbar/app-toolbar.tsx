@@ -1,5 +1,5 @@
 import FAIcon from "components/common/fa-icon";
-
+import Finder from "components/finder/finder";
 import Logout from "components/logout";
 import "./app-toolbar.scss";
 
@@ -51,6 +51,7 @@ export default function AppToolbar(props: AppToolbarProps) {
           </ul>
         </div>
       </nav>
+      <Finder />
       <Logout />
     </>
   );

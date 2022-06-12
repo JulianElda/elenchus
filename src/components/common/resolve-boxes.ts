@@ -1,12 +1,13 @@
 import api from "api/api";
+import { BoxListResponseType, BoxListType } from "types/box-list";
 
 export const resolveBoxes = function () {
   const limit = 50;
-  let tmp = [];
+  let tmp: BoxListType[] = [];
   let index = 0;
 
   return new Promise((resolve, reject) => {
-    const successCallback = function (res) {
+    const successCallback = function (res: BoxListResponseType) {
       tmp = tmp.concat(res.listBoxes);
       if (res.hasNext) {
         index += limit;

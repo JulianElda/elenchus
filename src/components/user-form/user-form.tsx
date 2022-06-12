@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { UserWrapper } from "types";
-import { LoginValidationTypeOrNone } from "types/LoginValidationTypeOrNone";
-import { RegistrationValidationType } from "types/RegistrationValidationType";
-import { UserInfos } from "types/UserInfos";
-import { UserPermissions } from "types/UserPermissions";
+import { UserWrapper } from "idg-types";
+import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
+import { RegistrationValidationType } from "idg-types/RegistrationValidationType";
+import { UserInfos } from "idg-types/UserInfos";
+import { UserPermissions } from "idg-types/UserPermissions";
 
 import UserFormStatistics from "./user-form-statistics";
 

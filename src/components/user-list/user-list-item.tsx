@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { UserWrapper } from "types";
+import { UserWrapper } from "idg-types";
 
 type UserListItemProps = {
   user: UserWrapper;
-}
+};
 
 export default function UserListItem(props: UserListItemProps) {
   const navigate = useNavigate();

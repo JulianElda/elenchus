@@ -1,24 +1,22 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-
 import api from "api/api";
-import { IdgardBox } from "types";
-
+import { BoxListType } from "types/box-list";
 import FinderList from "components/finder-list/finder-list";
+import { resolveBoxes } from "components/common/resolve-boxes";
 
-type FinderProps = {
-  boxes: IdgardBox[];
-};
-
-export default function Finder(props: FinderProps) {
+export default function Finder() {
   const { handleSubmit } = useForm();
   const [query, setQuery] = useState<string>("");
   const [searchResult, setSearchResult] = useState<Array<any>>([]);
 
   const onSearch = () => {
-    props.boxes.forEach(function (box: IdgardBox) {
-      findItemsInBox(box.id);
-    });
+    const successCallback = function (res) {
+      res.forEach(function (box: BoxListType) {
+        findItemsInBox(box.id);
+      });
+    };
+    resolveBoxes().then(successCallback);
   };
 
   const findItemsInBox = async (boxId) => {

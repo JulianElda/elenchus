@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { UserWrapper } from "types";
+import { UserWrapper } from "idg-types";
 import api from "api/api";
 import App from "./app";
 

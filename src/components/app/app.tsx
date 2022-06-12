@@ -5,7 +5,12 @@ import { AppContext, AppContextType } from "./app.context";
 import AppToolbar from "components/app-toolbar";
 import "./app.scss";
 
-export default function App(props) {
+type AppProps = {
+  clientConfiguration: any;
+  user: any;
+};
+
+export default function App(props: AppProps) {
   const appContextValue: AppContextType = useMemo(
     () => ({
       clientConfiguration: props.clientConfiguration,

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "api/api";
-import { UserWrapper } from "types";
+import { UserWrapper } from "idg-types";
 import UserView from "components/user-view/user-view";
 
 export default function UserViewResolver() {

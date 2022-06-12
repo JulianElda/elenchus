@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { UserWrapper } from "types";
+import { UserWrapper } from "idg-types";
 import { formatDate, formatSize } from "components/common/util";
 
 type UserFormStatisticsProps = {

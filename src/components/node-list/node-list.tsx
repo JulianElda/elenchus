@@ -1,5 +1,5 @@
 import { memo, useCallback, useContext } from "react";
-import { Entry } from "types";
+import { Entry } from "idg-types";
 import { AppContext } from "components/app/app.context";
 import NodeListItem from "./node-list-item";
 import { nodeListSorterFunction } from "./node-list-sorter";

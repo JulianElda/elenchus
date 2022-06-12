@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "api/api";
-import { PasswordPolicy } from "types";
+import { PasswordPolicy } from "idg-types";
 import EnterprisePassword from "./enterprise-password";
 
 export default function EnterprisePasswordResolver() {

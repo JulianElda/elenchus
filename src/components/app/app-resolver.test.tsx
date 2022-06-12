@@ -1,3 +1,5 @@
+import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import api from "api/api";
 import {
@@ -15,7 +17,8 @@ test("shows loading", () => {
 });
 
 test("shows app for admin type", async () => {
-  
+  const history = createMemoryHistory();
+
   jest
     .spyOn(api, "getClientConfiguration")
     .mockImplementation((successCallback) => {
@@ -26,7 +29,11 @@ test("shows app for admin type", async () => {
     successCallback?.(mock_user_admin);
   });
 
-  render(<AppResolver />);
+  render(
+    <Router location="/" navigator={history}>
+      <AppResolver />
+    </Router>
+  );
 
   await waitFor(async () => {
     const nickElement = screen.getByText(mock_clientConfiguration_admin.nick);
@@ -35,6 +42,8 @@ test("shows app for admin type", async () => {
 });
 
 test("shows app for full license", async () => {
+  const history = createMemoryHistory();
+
   jest
     .spyOn(api, "getClientConfiguration")
     .mockImplementation((successCallback) => {
@@ -45,7 +54,11 @@ test("shows app for full license", async () => {
     successCallback?.(mock_user_full);
   });
 
-  render(<AppResolver />);
+  render(
+    <Router location="/" navigator={history}>
+      <AppResolver />
+    </Router>
+  );
 
   await waitFor(async () => {
     const nickElement = screen.getByText(mock_clientConfiguration_full.nick);
@@ -54,13 +67,18 @@ test("shows app for full license", async () => {
 });
 
 test("shows no access for guest", async () => {
+  const history = createMemoryHistory();
   jest
     .spyOn(api, "getClientConfiguration")
     .mockImplementation((successCallback) => {
       successCallback?.(mock_clientConfiguration_guest);
     });
 
-  render(<AppResolver />);
+  render(
+    <Router location="/" navigator={history}>
+      <AppResolver />
+    </Router>
+  );
 
   await waitFor(async () => {
     const noAccess = screen.getByText(/no access/i);

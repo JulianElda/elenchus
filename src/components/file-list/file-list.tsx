@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useReducer, useState } from "react";
 import api from "api/api";
-import { Entry, IdgardBox } from "types";
+import { Entry, IdgardBox } from "idg-types";
 import FileListEmpty from "./file-list-empty";
 import Breadcrumbs from "components/breadcrumbs";
 import FileListToolbar from "components/file-list-toolbar/file-list-toolbar";

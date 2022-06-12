@@ -5,11 +5,10 @@ import BoxListItem from "./box-list-item";
 import BoxListNoboxes from "./box-list-noboxes";
 import BoxListNoresult from "./box-list-noresult";
 import BoxListToolbar from "components/box-list-toolbar";
-import Finder from "components/finder/finder";
-import { IdgardBox } from "types";
+import { BoxListType } from "types/box-list";
 
 type BoxListProp = {
-  boxes: any[];
+  boxes: BoxListType[];
 };
 
 export default function BoxList(props: BoxListProp) {
@@ -18,7 +17,7 @@ export default function BoxList(props: BoxListProp) {
       props.boxes
         //.filter(boxListSearcherFunction(boxListSearch))
         .sort(boxListSorterFunction("name"))
-        .map((box: IdgardBox) => {
+        .map((box: BoxListType) => {
           return (
             <BoxListItem
               key={box.id}
@@ -72,7 +71,6 @@ export default function BoxList(props: BoxListProp) {
            */}
 
         {getBoxListContent()}
-        <Finder boxes={props.boxes} />
       </React.StrictMode>
     );
   }

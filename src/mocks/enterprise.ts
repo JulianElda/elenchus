@@ -1,6 +1,6 @@
-import { LoginValidationType } from "types/LoginValidationType";
-import { LoginValidationTypeOrNone } from "types/LoginValidationTypeOrNone";
-import { PasswordPolicy } from "types/PasswordPolicy";
+import { LoginValidationType } from "idg-types/LoginValidationType";
+import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
+import { PasswordPolicy } from "idg-types/PasswordPolicy";
 
 export const mock_enterprise_box = {
   enableWebdav: true,

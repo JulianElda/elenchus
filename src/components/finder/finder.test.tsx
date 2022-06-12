@@ -7,6 +7,7 @@ import { AppContext } from "components/app/app.context";
 import Finder from "components/finder/finder";
 
 import { mock_clientConfiguration_admin } from "mocks/clientConfiguration";
+import { mock_boxes_partial_once } from "mocks/box";
 const mockAppContextValue = {
   clientConfiguration: mock_clientConfiguration_admin,
 };
@@ -14,7 +15,12 @@ const mockAppContextValue = {
 test("show items", async () => {
   const user = userEvent.setup();
   const history = createMemoryHistory();
-  const mockBoxes = [{ id: "test-box-id-1" }];
+
+  jest
+    .spyOn(api, "paginateBox")
+    .mockImplementation((limit, start, successCallback) => {
+      successCallback?.(mock_boxes_partial_once);
+    });
 
   const mockResults = [
     {
@@ -43,14 +49,14 @@ test("show items", async () => {
 
   jest
     .spyOn(api, "findItemsInBox")
-    .mockImplementation((boxId, types, name, successCallback) => {
+    .mockImplementationOnce((boxId, types, name, successCallback) => {
       successCallback?.(mockResults);
     });
 
   render(
     <Router location="/" navigator={history}>
       <AppContext.Provider value={mockAppContextValue}>
-        <Finder boxes={mockBoxes} />
+        <Finder />
       </AppContext.Provider>
     </Router>
   );

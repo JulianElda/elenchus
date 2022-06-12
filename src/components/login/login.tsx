@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import api from "api/api";
 
-import { Authentication } from "types";
+import { LoginPayloadType } from "types/login";
 import { LoginErrorResponses } from "const/login";
 
 import "components/login/login.scss";
@@ -21,7 +21,7 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const onSubmit = () => {
-    let payload: Authentication = {
+    let payload: LoginPayloadType = {
       username: username,
       password: password,
       clientSecret: "gandooahmedabad",

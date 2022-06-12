@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "api/api";
-import { BoxSettings } from "types";
+import { BoxSettings } from "idg-types";
 import EnterpriseBox from "./enterprise-box";
 
 export default function EnterpriseBoxResolver() {

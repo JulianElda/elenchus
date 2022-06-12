@@ -6,7 +6,7 @@ import { AppContext } from "components/app/app.context";
 import api from "api/api";
 import { downloadFromId } from "components/common/download";
 import { BreadcrumbItem } from "components/breadcrumbs/breadcrumbs";
-import { NodeInfo } from "types/NodeInfo";
+import { NodeInfo } from "idg-types/NodeInfo";
 
 type FinderListItemType = {
   item: NodeInfo;
