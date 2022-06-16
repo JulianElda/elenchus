@@ -55,7 +55,7 @@ export function FileList(props: FileListProp) {
       });
       dispatchSelectedItems({ type: "clear" });
       setLoading(true);
-      api.getBoxChildren(props.box.id || "", folderId, getBoxChildrenCallback);
+      api.getBoxChildren(props.box.id!, folderId, getBoxChildrenCallback);
     },
     [props.box.id]
   );

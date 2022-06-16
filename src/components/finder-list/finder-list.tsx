@@ -2,7 +2,7 @@ import { useCallback, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "api/api";
 import { FinderItemType } from "types";
-import { AppContext } from "components/app";
+import { AppContext, AppContextType } from "components/app";
 import { BreadcrumbType } from "components/breadcrumbs";
 import { downloadFromId } from "components/common/download";
 import {
@@ -21,7 +21,8 @@ type FinderListProps = {
 
 export function FinderList(props: FinderListProps) {
   const navigate = useNavigate();
-  const clientConfiguration = useContext<any>(AppContext).clientConfiguration;
+  const clientConfiguration =
+    useContext<AppContextType>(AppContext).clientConfiguration;
 
   const handleFolder = useCallback(
     function (folderId: string, boxId: string, breadcrumbs: BreadcrumbType[]) {
@@ -52,15 +53,15 @@ export function FinderList(props: FinderListProps) {
   const getBreadcrumbs = function (item: FinderItemType) {
     const breadcrumbs: BreadcrumbType[] = [
       {
-        id: item.node?.id || "",
-        name: item.node?.name || "",
+        id: item.node?.id!,
+        name: item.node?.name!,
       },
     ];
     let parent = item.parent;
     while (parent !== null) {
       breadcrumbs.unshift({
-        id: parent?.node?.id || "",
-        name: parent?.node?.name || "",
+        id: parent?.node?.id!,
+        name: parent?.node?.name!,
       });
       parent = parent?.parent;
     }

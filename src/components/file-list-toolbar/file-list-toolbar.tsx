@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import api from "api/api";
-import { AppContext } from "components/app";
+import { AppContext, AppContextType } from "components/app";
 import { downloadFromId } from "components/common/download";
 import { FileListContext } from "components/file-list";
 import { FileListToolbarShare } from "components/file-list-toolbar";
@@ -11,7 +11,8 @@ type FileListToolbarProps = {
 };
 
 export function FileListToolbar(props: FileListToolbarProps) {
-  const clientConfiguration = useContext<any>(AppContext).clientConfiguration;
+  const clientConfiguration =
+    useContext<AppContextType>(AppContext).clientConfiguration;
   const box = useContext<any>(FileListContext).box;
 
   const downloadItems = function () {

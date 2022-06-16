@@ -4,6 +4,9 @@ import { ClientConfigType } from "types";
 
 export type AppContextType = {
   clientConfiguration: ClientConfigType;
-  user: UserWrapper;
+  user?: UserWrapper;
 };
-export const AppContext = React.createContext({});
+export const AppContext = React.createContext<AppContextType>({
+  clientConfiguration: undefined!,
+  user: undefined!,
+});

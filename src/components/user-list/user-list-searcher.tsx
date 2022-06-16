@@ -23,7 +23,7 @@ export const UserListSearcher = memo(function (props: UserListSearcherProps) {
 
 export function userListSearcherFunction(query: string) {
   return function (user: UserWrapper) {
-    let searchable = user.userInfos?.name || "";
+    let searchable = user.userInfos?.name!;
     return searchable.toLowerCase().indexOf(query.toLowerCase()) >= 0;
   };
 }

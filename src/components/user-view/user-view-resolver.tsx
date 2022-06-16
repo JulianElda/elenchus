@@ -14,7 +14,7 @@ export function UserViewResolver() {
       setUser(res);
       setLoading(false);
     };
-    api.getUser(params.userId || "", getUserCallback);
+    api.getUser(params.userId!, getUserCallback);
   }, [params.userId]);
 
   if (loading) {
