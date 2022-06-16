@@ -6,7 +6,7 @@ type UserFormStatisticsProps = {
   user?: UserWrapper;
 };
 
-export default function UserFormStatistics(props: UserFormStatisticsProps) {
+export function UserFormStatistics(props: UserFormStatisticsProps) {
   //* UserStorageStatistics */
   const [bookedAccountStorage] = useState<string>(
     formatSize(props.user?.statisticsUserStorage?.bookedAccountStorage || 0)

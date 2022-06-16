@@ -3,8 +3,8 @@ import { createMemoryHistory } from "history";
 import { render, screen } from "@testing-library/react";
 //import userEvent from "@testing-library/user-event";
 
-import { AppContext } from "components/app/app.context";
-import BoxList from "./box-list";
+import { AppContext } from "components/app";
+import { BoxList } from "components/box-list";
 
 import { mock_clientconfig_admin } from "mocks/clientConfiguration";
 import { mock_boxes_partial } from "mocks/box";

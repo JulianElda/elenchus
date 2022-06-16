@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import api from "api/api";
-import EnterpriseTimeout from "./enterprise-timeout";
+import { EnterpriseTimeout } from "components/enterprise";
 
-export default function EnterpriseTimeoutResolver() {
+export function EnterpriseTimeoutResolver() {
   const [sessionTimeout, setSessionTimeout] = useState<any>({});
   const [loading, setLoading] = useState<boolean>(true);
 

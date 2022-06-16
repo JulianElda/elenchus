@@ -1,10 +1,10 @@
 import React, { useCallback, useMemo, useReducer, useState } from "react";
 import api from "api/api";
-import { BoxType, EntryItemType, IdName } from "types";
-import FileListEmpty from "./file-list-empty";
-import Breadcrumbs from "components/breadcrumbs";
-import FileListToolbar from "components/file-list-toolbar/file-list-toolbar";
-import NodeList from "components/node-list/node-list";
+import { BoxType, EntryItemType } from "types";
+import { Breadcrumbs, BreadcrumbType } from "components/breadcrumbs";
+import { FileListEmpty } from "components/file-list";
+import { FileListToolbar } from "components/file-list-toolbar";
+import { NodeList } from "components/node-list";
 
 const selectedItemsReducer = function (state, action) {
   switch (action.type) {
@@ -24,15 +24,17 @@ const selectedItemsReducer = function (state, action) {
 export const FileListContext = React.createContext({});
 
 type FileListProp = {
-  breadcrumbs: IdName[];
+  breadcrumbs: BreadcrumbType[];
   items: EntryItemType[];
   box: BoxType;
 };
 
-export default function FileList(props: FileListProp) {
+export function FileList(props: FileListProp) {
   const [items, setItems] = useState<EntryItemType[]>(props.items);
   const [loading, setLoading] = useState<boolean>(false);
-  const [breadcrumbs, setBreadcrumbs] = useState<IdName[]>(props.breadcrumbs);
+  const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbType[]>(
+    props.breadcrumbs
+  );
   const [selectedItems, dispatchSelectedItems] = useReducer(
     selectedItemsReducer,
     []

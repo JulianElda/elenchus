@@ -3,8 +3,8 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import api from "api/api";
-import { AppContext } from "components/app/app.context";
-import Finder from "components/finder/finder";
+import { AppContext } from "components/app";
+import { Finder } from "components/finder";
 
 import { mock_clientconfig_admin } from "mocks/clientConfiguration";
 import { mock_boxes_partial_once } from "mocks/box";

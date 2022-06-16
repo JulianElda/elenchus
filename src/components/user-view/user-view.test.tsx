@@ -1,8 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { mock_user_admin } from "mocks/user";
 import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
 import { UserPermissions } from "idg-types/UserPermissions";
-import UserView from "./user-view";
+import { UserView } from "components/user-view";
+
+import { mock_user_admin } from "mocks/user";
 
 test("show user info", async () => {
   //@ts-ignore

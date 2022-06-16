@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-export default function EnterpriseTimeout(props) {
+export function EnterpriseTimeout(props) {
   const { register, handleSubmit } = useForm();
   const [forced, setForced] = useState<boolean>(props.forced || false);
   const [timeout, setTimeout] = useState<number>(props.timeout || 0);

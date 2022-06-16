@@ -8,7 +8,7 @@ import {
   mock_clientconfig_guest,
 } from "mocks/clientConfiguration";
 import { mock_user_admin, mock_user_full } from "mocks/user";
-import AppResolver from "./app-resolver";
+import { AppResolver } from "components/app";
 
 test("shows loading", () => {
   render(<AppResolver />);

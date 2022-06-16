@@ -1,9 +1,11 @@
-import EnterpriseBoxResolver from "./enterprise-box-resolver";
-import EnterprisePasswordResolver from "./enterprise-password-resolver";
-import EnterpriseSoftwareResolver from "./enterprise-software-resolver";
-import EnterpriseTimeoutResolver from "./enterprise-timeout-resolver";
+import {
+  EnterpriseBoxResolver,
+  EnterprisePasswordResolver,
+  EnterpriseSoftwareResolver,
+  EnterpriseTimeoutResolver,
+} from "components/enterprise";
 
-export default function EnterpriseSettings() {
+export function EnterpriseSettings() {
   return (
     <div className="row">
       <div className="col-xl-4 col-lg-6 col-md-12">

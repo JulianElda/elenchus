@@ -3,7 +3,7 @@ import { createMemoryHistory } from "history";
 import { render, screen } from "@testing-library/react";
 import { mock_clientconfig_admin } from "mocks/clientConfiguration";
 import { mock_user_admin } from "mocks/user";
-import App from "./app";
+import { App } from "components/app";
 
 test("shows nick in toolbar", () => {
   const history = createMemoryHistory();

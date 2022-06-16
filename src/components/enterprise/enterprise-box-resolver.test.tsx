@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import api from "api/api";
-import { mock_enterprise_box } from "mocks/enterprise";
+import { EnterpriseBoxResolver } from "components/enterprise";
 
-import EnterpriseBoxResolver from "./enterprise-box-resolver";
+import { mock_enterprise_box } from "mocks/enterprise";
 
 test("shows loading", () => {
   render(<EnterpriseBoxResolver />);

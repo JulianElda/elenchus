@@ -2,7 +2,7 @@ import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { render, screen } from "@testing-library/react";
 
-import FileListResolver from "./file-list-resolver";
+import { FileListResolver } from "components/file-list";
 
 test("renders loading", () => {
   const history = createMemoryHistory();

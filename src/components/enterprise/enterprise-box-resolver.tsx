@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import api from "api/api";
 import { BoxSettings } from "idg-types";
-import EnterpriseBox from "./enterprise-box";
+import { EnterpriseBox } from "components/enterprise";
 
-export default function EnterpriseBoxResolver() {
+export function EnterpriseBoxResolver() {
   const [boxSettings, setBoxSettings] = useState<BoxSettings>({});
   const [loading, setLoading] = useState<boolean>(true);
 

@@ -1,21 +1,22 @@
 import { memo } from "react";
-import NodeListItemIcon from "components/node-list/node-list-item-icon";
-import { BreadcrumbItem } from "components/breadcrumbs/breadcrumbs";
+import { BreadcrumbType } from "components/breadcrumbs";
+import { NodeListItemIcon } from "components/node-list";
 
 type FinderListItemProps = {
   id?: string;
   name?: string;
   type?: string;
   boxId?: string;
-  breadcrumbs?: BreadcrumbItem[];
+  breadcrumbs?: BreadcrumbType[];
   path?: string;
   onHandleFile?: Function;
   onHandleFolder?: Function;
 };
 
-const FinderListItem = memo(function (props: FinderListItemProps) {
+export const FinderListItem = memo(function (props: FinderListItemProps) {
   const onClick = function () {
-    if (props.type === "DIR") props.onHandleFolder?.(props.id, props.boxId, props.breadcrumbs);
+    if (props.type === "DIR")
+      props.onHandleFolder?.(props.id, props.boxId, props.breadcrumbs);
     else if (props.type === "FILE") props.onHandleFile?.(props.id, props.name);
   };
 
@@ -25,9 +26,9 @@ const FinderListItem = memo(function (props: FinderListItemProps) {
         <NodeListItemIcon type={props.type} name={props.name} />
         <label>{props.name}</label>
       </div>
-      <small className="finder-list-item-name font-monospace fw-light">{props.path}</small>
+      <small className="finder-list-item-name font-monospace fw-light">
+        {props.path}
+      </small>
     </li>
   );
 });
-
-export default FinderListItem;

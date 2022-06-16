@@ -1,12 +1,12 @@
 import FAIcon from "components/common/fa-icon";
 
-import "components/box-list/box-list-item-dropdown.scss";
+import "./box-list-item-dropdown.scss";
 
 type BoxListItemDropdownProps = {
   id?: string;
 };
 
-export default function BoxListItemDropdown(props: BoxListItemDropdownProps) {
+export function BoxListItemDropdown(props: BoxListItemDropdownProps) {
   const onClickDropdown = (e) => {
     e.stopPropagation();
   };

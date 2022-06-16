@@ -3,13 +3,12 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import api from "api/api";
-
 import { LoginPayloadType } from "types";
 import { LoginErrorResponses } from "const/login";
 
-import "components/login/login.scss";
+import "./login.scss";
 
-export default function Login() {
+export function Login() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { register, handleSubmit } = useForm();

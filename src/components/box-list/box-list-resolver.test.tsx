@@ -3,8 +3,8 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import api from "api/api";
 
-import { AppContext } from "components/app/app.context";
-import BoxListResolver from "./box-list-resolver";
+import { AppContext } from "components/app";
+import { BoxListResolver } from "components/box-list";
 
 import { mock_clientconfig_admin } from "mocks/clientConfiguration";
 import { mock_boxes_partial } from "mocks/box";

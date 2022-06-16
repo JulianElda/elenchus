@@ -7,13 +7,13 @@ import { RegistrationValidationType } from "idg-types/RegistrationValidationType
 import { UserInfos } from "idg-types/UserInfos";
 import { UserPermissions } from "idg-types/UserPermissions";
 
-import UserFormStatistics from "./user-form-statistics";
+import { UserFormStatistics } from "components/user-form";
 
 type UserFormProps = {
   user?: UserWrapper;
 };
 
-export default function UserForm(props: UserFormProps) {
+export function UserForm(props: UserFormProps) {
   const { register, handleSubmit } = useForm();
 
   //* User infos */

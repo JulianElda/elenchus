@@ -1,12 +1,14 @@
 import { useCallback, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { finderListSorterFunction } from "./finder-list-sorter";
-import FinderListItem from "./finder-list-item";
-import { AppContext } from "components/app/app.context";
 import api from "api/api";
 import { FinderItemType } from "types";
+import { AppContext } from "components/app";
+import { BreadcrumbType } from "components/breadcrumbs";
 import { downloadFromId } from "components/common/download";
-import { BreadcrumbItem } from "components/breadcrumbs/breadcrumbs";
+import {
+  FinderListItem,
+  finderListSorterFunction,
+} from "components/finder-list";
 
 type FinderListItemType = {
   item: FinderItemType;
@@ -17,12 +19,12 @@ type FinderListProps = {
   items: FinderListItemType[];
 };
 
-export default function FinderList(props: FinderListProps) {
+export function FinderList(props: FinderListProps) {
   const navigate = useNavigate();
   const clientConfiguration = useContext<any>(AppContext).clientConfiguration;
 
   const handleFolder = useCallback(
-    function (folderId: string, boxId: string, breadcrumbs: BreadcrumbItem[]) {
+    function (folderId: string, boxId: string, breadcrumbs: BreadcrumbType[]) {
       navigate("/box/" + boxId, {
         state: { folderId: folderId, breadcrumbs: breadcrumbs },
       });
@@ -48,7 +50,7 @@ export default function FinderList(props: FinderListProps) {
   );
 
   const getBreadcrumbs = function (item: FinderItemType) {
-    const breadcrumbs: BreadcrumbItem[] = [
+    const breadcrumbs: BreadcrumbType[] = [
       {
         id: item.node?.id || "",
         name: item.node?.name || "",
@@ -65,9 +67,9 @@ export default function FinderList(props: FinderListProps) {
     return breadcrumbs;
   };
 
-  const getPath = function (breadcrumbs: BreadcrumbItem[]) {
+  const getPath = function (breadcrumbs: BreadcrumbType[]) {
     return breadcrumbs
-      .map(function (breadcrumb: BreadcrumbItem) {
+      .map(function (breadcrumb: BreadcrumbType) {
         return breadcrumb.name;
       })
       .join("/");

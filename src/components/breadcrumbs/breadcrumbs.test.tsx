@@ -4,9 +4,9 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import api from "api/api";
 import { EntryItemTypes } from "types";
-import { AppContext } from "components/app/app.context";
-import Breadcrumbs from "./breadcrumbs";
-import FileList from "components/file-list/file-list";
+import { AppContext } from "components/app";
+import { Breadcrumbs } from "components/breadcrumbs";
+import { FileList } from "components/file-list";
 
 import { mock_clientconfig_admin } from "mocks/clientConfiguration";
 import { mock_box_dataroom } from "mocks/box";

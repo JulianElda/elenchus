@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import FinderListItem from "./finder-list-item";
+import { FinderListItem } from "components/finder-list";
 
 test("show name and path", () => {
   render(
@@ -36,7 +36,7 @@ test("calls file type callback", async () => {
     />
   );
   await user.click(screen.getByText("test-name"));
-  expect(fileCallback).toHaveBeenCalledWith("test-node-id", "test-name")
+  expect(fileCallback).toHaveBeenCalledWith("test-node-id", "test-name");
   expect(folderCallback).not.toHaveBeenCalled();
 });
 
@@ -44,10 +44,12 @@ test("calls folder type callback", async () => {
   const user = userEvent.setup();
   const fileCallback = jest.fn();
   const folderCallback = jest.fn();
-  const mockBreadcrumbs = [{
-    id: "test-bread-id",
-    name: "test-bread-name"
-  }]
+  const mockBreadcrumbs = [
+    {
+      id: "test-bread-id",
+      name: "test-bread-name",
+    },
+  ];
   render(
     <FinderListItem
       id="test-node-id"
@@ -62,5 +64,9 @@ test("calls folder type callback", async () => {
   );
   await user.click(screen.getByText("test-name"));
   expect(fileCallback).not.toHaveBeenCalled();
-  expect(folderCallback).toHaveBeenCalledWith("test-node-id", "test-box-id", mockBreadcrumbs)
+  expect(folderCallback).toHaveBeenCalledWith(
+    "test-node-id",
+    "test-box-id",
+    mockBreadcrumbs
+  );
 });

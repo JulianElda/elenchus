@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import api from "api/api";
 import { PasswordPolicy } from "idg-types";
-import EnterprisePassword from "./enterprise-password";
+import { EnterprisePassword } from "components/enterprise";
 
-export default function EnterprisePasswordResolver() {
+export function EnterprisePasswordResolver() {
   const [passwordPolicy, setPasswordPolicy] = useState<PasswordPolicy>({});
   const [loading, setLoading] = useState<boolean>(true);
 

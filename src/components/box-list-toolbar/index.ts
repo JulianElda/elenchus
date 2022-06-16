@@ -1,3 +1,1 @@
-import BoxListToolbar from "./box-list-toolbar";
-
-export default BoxListToolbar;
+export { BoxListToolbar } from "./box-list-toolbar";

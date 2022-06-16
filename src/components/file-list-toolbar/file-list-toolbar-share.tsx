@@ -3,7 +3,7 @@ type FileListToolbarShareProps = {
   sharingConfig?: any;
 };
 
-export default function FileListToolbarShare(props: FileListToolbarShareProps) {
+export function FileListToolbarShare(props: FileListToolbarShareProps) {
   const getFormContent = function () {
     if (props.sharingConfig) {
       return <p>{props.sharingConfig.shareLink}</p>;

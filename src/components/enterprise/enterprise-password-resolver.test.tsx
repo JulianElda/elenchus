@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import api from "api/api";
-import { mock_enterprise_password } from "mocks/enterprise";
+import { EnterprisePasswordResolver } from "components/enterprise";
 
-import EnterprisePasswordResolver from "./enterprise-password-resolver";
+import { mock_enterprise_password } from "mocks/enterprise";
 
 test("shows loading", () => {
   render(<EnterprisePasswordResolver />);

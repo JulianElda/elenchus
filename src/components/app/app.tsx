@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { Outlet } from "react-router-dom";
 
-import { AppContext, AppContextType } from "./app.context";
-import AppToolbar from "components/app-toolbar";
+import { AppContext, AppContextType } from "components/app";
+import { AppToolbar } from "components/app-toolbar";
 import "./app.scss";
 
 type AppProps = {
@@ -10,7 +10,7 @@ type AppProps = {
   user: any;
 };
 
-export default function App(props: AppProps) {
+export function App(props: AppProps) {
   const appContextValue: AppContextType = useMemo(
     () => ({
       clientConfiguration: props.clientConfiguration,

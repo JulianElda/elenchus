@@ -1,10 +1,11 @@
 import { memo } from "react";
 import { BoxListType } from "types";
+
 type BoxListSearcherProps = {
   onChangeSearch: Function;
 };
 
-const BoxListSearcher = memo(function (props: BoxListSearcherProps) {
+export const BoxListSearcher = memo(function (props: BoxListSearcherProps) {
   const onChangeText = (query: string) => {
     props.onChangeSearch(query);
   };
@@ -26,4 +27,3 @@ export function boxListSearcherFunction(query: string) {
     return searchable.toLowerCase().indexOf(query.toLowerCase()) >= 0;
   };
 }
-export default BoxListSearcher;

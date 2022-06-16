@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import api from "api/api";
 import { BoxType, EntryItemResponseType, EntryItemType, IdName } from "types";
-import FileList from "./file-list";
+import { FileList } from "components/file-list";
 
-export default function FileListResolver() {
+export function FileListResolver() {
   const { state } = useLocation();
   const params = useParams();
 

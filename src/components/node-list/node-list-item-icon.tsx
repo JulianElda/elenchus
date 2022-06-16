@@ -3,7 +3,7 @@ import { mimes } from "const/file";
 
 import "./node-list-item-icon.scss";
 
-export default function NodeListItemIcon(props) {
+export function NodeListItemIcon(props) {
   const getItemIcon = (type: string, name: string) => {
     if (type === "DIR") {
       return "dir";

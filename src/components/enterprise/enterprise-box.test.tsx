@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { mock_enterprise_box } from "mocks/enterprise";
+import { EnterpriseBox } from "components/enterprise";
 
-import EnterpriseBox from "./enterprise-box";
+import { mock_enterprise_box } from "mocks/enterprise";
 
 test("shows box settings", async () => {
   render(<EnterpriseBox {...mock_enterprise_box} />);

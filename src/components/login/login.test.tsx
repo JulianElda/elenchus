@@ -4,8 +4,8 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import api from "api/api";
-import Login from "./login";
 import { LoginErrorResponses } from "const/login";
+import { Login } from "components/login";
 
 test("page shown", async () => {
   const history = createMemoryHistory();

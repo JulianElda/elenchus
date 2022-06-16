@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "api/api";
 import { UserWrapper } from "idg-types";
-import UserView from "components/user-view/user-view";
+import { UserView } from "components/user-view";
 
-export default function UserViewResolver() {
+export function UserViewResolver() {
   const params = useParams();
   const [loading, setLoading] = useState<boolean>(true);
   const [user, setUser] = useState<UserWrapper>();

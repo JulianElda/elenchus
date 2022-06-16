@@ -1,17 +1,16 @@
 import { memo, useCallback, useContext } from "react";
 import api from "api/api";
-import { AppContext } from "components/app/app.context";
-import { downloadFromId } from "components/common/download";
 import { EntryItemType } from "types";
-import NodeListItem from "./node-list-item";
-import { nodeListSorterFunction } from "./node-list-sorter";
+import { AppContext } from "components/app";
+import { downloadFromId } from "components/common/download";
+import { NodeListItem, nodeListSorterFunction } from "components/node-list";
 
 type NodelistProp = {
   items: EntryItemType[];
   onHandleFolder: Function;
 };
 
-const NodeList = memo(function (props: NodelistProp) {
+export const NodeList = memo(function (props: NodelistProp) {
   const clientConfiguration = useContext<any>(AppContext).clientConfiguration;
 
   // download a single item
@@ -50,5 +49,3 @@ const NodeList = memo(function (props: NodelistProp) {
 
   return <ul className="list-group">{mapItemList()}</ul>;
 });
-
-export default NodeList;

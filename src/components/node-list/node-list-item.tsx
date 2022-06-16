@@ -1,6 +1,6 @@
 import { memo, useContext, useState } from "react";
-import NodeListItemIcon from "./node-list-item-icon";
-import { FileListContext } from "components/file-list/file-list";
+import { FileListContext } from "components/file-list";
+import { NodeListItemIcon } from "components/node-list";
 import "./node-list-item.scss";
 
 type NodeListItemProps = {
@@ -11,7 +11,7 @@ type NodeListItemProps = {
   onHandleFolder?: Function;
 };
 
-const NodeListItem = memo(function (props: NodeListItemProps) {
+export const NodeListItem = memo(function (props: NodeListItemProps) {
   const [selected, setSelected] = useState<boolean>(false);
   const onHandleSelected = useContext<any>(FileListContext).onHandleSelected;
 
@@ -45,5 +45,3 @@ const NodeListItem = memo(function (props: NodeListItemProps) {
     </li>
   );
 });
-
-export default NodeListItem;

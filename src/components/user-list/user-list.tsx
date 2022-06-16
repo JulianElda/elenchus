@@ -1,17 +1,19 @@
 import React, { useCallback, useState } from "react";
 import { UserWrapper } from "idg-types";
-import UserListItem from "./user-list-item";
-import { userListSorterFunction } from "./user-list-sorter";
-import UserListSearcher, {
+
+import {
+  UserListItem,
+  userListSorterFunction,
+  UserListSearcher,
   userListSearcherFunction,
-} from "./user-list-searcher";
-import UserListNoresult from "./user-list-noresult";
+  UserListNoresult,
+} from "components/user-list";
 
 type UserListProps = {
   users: UserWrapper[];
 };
 
-export default function UserList(props: UserListProps) {
+export function UserList(props: UserListProps) {
   const [userList] = useState<UserWrapper[]>(props.users);
   const [search, setSearch] = useState<string>("");
 

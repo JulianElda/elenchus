@@ -2,7 +2,7 @@ import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import api from "api/api";
-import UserViewResolver from "components/user-view/user-view-resolver";
+import { UserViewResolver } from "components/user-view";
 import { mock_userlist } from "mocks/user";
 
 test("renders loading", () => {

@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { mock_enterprise_software } from "mocks/enterprise";
 import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
+import { EnterpriseSoftware } from "components/enterprise";
 
-import EnterpriseSoftware from "./enterprise-software";
+import { mock_enterprise_software } from "mocks/enterprise";
 
 test("shows software settings", async () => {
   render(<EnterpriseSoftware {...mock_enterprise_software} />);

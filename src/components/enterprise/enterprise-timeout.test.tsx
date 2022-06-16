@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { mock_enterprise_timeout } from "mocks/enterprise";
+import { EnterpriseTimeout } from "components/enterprise";
 
-import EnterpriseTimeout from "./enterprise-timeout";
+import { mock_enterprise_timeout } from "mocks/enterprise";
 
 test("shows timeout settings", async () => {
   render(<EnterpriseTimeout {...mock_enterprise_timeout} />);

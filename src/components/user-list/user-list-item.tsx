@@ -5,7 +5,7 @@ type UserListItemProps = {
   user: UserWrapper;
 };
 
-export default function UserListItem(props: UserListItemProps) {
+export function UserListItem(props: UserListItemProps) {
   const navigate = useNavigate();
 
   const onClick = (id: string) => {

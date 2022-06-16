@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import api from "api/api";
-import { mock_enterprise_timeout } from "mocks/enterprise";
+import { EnterpriseTimeoutResolver } from "components/enterprise";
 
-import EnterpriseTimeoutResolver from "./enterprise-timeout-resolver";
+import { mock_enterprise_timeout } from "mocks/enterprise";
 
 test("shows loading", () => {
   render(<EnterpriseTimeoutResolver />);

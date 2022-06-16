@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { UserWrapper } from "idg-types";
-import UserList from "./user-list";
 import api from "api/api";
+import { UserWrapper } from "idg-types";
+import { UserList } from "components/user-list";
 
-export default function UserListResolver() {
+export function UserListResolver() {
   const [userList, setUserList] = useState<UserWrapper[]>([]);
   const [paginating, setPaginating] = useState<boolean>(true);
 

@@ -31,5 +31,3 @@ export function boxListSorterFunction(sortCategory: string) {
     else return 0;
   };
 }
-
-export default BoxListSortSelect;

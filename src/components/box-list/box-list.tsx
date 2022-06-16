@@ -1,17 +1,17 @@
 import React from "react";
-import { boxListSorterFunction } from "./box-list-sorter";
-//import { boxListSearcherFunction } from "./box-list-searcher";
-import BoxListItem from "./box-list-item";
-import BoxListNoboxes from "./box-list-noboxes";
-//import BoxListNoresult from "./box-list-noresult";
-import BoxListToolbar from "components/box-list-toolbar";
 import { BoxListType } from "types";
+import {
+  BoxListItem,
+  BoxListNoboxes,
+  boxListSorterFunction,
+} from "components/box-list";
+import { BoxListToolbar } from "components/box-list-toolbar";
 
 type BoxListProp = {
   boxes: BoxListType[];
 };
 
-export default function BoxList(props: BoxListProp) {
+export function BoxList(props: BoxListProp) {
   const mapBoxList = function () {
     return (
       props.boxes
@@ -30,22 +30,7 @@ export default function BoxList(props: BoxListProp) {
     );
   };
 
-  /*
-  const onChangeSort = useCallback((cat: string) => {
-    setBoxListSort(cat);
-  }, []);
-
-  const onChangeSearch = useCallback((query: string) => {
-    setBoxListSearch(query);
-  }, []);
-  */
-
   const getBoxListContent = function () {
-    /*
-    const list = mapBoxList();
-    if (list.length === 0) return <BoxListNoresult />;
-    else return <ul className="list-group">{list}</ul>;
-    */
     return <ul className="list-group">{mapBoxList()}</ul>;
   };
 
@@ -62,17 +47,6 @@ export default function BoxList(props: BoxListProp) {
             </li>
           </ol>
         </nav>
-        {/**
-          <div className="row mb-2">
-            <div className="col-md-6">
-              <BoxListSearcher onChangeSearch={onChangeSearch} />
-            </div>
-            <div className="col-md-6">
-              <BoxListSortSelect onChangeSort={onChangeSort} />
-            </div>
-          </div>
-           */}
-
         {getBoxListContent()}
       </React.StrictMode>
     );

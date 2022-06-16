@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import api from "api/api";
 import { BoxListType, FinderItemType } from "types";
-import FinderList from "components/finder-list/finder-list";
 import { resolveBoxes } from "components/common/resolve-boxes";
+import { FinderList } from "components/finder-list";
 
-export default function Finder() {
+export function Finder() {
   const { handleSubmit } = useForm();
   const [query, setQuery] = useState<string>("");
   const [searchResult, setSearchResult] = useState<Array<any>>([]);

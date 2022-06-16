@@ -1,13 +1,13 @@
 import FAIcon from "components/common/fa-icon";
-import Finder from "components/finder/finder";
-import Logout from "components/logout";
+import { Finder } from "components/finder";
+import { Logout } from "components/logout";
 import "./app-toolbar.scss";
 
 type AppToolbarProps = {
   nick: string;
 };
 
-export default function AppToolbar(props: AppToolbarProps) {
+export function AppToolbar(props: AppToolbarProps) {
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">

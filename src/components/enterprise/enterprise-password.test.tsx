@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { mock_enterprise_password } from "mocks/enterprise";
+import { EnterprisePassword } from "components/enterprise";
 
-import EnterprisePassword from "./enterprise-password";
+import { mock_enterprise_password } from "mocks/enterprise";
 
 test("shows password settings", async () => {
   render(<EnterprisePassword {...mock_enterprise_password} />);

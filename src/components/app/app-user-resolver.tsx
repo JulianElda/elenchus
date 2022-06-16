@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { UserWrapper } from "idg-types";
 import api from "api/api";
-import App from "./app";
+import { UserWrapper } from "idg-types";
+import { App } from "components/app";
 
 export function AppUserResolver(props) {
   const [user, setUser] = useState<UserWrapper>();

@@ -5,7 +5,7 @@ type UserListSearcherProps = {
   onChangeSearch: Function;
 };
 
-const UserListSearcher = memo(function (props: UserListSearcherProps) {
+export const UserListSearcher = memo(function (props: UserListSearcherProps) {
   const onChangeText = (query: string) => {
     props.onChangeSearch(query);
   };
@@ -27,4 +27,3 @@ export function userListSearcherFunction(query: string) {
     return searchable.toLowerCase().indexOf(query.toLowerCase()) >= 0;
   };
 }
-export default UserListSearcher;

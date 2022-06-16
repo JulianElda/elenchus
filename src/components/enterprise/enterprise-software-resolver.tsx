@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import api from "api/api";
 import { SoftwareSettings } from "idg-types";
-import EnterpriseSoftware from "./enterprise-software";
+import { EnterpriseSoftware } from "components/enterprise";
 
-export default function EnterpriseSoftwareResolver() {
+export function EnterpriseSoftwareResolver() {
   const [SoftwareSettings, setSoftwareSettings] = useState<SoftwareSettings>(
     {}
   );

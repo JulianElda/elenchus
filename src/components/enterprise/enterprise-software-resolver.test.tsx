@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import api from "api/api";
-import { mock_enterprise_software } from "mocks/enterprise";
+import { EnterpriseSoftwareResolver } from "components/enterprise";
 
-import EnterpriseSoftwareResolver from "./enterprise-software-resolver";
+import { mock_enterprise_software } from "mocks/enterprise";
 
 test("shows loading", () => {
   render(<EnterpriseSoftwareResolver />);

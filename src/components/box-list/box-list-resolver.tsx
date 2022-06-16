@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { BoxListType } from "types";
-import BoxList from "./box-list";
+import { BoxList } from "components/box-list";
 import { resolveBoxes } from "components/common/resolve-boxes";
 
-export default function BoxListResolver() {
+export function BoxListResolver() {
   const [boxList, setBoxList] = useState<BoxListType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 

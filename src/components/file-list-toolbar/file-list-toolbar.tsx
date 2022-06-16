@@ -1,17 +1,16 @@
 import { useContext } from "react";
-import { AppContext } from "components/app/app.context";
-import { FileListContext } from "components/file-list/file-list";
 import api from "api/api";
+import { AppContext } from "components/app";
 import { downloadFromId } from "components/common/download";
-
-import FileListToolbarShare from "./file-list-toolbar-share";
+import { FileListContext } from "components/file-list";
+import { FileListToolbarShare } from "components/file-list-toolbar";
 import "./file-list-toolbar.scss";
 
 type FileListToolbarProps = {
   selectedItems: string[];
 };
 
-export default function FileListToolbar(props: FileListToolbarProps) {
+export function FileListToolbar(props: FileListToolbarProps) {
   const clientConfiguration = useContext<any>(AppContext).clientConfiguration;
   const box = useContext<any>(FileListContext).box;
 
