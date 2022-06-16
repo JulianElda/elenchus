@@ -1,16 +1,17 @@
 import { memo } from "react";
+import { EntryItemTypes } from "types";
 import { BreadcrumbType } from "components/breadcrumbs";
 import { NodeListItemIcon } from "components/node-list";
 
 type FinderListItemProps = {
-  id?: string;
-  name?: string;
-  type?: string;
-  boxId?: string;
-  breadcrumbs?: BreadcrumbType[];
-  path?: string;
-  onHandleFile?: Function;
-  onHandleFolder?: Function;
+  id: string;
+  name: string;
+  type: EntryItemTypes;
+  boxId: string;
+  breadcrumbs: BreadcrumbType[];
+  path: string;
+  onHandleFile: Function;
+  onHandleFolder: Function;
 };
 
 export const FinderListItem = memo(function (props: FinderListItemProps) {

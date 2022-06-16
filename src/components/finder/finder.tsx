@@ -24,7 +24,7 @@ export function Finder() {
     let types = "types=file,folder,note";
     let name = "name=" + query;
 
-    const findCallback = function (res) {
+    const findCallback = function (res: FinderItemType[]) {
       setSearchResult((previousResult) =>
         previousResult.concat(
           res.map(function (item: FinderItemType) {

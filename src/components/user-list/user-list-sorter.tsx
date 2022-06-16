@@ -1,4 +1,4 @@
-import { UserWrapper } from "idg-types";
+import { UserType } from "types";
 
 const typeWeight = {
   FULL_LICENSE: 2,
@@ -7,11 +7,10 @@ const typeWeight = {
 };
 
 export function userListSorterFunction() {
-  return function (a: UserWrapper, b: UserWrapper) {
+  return function (a: UserType, b: UserType) {
     return (
-      typeWeight[b.userInfos?.type || ""] -
-        typeWeight[a.userInfos?.type || ""] ||
-      (a.userInfos?.name || "").localeCompare(b.userInfos?.name || "")
+      typeWeight[b.userInfos.type] - typeWeight[a.userInfos.type] ||
+      a.userInfos.name.localeCompare(b.userInfos.name)
     );
   };
 }

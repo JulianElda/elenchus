@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { UserWrapper } from "idg-types";
+import { UserType } from "types";
 import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
 import { RegistrationValidationType } from "idg-types/RegistrationValidationType";
 import { UserInfos } from "idg-types/UserInfos";
@@ -10,115 +10,111 @@ import { UserPermissions } from "idg-types/UserPermissions";
 import { UserFormStatistics } from "components/user-form";
 
 type UserFormProps = {
-  user?: UserWrapper;
+  user: UserType;
 };
 
 export function UserForm(props: UserFormProps) {
   const { register, handleSubmit } = useForm();
 
   //* User infos */
-  const [name, setName] = useState<string>(props.user?.userInfos?.name || "");
-  const [email, setEmail] = useState<string>(
-    props.user?.userInfos?.email || ""
-  );
+  const [name, setName] = useState<string>(props.user.userInfos?.name || "");
+  const [email, setEmail] = useState<string>(props.user.userInfos?.email || "");
   const [personalId, setPersonalId] = useState<string>(
-    props.user?.userInfos?.personalId || ""
+    props.user.userInfos?.personalId || ""
   );
-  const [type, setType] = useState<string>(props.user?.userInfos?.type || "");
+  const [type, setType] = useState<string>(props.user.userInfos?.type || "");
   const [status, setStatus] = useState<string>(
-    props.user?.userInfos?.status || ""
+    props.user.userInfos?.status || ""
   );
   const [hourlyNotification, setHourlyNotification] = useState<boolean>(
-    props.user?.userInfos?.hourlyNotification || false
+    props.user.userInfos?.hourlyNotification || false
   );
   const [dailyNotification, setDailyNotification] = useState<boolean>(
-    props.user?.userInfos?.dailyNotification || false
+    props.user.userInfos?.dailyNotification || false
   );
 
   //* User permissions */
   const [visibility, setVisibility] = useState<string>(
-    props.user?.userPermissions?.visibility || ""
+    props.user.userPermissions?.visibility || ""
   );
   const [temporaryBoxLifeTime, setTemporaryBoxLifeTime] = useState<number>(
-    (props.user?.userPermissions?.tempBoxPolicy?.lifeTime || 0) / 86400000
+    (props.user.userPermissions?.tempBoxPolicy?.lifeTime || 0) / 86400000
   );
 
   //* AccountCreationPolicy */
   const [canCreateRegularGuest, setCanCreateRegularGuest] = useState<boolean>(
-    props.user?.userPermissions?.accountCreationPolicy?.canCreateRegularGuest ||
+    props.user.userPermissions?.accountCreationPolicy?.canCreateRegularGuest ||
       false
   );
   const [canCreateTempGuest, setCanCreateTempGuest] = useState<boolean>(
-    props.user?.userPermissions?.accountCreationPolicy?.canCreateTempGuest ||
+    props.user.userPermissions?.accountCreationPolicy?.canCreateTempGuest ||
       false
   );
 
   //* BoxBasePolicies */
   const [canCreatePrivacyBoxes, setCanCreatePrivacyBoxes] = useState<boolean>(
-    props.user?.userPermissions?.boxBasePolicies?.canCreatePrivacyBoxes || false
+    props.user.userPermissions?.boxBasePolicies?.canCreatePrivacyBoxes || false
   );
   const [canCreateDataRooms, setCanCreateDataRooms] = useState<boolean>(
-    props.user?.userPermissions?.boxBasePolicies?.canCreateDataRooms || false
+    props.user.userPermissions?.boxBasePolicies?.canCreateDataRooms || false
   );
   const [canCreateTemporaryBoxes, setCanCreateTemporaryBoxes] =
     useState<boolean>(
-      props.user?.userPermissions?.boxBasePolicies?.canCreateTemporaryBoxes ||
+      props.user.userPermissions?.boxBasePolicies?.canCreateTemporaryBoxes ||
         false
     );
   const [canInviteMembers, setCanInviteMembers] = useState<boolean>(
-    props.user?.userPermissions?.boxBasePolicies?.canInviteMembers || false
+    props.user.userPermissions?.boxBasePolicies?.canInviteMembers || false
   );
 
   //* AccountVisibility */
   const [technicalAdmin, setTechnicalAdmin] = useState<boolean>(
-    (props.user?.userPermissions?.adminPermissions || []).includes(
+    (props.user.userPermissions?.adminPermissions || []).includes(
       "TECHNICAL_ADMIN"
     )
   );
   const [billingAdmin, setBillingAdmin] = useState<boolean>(
-    (props.user?.userPermissions?.adminPermissions || []).includes(
+    (props.user.userPermissions?.adminPermissions || []).includes(
       "BILLING_ADMIN"
     )
   );
   const [roomAssistant, setRoomAssistant] = useState<boolean>(
-    (props.user?.userPermissions?.adminPermissions || []).includes(
+    (props.user.userPermissions?.adminPermissions || []).includes(
       "ROOM_ASSISTANT"
     )
   );
 
   //* UserCreation */
   const [expirationDate, setExpirationDate] = useState<string>(
-    props.user?.userCreation?.expirationDate || ""
+    props.user.userCreation?.expirationDate || ""
   );
-  const [note, setNote] = useState<string>(
-    props.user?.userCreation?.note || ""
-  );
+  const [note, setNote] = useState<string>(props.user.userCreation?.note || "");
   const [phoneNumber, setPhoneNumber] = useState<string>(
-    props.user?.userCreation?.phoneNumber || ""
+    props.user.userCreation?.phoneNumber || ""
   );
   const [registrationDate] = useState<string>(
-    props.user?.userCreation?.registrationDate || ""
+    props.user.userCreation?.registrationDate || ""
   );
   const [registrationLink] = useState<string>(
-    props.user?.userCreation?.registrationLink || ""
+    props.user.userCreation?.registrationLink || ""
   );
 
   //* LoginValidation */
   const [loginValidationForced, setLoginValidationForced] = useState<boolean>(
-    props.user?.userCreation?.loginValidation?.forced || false
+    props.user.userCreation?.loginValidation?.forced || false
   );
   const [loginValidationType, setLoginValidationType] = useState<string>(
-    props.user?.userCreation?.loginValidation?.type || ""
+    props.user.userCreation?.loginValidation?.type || ""
   );
 
   //* RegistrationValidation */
   const [registrationValidationValue, setRegistrationValidationValue] =
     useState<string>(
-      props.user?.userCreation?.registrationValidation?.value || ""
+      props.user.userCreation?.registrationValidation?.value || ""
     );
   const [registrationValidationType, setRegistrationValidationType] =
     useState<string>(
-      props.user?.userCreation?.registrationValidation?.type || ""
+      props.user.userCreation?.registrationValidation?.type || ""
     );
 
   const onSubmit = function () {};

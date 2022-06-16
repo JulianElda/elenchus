@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { UserWrapper } from "idg-types";
+import { UserType } from "types";
 
 import {
   UserListItem,
@@ -10,11 +10,11 @@ import {
 } from "components/user-list";
 
 type UserListProps = {
-  users: UserWrapper[];
+  users: UserType[];
 };
 
 export function UserList(props: UserListProps) {
-  const [userList] = useState<UserWrapper[]>(props.users);
+  const [userList] = useState<UserType[]>(props.users);
   const [search, setSearch] = useState<string>("");
 
   const onChangeSearch = useCallback((query: string) => {

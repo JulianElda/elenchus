@@ -1,44 +1,44 @@
 import React, { useState } from "react";
-import { UserWrapper } from "idg-types";
+import { UserType } from "types";
 import { formatDate, formatSize } from "components/common/util";
 
 type UserFormStatisticsProps = {
-  user?: UserWrapper;
+  user: UserType;
 };
 
 export function UserFormStatistics(props: UserFormStatisticsProps) {
   //* UserStorageStatistics */
   const [bookedAccountStorage] = useState<string>(
-    formatSize(props.user?.statisticsUserStorage?.bookedAccountStorage || 0)
+    formatSize(props.user.statisticsUserStorage?.bookedAccountStorage || 0)
   );
   const [accountUsed] = useState<string>(
-    formatSize(props.user?.statisticsUserStorage?.accountUsed || 0)
+    formatSize(props.user.statisticsUserStorage?.accountUsed || 0)
   );
   const [invited] = useState<string>(
-    formatSize(props.user?.statisticsUserStorage?.invited || 0)
+    formatSize(props.user.statisticsUserStorage?.invited || 0)
   );
   const [own] = useState<string>(
-    formatSize(props.user?.statisticsUserStorage?.own || 0)
+    formatSize(props.user.statisticsUserStorage?.own || 0)
   );
 
   //* UserInfoStatistics */
   const [creationDate] = useState<string>(
-    formatDate(props.user?.statisticsUserInfos?.creationDate || "")
+    formatDate(props.user.statisticsUserInfos?.creationDate || "")
   );
   const [creatorUUID] = useState<string>(
-    props.user?.statisticsUserInfos?.creatorUUID || ""
+    props.user.statisticsUserInfos?.creatorUUID || ""
   );
   const [lastChanged] = useState<string>(
-    formatDate(props.user?.statisticsUserInfos?.lastChanged || "")
+    formatDate(props.user.statisticsUserInfos?.lastChanged || "")
   );
   const [lastLogin] = useState<string>(
-    formatDate(props.user?.statisticsUserInfos?.lastLogin || "")
+    formatDate(props.user.statisticsUserInfos?.lastLogin || "")
   );
   const [countDatarooms] = useState<number>(
-    props.user?.statisticsUserBox?.countDatarooms || 0
+    props.user.statisticsUserBox?.countDatarooms || 0
   );
   const [countGuests] = useState<number>(
-    props.user?.statisticsUserBox?.countGuests || 0
+    props.user.statisticsUserBox?.countGuests || 0
   );
   return (
     <React.StrictMode>

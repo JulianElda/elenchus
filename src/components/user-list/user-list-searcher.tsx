@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { UserWrapper } from "idg-types";
+import { UserType } from "types";
 
 type UserListSearcherProps = {
   onChangeSearch: Function;
@@ -22,8 +22,8 @@ export const UserListSearcher = memo(function (props: UserListSearcherProps) {
 });
 
 export function userListSearcherFunction(query: string) {
-  return function (user: UserWrapper) {
-    let searchable = user.userInfos?.name!;
+  return function (user: UserType) {
+    let searchable = user.userInfos.name;
     return searchable.toLowerCase().indexOf(query.toLowerCase()) >= 0;
   };
 }

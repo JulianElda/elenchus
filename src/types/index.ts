@@ -14,3 +14,5 @@ export type { IdName, FinderItemType } from "./finder-item";
 
 export { LoginValidations } from "./login";
 export type { LoginPayloadType } from "./login";
+
+export type { UserType } from "./user";

@@ -1,12 +1,13 @@
 import { memo, useContext, useState } from "react";
+import { EntryItemTypes } from "types";
 import { FileListContext } from "components/file-list";
 import { NodeListItemIcon } from "components/node-list";
 import "./node-list-item.scss";
 
 type NodeListItemProps = {
-  id?: string;
-  name?: string;
-  type?: string;
+  id: string;
+  name: string;
+  type: EntryItemTypes;
   onHandleFile?: Function;
   onHandleFolder?: Function;
 };
@@ -14,6 +15,9 @@ type NodeListItemProps = {
 export const NodeListItem = memo(function (props: NodeListItemProps) {
   const [selected, setSelected] = useState<boolean>(false);
   const onHandleSelected = useContext<any>(FileListContext).onHandleSelected;
+
+  const defaultIconType = EntryItemTypes.FILE;
+  const defaultIconName = "gen";
 
   const onClick = (e) => {
     if (props.type === "DIR") props.onHandleFolder?.(props.id, props.name);
@@ -38,7 +42,10 @@ export const NodeListItem = memo(function (props: NodeListItemProps) {
         aria-label="selected"
         onChange={onSelectItem}
       />
-      <NodeListItemIcon type={props.type} name={props.name} onClick={onClick} />
+      <NodeListItemIcon
+        type={props.type || defaultIconType}
+        name={props.name || defaultIconName}
+      />
       <label className="node-list-item-name" onClick={onClick}>
         {props.name}
       </label>

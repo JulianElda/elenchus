@@ -1,8 +1,8 @@
 import { UserForm } from "components/user-form";
-import { UserWrapper } from "idg-types";
+import { UserType } from "types";
 
 type UserViewProps = {
-  user?: UserWrapper;
+  user: UserType;
 };
 
 export function UserView(props: UserViewProps) {

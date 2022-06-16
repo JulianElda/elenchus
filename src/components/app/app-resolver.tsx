@@ -10,7 +10,7 @@ export function AppResolver() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const successCallback = async (res) => {
+    const successCallback = async (res: ClientConfigType) => {
       setClientConfiguration(res);
       setLoading(false);
     };
@@ -20,6 +20,6 @@ export function AppResolver() {
   if (loading) {
     return <p>loading app...</p>;
   } else {
-    return <AppUserResolver clientConfiguration={clientConfiguration} />;
+    return <AppUserResolver clientConfiguration={clientConfiguration!} />;
   }
 }

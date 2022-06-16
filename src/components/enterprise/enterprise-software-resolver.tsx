@@ -10,7 +10,7 @@ export function EnterpriseSoftwareResolver() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const callback = function (res) {
+    const callback = function (res: SoftwareSettings) {
       setSoftwareSettings(res);
       setLoading(false);
     };

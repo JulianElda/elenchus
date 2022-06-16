@@ -19,7 +19,7 @@ export function FileListToolbar(props: FileListToolbarProps) {
     const payload = props.selectedItems.map(function (item) {
       return { itemId: item };
     });
-    const downloadItemsCallback = function (res) {
+    const downloadItemsCallback = function (res: string) {
       downloadFromId(res, clientConfiguration.csfrToken);
     };
     api.getDownloadId(payload, null, downloadItemsCallback);

@@ -23,7 +23,7 @@ export const NodeList = memo(function (props: NodelistProp) {
           itemName: itemName,
         },
       ];
-      const downloadItemsCallback = function (res) {
+      const downloadItemsCallback = function (res: string) {
         downloadFromId(res, clientConfiguration.csfrToken);
       };
       api.getDownloadId(payload, null, downloadItemsCallback);

@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import api from "api/api";
-import { UserWrapper } from "idg-types";
+import { ClientConfigType, UserType } from "types";
 import { App } from "components/app";
 
-export function AppUserResolver(props) {
-  const [user, setUser] = useState<UserWrapper>();
+type AppUserResolverProps = {
+  clientConfiguration: ClientConfigType;
+};
+
+export function AppUserResolver(props: AppUserResolverProps) {
+  const [user, setUser] = useState<UserType>();
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const getUserSuccessCallback = (res) => {
+    const getUserSuccessCallback = (res: UserType) => {
       setUser(res);
       setLoading(false);
     };

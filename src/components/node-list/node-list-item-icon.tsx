@@ -1,9 +1,15 @@
 import FAIcon from "components/common/fa-icon";
+import { EntryItemTypes } from "types";
 import { mimes } from "const/file";
 
 import "./node-list-item-icon.scss";
 
-export function NodeListItemIcon(props) {
+type NodeListItemIconProps = {
+  type: EntryItemTypes;
+  name: string;
+};
+
+export function NodeListItemIcon(props: NodeListItemIconProps) {
   const getItemIcon = (type: string, name: string) => {
     if (type === "DIR") {
       return "dir";

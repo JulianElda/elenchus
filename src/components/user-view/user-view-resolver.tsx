@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "api/api";
-import { UserWrapper } from "idg-types";
+import { UserType } from "types";
 import { UserView } from "components/user-view";
 
 export function UserViewResolver() {
   const params = useParams();
   const [loading, setLoading] = useState<boolean>(true);
-  const [user, setUser] = useState<UserWrapper>();
+  const [user, setUser] = useState<UserType>();
 
   useEffect(() => {
-    const getUserCallback = function (res) {
+    const getUserCallback = function (res: UserType) {
       setUser(res);
       setLoading(false);
     };
@@ -20,6 +20,6 @@ export function UserViewResolver() {
   if (loading) {
     return <p>loading user...</p>;
   } else {
-    return <UserView user={user} />;
+    return <UserView user={user!} />;
   }
 }

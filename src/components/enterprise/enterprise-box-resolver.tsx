@@ -8,7 +8,7 @@ export function EnterpriseBoxResolver() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const callback = function (res) {
+    const callback = function (res: BoxSettings) {
       setBoxSettings(res);
       setLoading(false);
     };

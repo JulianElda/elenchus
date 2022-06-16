@@ -8,11 +8,11 @@ export function BoxListResolver() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(function () {
-    const successCallback = function (res) {
+    const successCallback = function (res: BoxListType[]) {
       setBoxList(res);
       setLoading(false);
     };
-    const errorCallback = function (res) {
+    const errorCallback = function () {
       setLoading(false);
     };
     resolveBoxes().then(successCallback).catch(errorCallback);

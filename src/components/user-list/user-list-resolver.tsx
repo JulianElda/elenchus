@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import api from "api/api";
-import { UserWrapper } from "idg-types";
+import { UserType } from "types";
 import { UserList } from "components/user-list";
 
 export function UserListResolver() {
-  const [userList, setUserList] = useState<UserWrapper[]>([]);
+  const [userList, setUserList] = useState<UserType[]>([]);
   const [paginating, setPaginating] = useState<boolean>(true);
 
   const limit = 50;
-  let tmp = useRef<UserWrapper[]>([]);
+  let tmp = useRef<UserType[]>([]);
   let index = useRef<number>(0);
 
   useEffect(() => {
-    const paginateUserCallback = function (res) {
+    const paginateUserCallback = function (res: UserType[]) {
       tmp.current = tmp.current.concat(res);
       if (res.length === limit) {
         index.current += limit;

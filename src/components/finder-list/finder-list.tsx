@@ -42,7 +42,7 @@ export function FinderList(props: FinderListProps) {
         },
       ];
 
-      const downloadItemsCallback = function (res) {
+      const downloadItemsCallback = function (res: string) {
         downloadFromId(res, clientConfiguration.csfrToken);
       };
       api.getDownloadId(payload, null, downloadItemsCallback);
@@ -85,7 +85,7 @@ export function FinderList(props: FinderListProps) {
       breadcrumbs: breadcrumbs,
       path: getPath(breadcrumbs),
       boxId: boxId,
-      onHandleChange: handleFile,
+      onHandleFile: handleFile,
       onHandleFolder: handleFolder,
     };
   };

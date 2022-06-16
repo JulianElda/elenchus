@@ -1,16 +1,24 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
+import { EntryItemTypes } from "types";
+import { BreadcrumbType } from "components/breadcrumbs";
 import { FinderListItem } from "components/finder-list";
+
+const mockBreadcrumbs: BreadcrumbType[] = [
+  { id: "test-bread-id", name: "test-bread-name" },
+];
 
 test("show name and path", () => {
   render(
     <FinderListItem
       id="test-node-id"
-      type="FILE"
+      type={EntryItemTypes.FILE}
       name="test-name"
       boxId="test-box-id"
       path="test-path"
+      breadcrumbs={mockBreadcrumbs}
+      onHandleFile={jest.fn()}
+      onHandleFolder={jest.fn()}
     />
   );
   const nameElement = screen.getByText("test-name");
@@ -27,10 +35,11 @@ test("calls file type callback", async () => {
   render(
     <FinderListItem
       id="test-node-id"
-      type="FILE"
+      type={EntryItemTypes.FILE}
       name="test-name"
       boxId="test-box-id"
       path="test-path"
+      breadcrumbs={mockBreadcrumbs}
       onHandleFile={fileCallback}
       onHandleFolder={folderCallback}
     />
@@ -53,7 +62,7 @@ test("calls folder type callback", async () => {
   render(
     <FinderListItem
       id="test-node-id"
-      type="DIR"
+      type={EntryItemTypes.DIR}
       name="test-name"
       boxId="test-box-id"
       path="test-path"

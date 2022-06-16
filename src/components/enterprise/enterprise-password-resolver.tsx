@@ -8,7 +8,7 @@ export function EnterprisePasswordResolver() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const callback = function (res) {
+    const callback = function (res: PasswordPolicy) {
       setPasswordPolicy(res);
       setLoading(false);
     };

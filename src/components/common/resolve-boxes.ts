@@ -6,7 +6,7 @@ export const resolveBoxes = function () {
   let tmp: BoxListType[] = [];
   let index = 0;
 
-  return new Promise((resolve, reject) => {
+  return new Promise<BoxListType[]>((resolve: Function, reject: Function) => {
     const successCallback = function (res: BoxListResponseType) {
       tmp = tmp.concat(res.listBoxes);
       if (res.hasNext) {
