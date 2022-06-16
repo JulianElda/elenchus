@@ -2,7 +2,7 @@ import { memo, useCallback, useContext } from "react";
 import api from "api/api";
 import { AppContext } from "components/app/app.context";
 import { downloadFromId } from "components/common/download";
-import { EntryItemType } from "types/entry-item";
+import { EntryItemType } from "types";
 import NodeListItem from "./node-list-item";
 import { nodeListSorterFunction } from "./node-list-sorter";
 

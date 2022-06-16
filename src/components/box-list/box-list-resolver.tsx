@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BoxListType } from "types/box-list";
+import { BoxListType } from "types";
 import BoxList from "./box-list";
 import { resolveBoxes } from "components/common/resolve-boxes";
 

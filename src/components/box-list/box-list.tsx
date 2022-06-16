@@ -5,7 +5,7 @@ import BoxListItem from "./box-list-item";
 import BoxListNoboxes from "./box-list-noboxes";
 //import BoxListNoresult from "./box-list-noresult";
 import BoxListToolbar from "components/box-list-toolbar";
-import { BoxListType } from "types/box-list";
+import { BoxListType } from "types";
 
 type BoxListProp = {
   boxes: BoxListType[];

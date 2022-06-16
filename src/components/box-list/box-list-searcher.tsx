@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { BoxListType } from "types/box-list";
+import { BoxListType } from "types";
 type BoxListSearcherProps = {
   onChangeSearch: Function;
 };

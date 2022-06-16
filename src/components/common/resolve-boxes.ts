@@ -1,5 +1,5 @@
 import api from "api/api";
-import { BoxListResponseType, BoxListType } from "types/box-list";
+import { BoxListResponseType, BoxListType } from "types";
 
 export const resolveBoxes = function () {
   const limit = 50;

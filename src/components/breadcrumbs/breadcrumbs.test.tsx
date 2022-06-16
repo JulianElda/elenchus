@@ -3,12 +3,13 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import api from "api/api";
-import { EntryItemTypes } from "types/entry-item";
+import { EntryItemTypes } from "types";
 import { AppContext } from "components/app/app.context";
 import Breadcrumbs from "./breadcrumbs";
 import FileList from "components/file-list/file-list";
 
 import { mock_clientconfig_admin } from "mocks/clientConfiguration";
+import { mock_box_dataroom } from "mocks/box";
 
 const mockAppContextValue = {
   clientConfiguration: mock_clientconfig_admin,
@@ -64,7 +65,7 @@ test("sliced bread", async () => {
     <AppContext.Provider value={mockAppContextValue}>
       <Router location="/" navigator={history}>
         <FileList
-          box={{}}
+          box={mock_box_dataroom}
           items={mockRoot.entries}
           breadcrumbs={[{ id: "test-id", name: "test-name" }]}
         />

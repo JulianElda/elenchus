@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import api from "api/api";
 
-import { LoginPayloadType } from "types/login";
+import { LoginPayloadType } from "types";
 import { LoginErrorResponses } from "const/login";
 
 import "components/login/login.scss";

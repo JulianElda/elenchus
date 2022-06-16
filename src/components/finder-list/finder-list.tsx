@@ -4,9 +4,9 @@ import { finderListSorterFunction } from "./finder-list-sorter";
 import FinderListItem from "./finder-list-item";
 import { AppContext } from "components/app/app.context";
 import api from "api/api";
+import { FinderItemType } from "types";
 import { downloadFromId } from "components/common/download";
 import { BreadcrumbItem } from "components/breadcrumbs/breadcrumbs";
-import { FinderItemType } from "types/finder-item";
 
 type FinderListItemType = {
   item: FinderItemType;

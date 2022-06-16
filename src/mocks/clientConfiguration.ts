@@ -1,4 +1,4 @@
-import { ClientConfigUserTypes } from "types/client-config";
+import { ClientConfigUserTypes } from "types";
 
 export const mock_clientconfig_admin = {
   csfrToken: "admintoken",

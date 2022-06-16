@@ -1,4 +1,4 @@
-import { Box } from "types/box-common";
+import { Box } from "types";
 
 export const mock_boxes_partial_once = {
   hasNext: false,
@@ -98,8 +98,10 @@ export const mock_boxes_partial = {
 };
 
 export const mock_box_dataroom = {
+  id: "2k6yb",
   name: "Doc folder",
   author: "Jönö Bängsät",
+  type: Box.type.DATAROOM,
   creationDate: 1624866893000,
   attributes: { backup: true, bytes: 65072993, trashbinActive: false },
   sharingConfig: {

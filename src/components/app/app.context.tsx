@@ -1,6 +1,6 @@
 import React from "react";
 import { UserWrapper } from "idg-types";
-import { ClientConfigType } from "types/client-config";
+import { ClientConfigType } from "types";
 
 export type AppContextType = {
   clientConfiguration: ClientConfigType;

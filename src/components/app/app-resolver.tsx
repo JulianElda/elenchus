@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "api/api";
 
-import { ClientConfigType } from "types/client-config";
+import { ClientConfigType } from "types";
 import { AppUserResolver } from "./app-user-resolver";
 
 export default function AppResolver() {

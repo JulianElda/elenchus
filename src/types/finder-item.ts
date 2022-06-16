@@ -1,3 +1,5 @@
+import { EntryItemTypes } from "./entry-item";
+
 export type IdName = {
   id: string;
   name: string;
@@ -10,16 +12,10 @@ type ParentType = {
 
 export type FinderItemType = {
   node: IdName;
-  type: FinderItemTypes;
+  type: EntryItemTypes;
   box: IdName;
   created: number;
   creator: IdName;
   fileSize: number;
   parent: ParentType;
 };
-
-enum FinderItemTypes {
-  FILE = "FILE",
-  DIR = "DIR",
-  NOTE = "NOTE",
-}

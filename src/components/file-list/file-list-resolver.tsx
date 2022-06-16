@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import api from "api/api";
-import { EntryItemResponseType } from "types/entry-item";
+import { BoxType, EntryItemResponseType, EntryItemType, IdName } from "types";
 import FileList from "./file-list";
 
 export default function FileListResolver() {
   const { state } = useLocation();
   const params = useParams();
 
-  const [breadcrumbs, setBreadcrumbs] = useState<any>([]);
-  const [box, setBox] = useState<any>();
-  const [items, setItems] = useState<any[]>([]);
+  const [breadcrumbs, setBreadcrumbs] = useState<IdName[]>([]);
+  const [box, setBox] = useState<BoxType>();
+  const [items, setItems] = useState<EntryItemType[]>([]);
   const [loading, setLoading] = useState<boolean>();
 
   useEffect(() => {

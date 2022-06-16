@@ -2,7 +2,7 @@ import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Box } from "types/box-common";
+import { Box } from "types";
 import BoxListItem from "./box-list-item";
 
 test("render box name and navigate", async () => {

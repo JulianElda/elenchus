@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import api from "api/api";
-import { BoxListType } from "types/box-list";
-import { FinderItemType } from "types/finder-item";
+import { BoxListType, FinderItemType } from "types";
 import FinderList from "components/finder-list/finder-list";
 import { resolveBoxes } from "components/common/resolve-boxes";
 
