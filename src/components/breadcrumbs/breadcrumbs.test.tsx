@@ -1,19 +1,29 @@
 import { Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import api from "api/api";
+import clientConfigReducer from "store/client-config";
 import { EntryItemTypes } from "types";
-import { AppContext } from "components/app";
 import { Breadcrumbs } from "components/breadcrumbs";
 import { FileList } from "components/file-list";
 
 import { mock_clientconfig_admin } from "mocks/clientConfiguration";
 import { mock_box_dataroom } from "mocks/box";
 
-const mockAppContextValue = {
-  clientConfiguration: mock_clientconfig_admin,
-};
+const mockStore = configureStore({
+  reducer: {
+    clientConfig: clientConfigReducer,
+  },
+  preloadedState: {
+    clientConfig: {
+      data: mock_clientconfig_admin,
+      loaded: true,
+    },
+  },
+});
 
 test("navigate to home", async () => {
   const user = userEvent.setup();
@@ -21,9 +31,11 @@ test("navigate to home", async () => {
 
   let bread = [{ id: "test-id", name: "test-name" }];
   render(
-    <Router location="/" navigator={history}>
-      <Breadcrumbs items={bread} setItems={() => {}} onClick={() => {}} />
-    </Router>
+    <Provider store={mockStore}>
+      <Router location="/" navigator={history}>
+        <Breadcrumbs items={bread} setItems={() => {}} onClick={() => {}} />
+      </Router>
+    </Provider>
   );
   const homeElement = screen.getByText(/home/i);
   expect(homeElement).toBeInTheDocument();
@@ -62,7 +74,7 @@ test("sliced bread", async () => {
       successCallback?.({ entries: mockEntries });
     });
   render(
-    <AppContext.Provider value={mockAppContextValue}>
+    <Provider store={mockStore}>
       <Router location="/" navigator={history}>
         <FileList
           box={mock_box_dataroom}
@@ -70,7 +82,7 @@ test("sliced bread", async () => {
           breadcrumbs={[{ id: "test-id", name: "test-name" }]}
         />
       </Router>
-    </AppContext.Provider>
+    </Provider>
   );
   const homeElement = screen.getByText(/home/i);
   expect(homeElement).toBeInTheDocument();

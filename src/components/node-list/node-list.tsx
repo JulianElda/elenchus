@@ -1,7 +1,8 @@
-import { memo, useCallback, useContext } from "react";
+import { memo, useCallback } from "react";
+import { useSelector } from "react-redux";
 import api from "api/api";
 import { EntryItemType } from "types";
-import { AppContext, AppContextType } from "components/app";
+import { getClientConfig } from "store/client-config";
 import { downloadFromId } from "components/common/download";
 import { NodeListItem, nodeListSorterFunction } from "components/node-list";
 
@@ -11,8 +12,7 @@ type NodelistProp = {
 };
 
 export const NodeList = memo(function (props: NodelistProp) {
-  const clientConfiguration =
-    useContext<AppContextType>(AppContext).clientConfiguration;
+  const clientConfiguration = useSelector(getClientConfig);
 
   // download a single item
   const downloadItem = useCallback(

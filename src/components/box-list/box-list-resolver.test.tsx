@@ -3,30 +3,18 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import api from "api/api";
 
-import { AppContext } from "components/app";
 import { BoxListResolver } from "components/box-list";
 
-import { mock_clientconfig_admin } from "mocks/clientConfiguration";
 import { mock_boxes_partial } from "mocks/box";
 
-const mockAppContextValue = {
-  clientConfiguration: mock_clientconfig_admin,
-};
-
 test("renders loading", () => {
-  render(
-    <AppContext.Provider
-      value={mockAppContextValue}
-      children={<BoxListResolver />}
-    />
-  );
+  render(<BoxListResolver />);
   const loadingElement = screen.getByText(/loading/i);
   expect(loadingElement).toBeInTheDocument();
 });
 
 test("paginates once", async () => {
   const history = createMemoryHistory();
-
   jest
     .spyOn(api, "paginateBox")
     .mockImplementation((limit, start, successCallback) => {
@@ -34,11 +22,9 @@ test("paginates once", async () => {
     });
 
   render(
-    <AppContext.Provider value={mockAppContextValue}>
-      <Router location="/" navigator={history}>
-        <BoxListResolver />
-      </Router>
-    </AppContext.Provider>
+    <Router location="/" navigator={history}>
+      <BoxListResolver />
+    </Router>
   );
 
   await waitFor(async () => {

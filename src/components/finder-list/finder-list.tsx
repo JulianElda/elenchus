@@ -1,8 +1,9 @@
-import { useCallback, useContext } from "react";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import api from "api/api";
 import { FinderItemType } from "types";
-import { AppContext, AppContextType } from "components/app";
+import { getClientConfig } from "store/client-config";
 import { BreadcrumbType } from "components/breadcrumbs";
 import { downloadFromId } from "components/common/download";
 import {
@@ -21,8 +22,8 @@ type FinderListProps = {
 
 export function FinderList(props: FinderListProps) {
   const navigate = useNavigate();
-  const clientConfiguration =
-    useContext<AppContextType>(AppContext).clientConfiguration;
+
+  const clientConfiguration = useSelector(getClientConfig);
 
   const handleFolder = useCallback(
     function (folderId: string, boxId: string, breadcrumbs: BreadcrumbType[]) {

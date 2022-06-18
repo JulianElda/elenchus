@@ -1,6 +1,7 @@
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 import api from "api/api";
-import { AppContext, AppContextType } from "components/app";
+import { getClientConfig } from "store/client-config";
 import { downloadFromId } from "components/common/download";
 import { FileListContext } from "components/file-list";
 import { FileListToolbarShare } from "components/file-list-toolbar";
@@ -11,8 +12,7 @@ type FileListToolbarProps = {
 };
 
 export function FileListToolbar(props: FileListToolbarProps) {
-  const clientConfiguration =
-    useContext<AppContextType>(AppContext).clientConfiguration;
+  const clientConfiguration = useSelector(getClientConfig);
   const box = useContext<any>(FileListContext).box;
 
   const downloadItems = function () {
