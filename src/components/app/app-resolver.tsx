@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import api from "api/api";
-
 import { ClientConfigType } from "types";
+import { clientConfigLoaded, getClientConfig, init } from "store/client-config";
 import { AppUserResolver } from "components/app";
 
 export function AppResolver() {
-  const [clientConfiguration, setClientConfiguration] =
-    useState<ClientConfigType>();
-  const [loading, setLoading] = useState<boolean>(true);
+  const dispatch = useDispatch();
+  const clientConfiguration: ClientConfigType = useSelector(getClientConfig);
+  const loaded: boolean = useSelector(clientConfigLoaded);
 
   useEffect(() => {
     const successCallback = async (res: ClientConfigType) => {
-      setClientConfiguration(res);
-      setLoading(false);
+      dispatch(init(res));
     };
     api.getClientConfiguration(successCallback);
-  }, []);
+  }, [dispatch]);
 
-  if (loading) {
+  if (!loaded) {
     return <p>loading app...</p>;
   } else {
     return <AppUserResolver clientConfiguration={clientConfiguration!} />;

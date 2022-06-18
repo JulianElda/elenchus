@@ -1,17 +1,23 @@
 import { Router } from "react-router-dom";
+import { Provider } from "react-redux";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import api from "api/api";
+import store from "store/store";
+import { AppResolver } from "components/app";
 import {
   mock_clientconfig_admin,
   mock_clientconfig_full,
   mock_clientconfig_guest,
 } from "mocks/clientConfiguration";
 import { mock_user_admin, mock_user_full } from "mocks/user";
-import { AppResolver } from "components/app";
 
 test("shows loading", () => {
-  render(<AppResolver />);
+  render(
+    <Provider store={store}>
+      <AppResolver />
+    </Provider>
+  );
   const loadingElement = screen.getByText(/loading/i);
   expect(loadingElement).toBeInTheDocument();
 });
@@ -30,9 +36,11 @@ test("shows app for admin type", async () => {
   });
 
   render(
-    <Router location="/" navigator={history}>
-      <AppResolver />
-    </Router>
+    <Provider store={store}>
+      <Router location="/" navigator={history}>
+        <AppResolver />
+      </Router>
+    </Provider>
   );
 
   await waitFor(async () => {
@@ -55,9 +63,11 @@ test("shows app for full license", async () => {
   });
 
   render(
-    <Router location="/" navigator={history}>
-      <AppResolver />
-    </Router>
+    <Provider store={store}>
+      <Router location="/" navigator={history}>
+        <AppResolver />
+      </Router>
+    </Provider>
   );
 
   await waitFor(async () => {
@@ -75,9 +85,11 @@ test("shows no access for guest", async () => {
     });
 
   render(
-    <Router location="/" navigator={history}>
-      <AppResolver />
-    </Router>
+    <Provider store={store}>
+      <Router location="/" navigator={history}>
+        <AppResolver />
+      </Router>
+    </Provider>
   );
 
   await waitFor(async () => {

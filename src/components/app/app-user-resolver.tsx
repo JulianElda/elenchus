@@ -1,6 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import api from "api/api";
-import { ClientConfigType, UserType } from "types";
+import { ClientConfigType, ClientConfigUserTypes, UserType } from "types";
+import {
+  currentUserLoaded,
+  getCurrentUser,
+  init,
+  initGuest,
+} from "store/current-user";
 import { App } from "components/app";
 
 type AppUserResolverProps = {
@@ -8,26 +15,25 @@ type AppUserResolverProps = {
 };
 
 export function AppUserResolver(props: AppUserResolverProps) {
-  const [user, setUser] = useState<UserType>();
-  const [loading, setLoading] = useState<boolean>(true);
+  const dispatch = useDispatch();
+  const loaded = useSelector(currentUserLoaded);
+  const user = useSelector(getCurrentUser);
 
   useEffect(() => {
     const getUserSuccessCallback = (res: UserType) => {
-      setUser(res);
-      setLoading(false);
+      dispatch(init(res));
     };
     if (
-      props.clientConfiguration &&
-      (props.clientConfiguration.userType === "ADMIN" ||
-        props.clientConfiguration.userType === "FULL_LICENSE")
+      props.clientConfiguration?.userType === ClientConfigUserTypes.ADMIN ||
+      props.clientConfiguration?.userType === ClientConfigUserTypes.FULL_LICENSE
     ) {
       api.getUser(props.clientConfiguration.id, getUserSuccessCallback);
     } else {
-      setLoading(false);
+      dispatch(initGuest());
     }
-  }, [props.clientConfiguration]);
+  }, [props.clientConfiguration, dispatch]);
 
-  if (loading) {
+  if (!loaded) {
     return (
       <div className="app-container container">
         <p>loading user...</p>

@@ -1,11 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import api from "api/api";
 import { UserType } from "types";
+import { getUserList, init, userListLoaded } from "store/user-list";
 import { UserList } from "components/user-list";
 
 export function UserListResolver() {
-  const [userList, setUserList] = useState<UserType[]>([]);
-  const [paginating, setPaginating] = useState<boolean>(true);
+  const dispatch = useDispatch();
+  const loaded = useSelector(userListLoaded);
+  const userList = useSelector(getUserList);
+  //const [userList, setUserList] = useState<UserType[]>([]);
+  //const [paginating, setPaginating] = useState<boolean>(true);
 
   const limit = 50;
   let tmp = useRef<UserType[]>([]);
@@ -18,17 +23,18 @@ export function UserListResolver() {
         index.current += limit;
         loadUsers(index.current);
       } else {
-        setUserList(tmp.current);
-        setPaginating(false);
+        dispatch(init(tmp.current));
       }
     };
+
     const loadUsers = function (start: number) {
       api.paginateUser(limit, start, paginateUserCallback);
     };
-    loadUsers(index.current);
-  }, []);
 
-  if (paginating) {
+    if (!loaded) loadUsers(index.current);
+  }, [dispatch, loaded]);
+
+  if (!loaded) {
     return <p>loading users...</p>;
   } else {
     return <UserList users={userList} />;
