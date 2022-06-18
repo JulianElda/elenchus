@@ -1,26 +1,21 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BoxListType } from "types";
-import { boxListLoaded, getBoxList, init, initEmpty } from "store/box-list";
+import { boxListLoaded, getBoxList, loadBoxes } from "store/box-list";
 import { BoxList } from "components/box-list";
-import { resolveBoxes } from "components/common/resolve-boxes";
 
 export function BoxListResolver() {
   const dispatch = useDispatch();
-  const boxList = useSelector(getBoxList);
-  const loaded = useSelector(boxListLoaded);
+  const boxList: BoxListType[] = useSelector(getBoxList);
+  const loaded: boolean = useSelector(boxListLoaded);
 
   useEffect(
     function () {
-      const successCallback = function (res: BoxListType[]) {
-        dispatch(init(res));
-      };
-      const errorCallback = function () {
-        dispatch(initEmpty());
-      };
-      if (!loaded) resolveBoxes().then(successCallback).catch(errorCallback);
+      // TODO: correct type
+      // @ts-ignore
+      dispatch(loadBoxes());
     },
-    [dispatch, loaded]
+    [dispatch]
   );
 
   if (!loaded) {

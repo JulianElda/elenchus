@@ -13,6 +13,7 @@ export function Finder() {
   const [searchResult, setSearchResult] = useState<Array<any>>([]);
 
   const onSearch = () => {
+    setSearchResult(() => []);
     boxList.forEach(function (box: BoxListType) {
       findItemsInBox(box.id);
     });
