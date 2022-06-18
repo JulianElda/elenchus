@@ -15,6 +15,7 @@ export function BoxList(props: BoxListProp) {
   const mapBoxList = function () {
     return (
       props.boxes
+        .slice()
         //.filter(boxListSearcherFunction(boxListSearch))
         .sort(boxListSorterFunction("name"))
         .map((box: BoxListType) => {

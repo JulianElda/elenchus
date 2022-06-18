@@ -1,14 +1,31 @@
 import { Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
+import boxListReducer from "store/box-list";
 import api from "api/api";
-
 import { BoxListResolver } from "components/box-list";
-
 import { mock_boxes_partial } from "mocks/box";
 
+const mockStore = configureStore({
+  reducer: {
+    boxList: boxListReducer,
+  },
+  preloadedState: {
+    boxList: {
+      data: [],
+      loaded: false,
+    },
+  },
+});
+
 test("renders loading", () => {
-  render(<BoxListResolver />);
+  render(
+    <Provider store={mockStore}>
+      <BoxListResolver />
+    </Provider>
+  );
   const loadingElement = screen.getByText(/loading/i);
   expect(loadingElement).toBeInTheDocument();
 });
@@ -22,9 +39,11 @@ test("paginates once", async () => {
     });
 
   render(
-    <Router location="/" navigator={history}>
-      <BoxListResolver />
-    </Router>
+    <Provider store={mockStore}>
+      <Router location="/" navigator={history}>
+        <BoxListResolver />
+      </Router>
+    </Provider>
   );
 
   await waitFor(async () => {

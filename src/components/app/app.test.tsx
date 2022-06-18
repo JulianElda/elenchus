@@ -1,20 +1,26 @@
 import { Router } from "react-router-dom";
+import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { createMemoryHistory } from "history";
 import { render, screen } from "@testing-library/react";
+import boxListReducer from "store/box-list";
 import clientConfigReducer from "store/client-config";
 import { App } from "components/app";
 import { mock_clientconfig_admin } from "mocks/clientConfiguration";
 import { mock_user_admin } from "mocks/user";
-import { Provider } from "react-redux";
 
 const mockStore = configureStore({
   reducer: {
     clientConfig: clientConfigReducer,
+    boxList: boxListReducer,
   },
   preloadedState: {
     clientConfig: {
       data: mock_clientconfig_admin,
+      loaded: true,
+    },
+    boxList: {
+      data: [],
       loaded: true,
     },
   },

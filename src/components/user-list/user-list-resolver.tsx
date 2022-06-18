@@ -9,8 +9,6 @@ export function UserListResolver() {
   const dispatch = useDispatch();
   const loaded = useSelector(userListLoaded);
   const userList = useSelector(getUserList);
-  //const [userList, setUserList] = useState<UserType[]>([]);
-  //const [paginating, setPaginating] = useState<boolean>(true);
 
   const limit = 50;
   let tmp = useRef<UserType[]>([]);

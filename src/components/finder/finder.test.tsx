@@ -5,19 +5,25 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import api from "api/api";
+import boxListReducer from "store/box-list";
 import clientConfigReducer from "store/client-config";
 import { Finder } from "components/finder";
 
 import { mock_clientconfig_admin } from "mocks/clientConfiguration";
-import { mock_boxes_partial_once } from "mocks/box";
+import { mock_box_dataroom } from "mocks/box";
 
 const mockStore = configureStore({
   reducer: {
+    boxList: boxListReducer,
     clientConfig: clientConfigReducer,
   },
   preloadedState: {
     clientConfig: {
       data: mock_clientconfig_admin,
+      loaded: true,
+    },
+    boxList: {
+      data: [mock_box_dataroom],
       loaded: true,
     },
   },
@@ -51,12 +57,6 @@ const mockResults = [
 test("show items", async () => {
   const user = userEvent.setup();
   const history = createMemoryHistory();
-
-  jest
-    .spyOn(api, "paginateBox")
-    .mockImplementation((limit, start, successCallback) => {
-      successCallback?.(mock_boxes_partial_once);
-    });
 
   jest
     .spyOn(api, "findItemsInBox")

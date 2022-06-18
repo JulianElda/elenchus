@@ -1,22 +1,21 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import api from "api/api";
+import { getBoxList } from "store/box-list";
 import { BoxListType, FinderItemType } from "types";
-import { resolveBoxes } from "components/common/resolve-boxes";
 import { FinderList } from "components/finder-list";
 
 export function Finder() {
+  const boxList = useSelector(getBoxList);
   const { handleSubmit } = useForm();
   const [query, setQuery] = useState<string>("");
   const [searchResult, setSearchResult] = useState<Array<any>>([]);
 
   const onSearch = () => {
-    const successCallback = function (res) {
-      res.forEach(function (box: BoxListType) {
-        findItemsInBox(box.id);
-      });
-    };
-    resolveBoxes().then(successCallback);
+    boxList.forEach(function (box: BoxListType) {
+      findItemsInBox(box.id);
+    });
   };
 
   const findItemsInBox = async (boxId) => {

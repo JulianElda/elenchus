@@ -6,14 +6,14 @@ type userListInitialStateType = {
   loaded: boolean;
 };
 
-const initialState: userListInitialStateType = {
-  data: [],
-  loaded: false,
-};
-
 type userListPayloadType = {
   payload: UserType[];
   type: string;
+};
+
+const initialState: userListInitialStateType = {
+  data: [],
+  loaded: false,
 };
 
 export const userListSlice = createSlice({

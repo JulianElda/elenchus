@@ -100,6 +100,7 @@ export const mock_boxes_partial = {
 export const mock_box_dataroom = {
   id: "2k6yb",
   name: "Doc folder",
+  description: "",
   author: "Jönö Bängsät",
   type: Box.type.DATAROOM,
   creationDate: 1624866893000,
