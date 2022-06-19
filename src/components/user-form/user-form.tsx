@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { UserType } from "types";
+import { AdminTypes, UserType } from "types";
 import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
 import { RegistrationValidationType } from "idg-types/RegistrationValidationType";
 import { UserInfos } from "idg-types/UserInfos";
@@ -70,17 +70,17 @@ export function UserForm(props: UserFormProps) {
   //* AccountVisibility */
   const [technicalAdmin, setTechnicalAdmin] = useState<boolean>(
     (props.user.userPermissions?.adminPermissions || []).includes(
-      "TECHNICAL_ADMIN"
+      AdminTypes.TECHNICAL_ADMIN
     )
   );
   const [billingAdmin, setBillingAdmin] = useState<boolean>(
     (props.user.userPermissions?.adminPermissions || []).includes(
-      "BILLING_ADMIN"
+      AdminTypes.BILLING_ADMIN
     )
   );
   const [roomAssistant, setRoomAssistant] = useState<boolean>(
     (props.user.userPermissions?.adminPermissions || []).includes(
-      "ROOM_ASSISTANT"
+      AdminTypes.ROOM_ASSISTANT
     )
   );
 

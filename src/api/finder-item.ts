@@ -49,7 +49,7 @@ export const generate_FinderItemType = function (): FinderItemType {
         : generateFileIdName(),
     type: type,
     box: generateBoxIdName(),
-    created: faker.date.past().getDate(),
+    created: faker.date.past().getTime(),
     creator: generateCreatorIdName(),
     fileSize: generateItemSize(type),
     parent: generateParentType(),

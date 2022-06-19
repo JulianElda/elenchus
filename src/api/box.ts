@@ -109,7 +109,7 @@ export const generate_BoxType = function (): BoxType {
     permissions,
     role,
     type,
-    creationDate: faker.date.past().getDate(),
+    creationDate: faker.date.past().getTime(),
     rootFolder: generate_EntryItemResponseType(),
   };
 };

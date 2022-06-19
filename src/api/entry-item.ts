@@ -76,7 +76,7 @@ export const generate_EntryItemType = function (
     size: generateItemSize(type),
     description: generateDescription(type),
     author: faker.name.findName(),
-    dateCreated: faker.date.past().getDate(),
+    dateCreated: faker.date.past().getTime(),
     owner: generateOwner(),
   };
 };

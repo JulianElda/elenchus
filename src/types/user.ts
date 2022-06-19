@@ -23,7 +23,7 @@ export type UserInfos = {
 
 export type UserPermissions = {
   accountCreationPolicy: AccountCreationPolicy;
-  adminPermissions: AccountVisibility;
+  adminPermissions: AdminTypes[];
   boxBasePolicies: BoxBasePoliciesType;
   tempBoxPolicy: TempBoxesPolicy;
   visibility: UserPermissionsVisibility;
@@ -33,10 +33,10 @@ export type UserCreation = {
   note: string;
   phoneNumber: string;
   expirationDate?: string;
-  loginValidation?: LoginValidation;
-  registrationDate?: string;
-  registrationLink?: string;
-  registrationValidation?: RegistrationValidation;
+  loginValidation?: LoginValidation | null;
+  registrationDate?: string | null;
+  registrationLink?: string | null;
+  registrationValidation?: RegistrationValidation | null;
 };
 
 export type UserInfoStatistics = {
@@ -64,13 +64,13 @@ export type UserStorageStatistics = {
 
 export type LoginValidation = {
   forced: boolean;
-  type: LoginValidationTypeOrNone;
-  value: string;
+  type: LoginValidationTypes;
+  value?: string;
 };
 
 export type RegistrationValidation = {
-  type: RegistrationValidationType;
-  value: string;
+  type: RegistrationValidationTypes;
+  value?: string;
 };
 
 export type AccountCreationPolicy = {
@@ -78,15 +78,17 @@ export type AccountCreationPolicy = {
   canCreateTempGuest?: boolean;
 };
 
-export type AccountVisibility = Array<
-  "TECHNICAL_ADMIN" | "BILLING_ADMIN" | "ROOM_ASSISTANT"
->;
-
 export type TempBoxesPolicy = {
   lifeTime: number;
 };
 
-export enum LoginValidationTypeOrNone {
+export enum AdminTypes {
+  TECHNICAL_ADMIN = "TECHNICAL_ADMIN",
+  BILLING_ADMIN = "BILLING_ADMIN",
+  ROOM_ASSISTANT = "ROOM_ASSISTANT",
+}
+
+export enum LoginValidationTypes {
   NONE = "NONE",
   PASSCODE = "PASSCODE",
   LOGINCARD = "LOGINCARD",
@@ -94,7 +96,7 @@ export enum LoginValidationTypeOrNone {
   TOTP = "TOTP",
 }
 
-export enum RegistrationValidationType {
+export enum RegistrationValidationTypes {
   NONE = "NONE",
   PASSCODE = "PASSCODE",
   LOGINCARD = "LOGINCARD",
@@ -110,7 +112,6 @@ export enum UserInfoStatus {
 export enum UserInfoType {
   FULL_LICENSE = "FULL_LICENSE",
   GUEST_LICENSE = "GUEST_LICENSE",
-  BASIC_LICENSE = "BASIC_LICENSE",
 }
 
 export enum UserPermissionsVisibility {

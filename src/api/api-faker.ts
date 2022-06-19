@@ -2,19 +2,24 @@ import {
   BoxType,
   BoxListResponseType,
   BoxSettingsType,
+  ClientConfigType,
+  ClientConfigUserTypes,
+  UserType,
   PasswordPolicyType,
   SoftwareSettingsType,
   TimeoutSettingsType,
   EntryItemResponseType,
   FinderItemType,
 } from "types";
-import { generate_EntryItemResponseType } from "./entry-item";
 import { generate_BoxType, generate_BoxListResponseType } from "./box";
+import { generate_ClientConfigType } from "./client-config";
+import { generate_EntryItemResponseType } from "./entry-item";
 import { generate_BoxSettingsType } from "./enterprise-box";
 import { generate_PasswordPolicyType } from "./enterprise-password";
 import { generate_SoftwareSettingsType } from "./enterprise-software";
 import { generate_getDefaultSessionTimeout } from "./enterprise-timeout";
 import { generate_FinderItemTypes } from "./finder-item";
+import { generate_UserType } from "./user";
 
 const FAKER_DELAY = 500;
 
@@ -76,6 +81,21 @@ const faker_findItemsInBox = function (): Promise<FinderItemType[]> {
     delayedResolve(resolve, generate_FinderItemTypes());
   });
 };
+
+const faker_getClientConfiguration = function (
+  type: ClientConfigUserTypes
+): Promise<ClientConfigType> {
+  return new Promise<ClientConfigType>((resolve: Function) => {
+    delayedResolve(resolve, generate_ClientConfigType(type));
+  });
+};
+
+const faker_getUser = function (): Promise<UserType> {
+  return new Promise<UserType>((resolve: Function) => {
+    delayedResolve(resolve, generate_UserType());
+  });
+};
+
 export const api = {
   getBoxSettings: function (
     successCallback?: Function,
@@ -174,6 +194,32 @@ export const api = {
     errorCallback?: Function
   ) {
     faker_findItemsInBox()
+      .then((res) => {
+        successCallback?.(res);
+      })
+      .catch((res) => {
+        errorCallback?.(res);
+      });
+  },
+  getUser: function (
+    id: string,
+    successCallback?: Function,
+    errorCallback?: Function
+  ) {
+    faker_getUser()
+      .then((res) => {
+        successCallback?.(res);
+      })
+      .catch((res) => {
+        errorCallback?.(res);
+      });
+  },
+  getClientConfiguration: function (
+    type: ClientConfigUserTypes,
+    successCallback?: Function,
+    errorCallback?: Function
+  ) {
+    faker_getClientConfiguration(type)
       .then((res) => {
         successCallback?.(res);
       })
