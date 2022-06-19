@@ -1,4 +1,4 @@
-import { Box } from "types";
+import { BoxRoles, BoxTypes } from "types";
 
 export const mock_boxes_partial_once = {
   hasNext: false,
@@ -7,9 +7,9 @@ export const mock_boxes_partial_once = {
       id: "box-1",
       name: "Box-A",
       description: "box-1-desc",
-      type: Box.type.DATAROOM,
+      type: BoxTypes.DATAROOM,
       attributes: {},
-      role: Box.role.OWNER,
+      role: BoxRoles.OWNER,
       permissions: {
         readFiles: true,
         writeFiles: true,
@@ -30,9 +30,9 @@ export const mock_boxes_partial = {
       id: "box-1",
       name: "Box-X",
       description: "box-1-desc",
-      type: Box.type.DATAROOM,
+      type: BoxTypes.DATAROOM,
       attributes: {},
-      role: Box.role.OWNER,
+      role: BoxRoles.OWNER,
       permissions: {
         readFiles: true,
         writeFiles: true,
@@ -47,9 +47,9 @@ export const mock_boxes_partial = {
       id: "box-2",
       name: "Box-A",
       description: "another",
-      type: Box.type.DATAROOM,
+      type: BoxTypes.DATAROOM,
       attributes: {},
-      role: Box.role.OWNER,
+      role: BoxRoles.OWNER,
       permissions: {
         readFiles: true,
         writeFiles: true,
@@ -64,9 +64,9 @@ export const mock_boxes_partial = {
       id: "box-3",
       name: "Box-N",
       description: "nothing",
-      type: Box.type.FILE,
+      type: BoxTypes.FILE,
       attributes: {},
-      role: Box.role.MANAGER,
+      role: BoxRoles.MANAGER,
       permissions: {
         readFiles: true,
         writeFiles: true,
@@ -81,9 +81,9 @@ export const mock_boxes_partial = {
       id: "box-4",
       name: "Box-B",
       description: "",
-      type: Box.type.DATAROOM,
+      type: BoxTypes.DATAROOM,
       attributes: {},
-      role: Box.role.MANAGER,
+      role: BoxRoles.MANAGER,
       permissions: {
         readFiles: true,
         writeFiles: true,
@@ -102,7 +102,7 @@ export const mock_box_dataroom = {
   name: "Doc folder",
   description: "",
   author: "Jönö Bängsät",
-  type: Box.type.DATAROOM,
+  type: BoxTypes.DATAROOM,
   creationDate: 1624866893000,
   attributes: { backup: true, bytes: 65072993, trashbinActive: false },
   sharingConfig: {
@@ -138,7 +138,7 @@ export const mock_box_dataroom = {
     quarantine: null,
     alarmEnabled: false,
   },
-  role: Box.role.OWNER,
+  role: BoxRoles.OWNER,
   permissions: {
     readFiles: true,
     writeFiles: true,
@@ -160,7 +160,7 @@ export const mock_box_dataroom = {
       {
         id: "lylprk",
         name: "Inhaltsverzeichnis.html",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1627288869000,
         size: "6810",
@@ -179,7 +179,7 @@ export const mock_box_dataroom = {
       {
         id: "lylqtd",
         name: "Deckblatt_Pedro.html",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1628767635000,
         size: "304764",
@@ -198,7 +198,7 @@ export const mock_box_dataroom = {
       {
         id: "lylqul",
         name: "Deckblatt_Uniscon.html",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1628837179000,
         size: "140996",
@@ -217,7 +217,7 @@ export const mock_box_dataroom = {
       {
         id: "lylrew",
         name: "sample01.pdf",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1630415768000,
         size: "218067",
@@ -236,7 +236,7 @@ export const mock_box_dataroom = {
       {
         id: "lylrey",
         name: "sample09.pdf",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1630415853000,
         size: "212725",
@@ -255,7 +255,7 @@ export const mock_box_dataroom = {
       {
         id: "lylrft",
         name: "Screen Shot 2021-08-24 at 14.34.10.png",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1630587351000,
         size: "74431",
@@ -274,7 +274,7 @@ export const mock_box_dataroom = {
       {
         id: "lyrswl",
         name: "fjs.pdf",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1637749913000,
         size: "10057365",
@@ -293,7 +293,7 @@ export const mock_box_dataroom = {
       {
         id: "lyru96",
         name: "Deckblatt_KfW.html",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1639388684000,
         size: "13088",
@@ -312,7 +312,7 @@ export const mock_box_dataroom = {
       {
         id: "lyruyo",
         name: "Deckblatt_evonik (1).html",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1639561450000,
         size: "38932",
@@ -331,7 +331,7 @@ export const mock_box_dataroom = {
       {
         id: "lyrxx2",
         name: "monke.pdf",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1641820806000,
         size: "3109220",
@@ -350,7 +350,7 @@ export const mock_box_dataroom = {
       {
         id: "lyrxx3",
         name: "formblattauslaenderbeschaeftigung(1).pdf",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1641820910000,
         size: "682448",
@@ -369,7 +369,7 @@ export const mock_box_dataroom = {
       {
         id: "lyrxx5",
         name: "asd.sh",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1641820930000,
         size: "115",
@@ -388,7 +388,7 @@ export const mock_box_dataroom = {
       {
         id: "lys9s9",
         name: "Doc doc folder.pdf",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1643810738000,
         size: "16772993",
@@ -407,7 +407,7 @@ export const mock_box_dataroom = {
       {
         id: "lys9sa",
         name: "Coversheet_idgard.html",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1643810887000,
         size: "237963",
@@ -426,7 +426,7 @@ export const mock_box_dataroom = {
       {
         id: "lys9sb",
         name: "TableofContents_idgard.html",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1643810888000,
         size: "1442",
@@ -445,7 +445,7 @@ export const mock_box_dataroom = {
       {
         id: "lyu8av",
         name: "Doc folder.pdf",
-        type: Box.type.FILE,
+        type: BoxTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1648652098000,
         size: "16208382",
@@ -568,7 +568,7 @@ export const mock_box_children = {
     {
       id: "lylprs",
       name: "Acts.pdf",
-      type: Box.type.FILE,
+      type: BoxTypes.FILE,
       author: "Jönö Bängsät",
       dateCreated: 1627290963000,
       size: "8629",
@@ -587,7 +587,7 @@ export const mock_box_children = {
     {
       id: "lylps1",
       name: "Revelations.pdf",
-      type: Box.type.FILE,
+      type: BoxTypes.FILE,
       author: "Jönö Bängsät",
       dateCreated: 1627290964000,
       size: "7831",
@@ -606,7 +606,7 @@ export const mock_box_children = {
     {
       id: "lys9sc",
       name: "NT.pdf",
-      type: Box.type.FILE,
+      type: BoxTypes.FILE,
       author: "Jönö Bängsät",
       dateCreated: 1643810905000,
       size: "644906",
@@ -625,7 +625,7 @@ export const mock_box_children = {
     {
       id: "lyu8aw",
       name: "NT(1).pdf",
-      type: Box.type.FILE,
+      type: BoxTypes.FILE,
       author: "Jönö Bängsät",
       dateCreated: 1648652111000,
       size: "152469",

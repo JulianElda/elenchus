@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { Box } from "types";
+import { BoxTypes } from "types";
 import { BoxListItemDropdown, BoxListItemIcon } from "components/box-list";
 import "./box-list-item.scss";
 
 type BoxListItemType = {
   id: string;
   name: string;
-  type: Box.type;
+  type: BoxTypes;
 };
 
 export function BoxListItem(props: BoxListItemType) {

@@ -1,8 +1,10 @@
-export { Box } from "./box-common";
-
-export type { BoxListResponseType, BoxListType } from "./box-list";
-
-export type { BoxType } from "./box";
+export { BoxRoles, BoxTypes } from "./box";
+export type {
+  BoxType,
+  BoxPermission,
+  BoxListResponseType,
+  BoxListType,
+} from "./box";
 
 export { ClientConfigUserTypes } from "./client-config";
 export type { ClientConfigType } from "./client-config";

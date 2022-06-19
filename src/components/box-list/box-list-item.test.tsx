@@ -2,7 +2,7 @@ import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Box } from "types";
+import { BoxTypes } from "types";
 import { BoxListItem } from "components/box-list";
 
 test("render box name and navigate", async () => {
@@ -10,7 +10,7 @@ test("render box name and navigate", async () => {
   const history = createMemoryHistory();
   render(
     <Router location="/" navigator={history}>
-      <BoxListItem name="test-name" id="test-id" type={Box.type.DATAROOM} />
+      <BoxListItem name="test-name" id="test-id" type={BoxTypes.DATAROOM} />
     </Router>
   );
   const nameElement = screen.getByText(/test-name/i);
