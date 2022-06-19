@@ -19,7 +19,7 @@ import { generate_PasswordPolicyType } from "./enterprise-password";
 import { generate_SoftwareSettingsType } from "./enterprise-software";
 import { generate_getDefaultSessionTimeout } from "./enterprise-timeout";
 import { generate_FinderItemTypes } from "./finder-item";
-import { generate_UserType } from "./user";
+import { generate_UserType, generate_UserTypeList } from "./user";
 
 const FAKER_DELAY = 500;
 
@@ -93,6 +93,12 @@ const faker_getClientConfiguration = function (
 const faker_getUser = function (): Promise<UserType> {
   return new Promise<UserType>((resolve: Function) => {
     delayedResolve(resolve, generate_UserType());
+  });
+};
+
+const faker_paginateUser = function (): Promise<UserType[]> {
+  return new Promise<UserType[]>((resolve: Function) => {
+    delayedResolve(resolve, generate_UserTypeList());
   });
 };
 
@@ -207,6 +213,20 @@ export const api = {
     errorCallback?: Function
   ) {
     faker_getUser()
+      .then((res) => {
+        successCallback?.(res);
+      })
+      .catch((res) => {
+        errorCallback?.(res);
+      });
+  },
+  paginateUser: function (
+    limit: number,
+    start: number,
+    successCallback?: Function,
+    errorCallback?: Function
+  ) {
+    faker_paginateUser()
       .then((res) => {
         successCallback?.(res);
       })

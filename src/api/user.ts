@@ -234,3 +234,10 @@ export const generate_UserType = function (variance?: UserInfoType): UserType {
     statisticsUserInfos: generate_UserInfoStatistics(),
   };
 };
+
+export const generate_UserTypeList = function (): UserType[] {
+  let howMany = Math.ceil(Math.random() * 50);
+  let tmp: UserType[] = [];
+  for (let i = 0; i < howMany; i++) tmp.push(generate_UserType());
+  return tmp;
+};

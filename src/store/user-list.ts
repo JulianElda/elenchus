@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import api from "api/api-faker";
 import { UserType } from "types";
 
 type userListInitialStateType = {
@@ -16,6 +17,39 @@ const initialState: userListInitialStateType = {
   loaded: false,
 };
 
+const resolveUsers = function () {
+  const limit = 50;
+  let tmp: UserType[] = [];
+  let index: number = 0;
+
+  return new Promise<UserType[]>((resolve: Function, reject: Function) => {
+    const successCallback = function (res: UserType[]) {
+      tmp = tmp.concat(res);
+      if (res.length === limit) {
+        index += limit;
+        loadUsers(index);
+      } else {
+        resolve(tmp);
+      }
+    };
+
+    const errorCallback = function (res) {
+      reject(res);
+    };
+
+    const loadUsers = function (start: number) {
+      api.paginateUser(limit, start, successCallback, errorCallback);
+    };
+
+    loadUsers(index);
+  });
+};
+
+export const loadUsers = createAsyncThunk("userList/loadUsers", async () => {
+  const response = await resolveUsers();
+  return response;
+});
+
 export const userListSlice = createSlice({
   name: "userList",
   initialState: initialState,
@@ -26,6 +60,14 @@ export const userListSlice = createSlice({
         loaded: true,
       };
     },
+  },
+  extraReducers(builder) {
+    builder.addCase(loadUsers.fulfilled, (state, action) => {
+      return {
+        data: state.data.concat(action.payload),
+        loaded: true,
+      };
+    });
   },
 });
 
