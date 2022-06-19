@@ -16,3 +16,8 @@ export { LoginValidations } from "./login";
 export type { LoginPayloadType } from "./login";
 
 export type { UserType } from "./user";
+
+export type { BoxSettingsType } from "./enterprise-box";
+export type { PasswordPolicyType } from "./enterprise-password";
+export type { SoftwareSettingsType } from "./enterprise-software";
+export type { TimeoutSettingsType } from "./enterprise-timeout";

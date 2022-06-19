@@ -1,3 +1,5 @@
+import { BoxBasePoliciesType } from "./enterprise-box";
+
 export type UserType = {
   id: string;
   userInfos: UserInfos;
@@ -22,7 +24,7 @@ export type UserInfos = {
 export type UserPermissions = {
   accountCreationPolicy: AccountCreationPolicy;
   adminPermissions: AccountVisibility;
-  boxBasePolicies: BoxBasePolicies;
+  boxBasePolicies: BoxBasePoliciesType;
   tempBoxPolicy: TempBoxesPolicy;
   visibility: UserPermissionsVisibility;
 };
@@ -79,13 +81,6 @@ export type AccountCreationPolicy = {
 export type AccountVisibility = Array<
   "TECHNICAL_ADMIN" | "BILLING_ADMIN" | "ROOM_ASSISTANT"
 >;
-
-export type BoxBasePolicies = {
-  canCreateDataRooms?: boolean;
-  canCreatePrivacyBoxes?: boolean;
-  canCreateTemporaryBoxes?: boolean;
-  canInviteMembers?: boolean;
-};
 
 export type TempBoxesPolicy = {
   lifeTime: number;

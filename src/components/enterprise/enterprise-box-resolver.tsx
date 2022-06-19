@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import api from "api/api";
-import { BoxSettings } from "idg-types";
+import api from "api/api-faker";
+import { BoxSettingsType } from "types";
 import { EnterpriseBox } from "components/enterprise";
 
 export function EnterpriseBoxResolver() {
-  const [boxSettings, setBoxSettings] = useState<BoxSettings>({});
+  const [boxSettings, setBoxSettings] = useState<BoxSettingsType>(
+    {} as BoxSettingsType
+  );
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const callback = function (res: BoxSettings) {
+    const callback = function (res: BoxSettingsType) {
       setBoxSettings(res);
       setLoading(false);
     };
@@ -16,7 +18,7 @@ export function EnterpriseBoxResolver() {
   }, []);
 
   if (loading === true) {
-    return <p>loading password policy...</p>;
+    return <p>loading box settings...</p>;
   } else {
     return <EnterpriseBox {...boxSettings} />;
   }

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { PasswordPolicy } from "idg-types";
+import { PasswordPolicyType } from "types";
 
-export function EnterprisePassword(props: PasswordPolicy) {
+export function EnterprisePassword(props: PasswordPolicyType) {
   const { register, handleSubmit } = useForm();
 
   const [changeInterval, setChangeInterval] = useState<number>(

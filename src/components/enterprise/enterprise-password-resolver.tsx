@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import api from "api/api";
-import { PasswordPolicy } from "idg-types";
+import api from "api/api-faker";
+import { PasswordPolicyType } from "types";
 import { EnterprisePassword } from "components/enterprise";
 
 export function EnterprisePasswordResolver() {
-  const [passwordPolicy, setPasswordPolicy] = useState<PasswordPolicy>({});
+  const [passwordPolicy, setPasswordPolicy] = useState<PasswordPolicyType>(
+    {} as PasswordPolicyType
+  );
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const callback = function (res: PasswordPolicy) {
+    const callback = function (res: PasswordPolicyType) {
       setPasswordPolicy(res);
       setLoading(false);
     };

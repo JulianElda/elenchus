@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { BoxSettings } from "idg-types";
+import { BoxSettingsType } from "types";
 
-export function EnterpriseBox(props: BoxSettings) {
+export function EnterpriseBox(props: BoxSettingsType) {
   const { register, handleSubmit } = useForm();
 
   const [forceBoxPasscode, setForceBoxPasscode] = useState<boolean>(

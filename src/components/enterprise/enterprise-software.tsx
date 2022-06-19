@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { SoftwareSettings } from "idg-types";
+import { SoftwareSettingsType } from "types";
 import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
 
-export function EnterpriseSoftware(props: SoftwareSettings) {
+export function EnterpriseSoftware(props: SoftwareSettingsType) {
   const { handleSubmit } = useForm();
 
   const [enableInvitationTemplate, setEnableInvitationTemplate] =

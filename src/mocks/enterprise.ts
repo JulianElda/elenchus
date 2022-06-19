@@ -1,8 +1,12 @@
-import { LoginValidationType } from "idg-types/LoginValidationType";
-import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
-import { PasswordPolicy } from "idg-types/PasswordPolicy";
+import {
+  SoftwareSettingsType,
+  LoginValidations,
+} from "types/enterprise-software";
+import { BoxSettingsType } from "types/enterprise-box";
+import { PasswordPolicyType, TCDPLevels } from "types/enterprise-password";
+import { TimeoutSettingsType } from "types/enterprise-timeout";
 
-export const mock_enterprise_box = {
+export const mock_enterprise_box: BoxSettingsType = {
   enableWebdav: true,
   showFirstVisit: false,
   showLastVisit: false,
@@ -21,7 +25,7 @@ export const mock_enterprise_box = {
   },
 };
 
-export const mock_enterprise_password = {
+export const mock_enterprise_password: PasswordPolicyType = {
   mixedCase: false,
   digit: false,
   specialChar: true,
@@ -29,14 +33,14 @@ export const mock_enterprise_password = {
   changeInterval: 0,
   noRepeat: false,
   noRepeatCount: 0,
-  tcdp: PasswordPolicy.tcdp.NONE,
+  tcdp: TCDPLevels.NONE,
   warnBeforeChange: 0,
   forceLengthForCreated: false,
   minLength: 12,
 };
 
-export const mock_enterprise_software = {
-  defaultAuthType: LoginValidationTypeOrNone.PASSCODE,
+export const mock_enterprise_software: SoftwareSettingsType = {
+  defaultAuthType: LoginValidations.PASSCODE,
   forceSecFacAuth: false,
   forceSecFacInvitation: false,
   forceServerSendInvitation: false,
@@ -44,18 +48,18 @@ export const mock_enterprise_software = {
   enableInvitationTemplate: false,
   availableSecFacAuthTypes: [
     {
-      type: LoginValidationType.DUO,
+      type: LoginValidations.DUO,
     },
     {
-      type: LoginValidationType.PASSCODE,
+      type: LoginValidations.PASSCODE,
     },
     {
-      type: LoginValidationType.LOGINCARD,
+      type: LoginValidations.LOGINCARD,
     },
   ],
 };
 
-export const mock_enterprise_timeout = {
+export const mock_enterprise_timeout: TimeoutSettingsType = {
   forced: true,
   timeout: 90,
 };
