@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { BoxTypes } from "types";
-import { BoxListItemDropdown, BoxListItemIcon } from "components/box-list";
+import { BoxListItemIcon } from "components/box-list";
 import "./box-list-item.scss";
 
 type BoxListItemType = {
@@ -20,7 +20,6 @@ export function BoxListItem(props: BoxListItemType) {
     <li className="box-list-item list-group-item" onClick={onNavigateBox}>
       <BoxListItemIcon icon={props.type} />
       <label className="box-list-item-name">{props.name}</label>
-      <BoxListItemDropdown id={props.id} />
     </li>
   );
 }

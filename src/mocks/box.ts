@@ -1,4 +1,4 @@
-import { BoxRoles, BoxTypes } from "types";
+import { BoxListResponseType, BoxRoles, BoxTypes, EntryItemTypes } from "types";
 
 export const mock_boxes_partial_once = {
   hasNext: false,
@@ -23,7 +23,7 @@ export const mock_boxes_partial_once = {
   ],
 };
 
-export const mock_boxes_partial = {
+export const mock_boxes_partial: BoxListResponseType = {
   hasNext: false,
   listBoxes: [
     {
@@ -151,16 +151,16 @@ export const mock_box_dataroom = {
   rootFolder: {
     id: "lylky5",
     name: "Doc folder",
-    type: "DIR",
+    type: EntryItemTypes.DIR,
     author: "Jönö Bängsät",
     dateCreated: 1624866893000,
-    ermInfo: null,
-    description: null,
+    description: "",
+    size: "",
     entries: [
       {
         id: "lylprk",
         name: "Inhaltsverzeichnis.html",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1627288869000,
         size: "6810",
@@ -179,7 +179,7 @@ export const mock_box_dataroom = {
       {
         id: "lylqtd",
         name: "Deckblatt_Pedro.html",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1628767635000,
         size: "304764",
@@ -198,7 +198,7 @@ export const mock_box_dataroom = {
       {
         id: "lylqul",
         name: "Deckblatt_Uniscon.html",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1628837179000,
         size: "140996",
@@ -217,7 +217,7 @@ export const mock_box_dataroom = {
       {
         id: "lylrew",
         name: "sample01.pdf",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1630415768000,
         size: "218067",
@@ -236,7 +236,7 @@ export const mock_box_dataroom = {
       {
         id: "lylrey",
         name: "sample09.pdf",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1630415853000,
         size: "212725",
@@ -255,7 +255,7 @@ export const mock_box_dataroom = {
       {
         id: "lylrft",
         name: "Screen Shot 2021-08-24 at 14.34.10.png",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1630587351000,
         size: "74431",
@@ -274,7 +274,7 @@ export const mock_box_dataroom = {
       {
         id: "lyrswl",
         name: "fjs.pdf",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1637749913000,
         size: "10057365",
@@ -293,7 +293,7 @@ export const mock_box_dataroom = {
       {
         id: "lyru96",
         name: "Deckblatt_KfW.html",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1639388684000,
         size: "13088",
@@ -312,7 +312,7 @@ export const mock_box_dataroom = {
       {
         id: "lyruyo",
         name: "Deckblatt_evonik (1).html",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1639561450000,
         size: "38932",
@@ -331,7 +331,7 @@ export const mock_box_dataroom = {
       {
         id: "lyrxx2",
         name: "monke.pdf",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1641820806000,
         size: "3109220",
@@ -350,7 +350,7 @@ export const mock_box_dataroom = {
       {
         id: "lyrxx3",
         name: "formblattauslaenderbeschaeftigung(1).pdf",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1641820910000,
         size: "682448",
@@ -369,7 +369,7 @@ export const mock_box_dataroom = {
       {
         id: "lyrxx5",
         name: "asd.sh",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1641820930000,
         size: "115",
@@ -388,7 +388,7 @@ export const mock_box_dataroom = {
       {
         id: "lys9s9",
         name: "Doc doc folder.pdf",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1643810738000,
         size: "16772993",
@@ -407,7 +407,7 @@ export const mock_box_dataroom = {
       {
         id: "lys9sa",
         name: "Coversheet_idgard.html",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1643810887000,
         size: "237963",
@@ -426,7 +426,7 @@ export const mock_box_dataroom = {
       {
         id: "lys9sb",
         name: "TableofContents_idgard.html",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1643810888000,
         size: "1442",
@@ -445,7 +445,7 @@ export const mock_box_dataroom = {
       {
         id: "lyu8av",
         name: "Doc folder.pdf",
-        type: BoxTypes.FILE,
+        type: EntryItemTypes.FILE,
         author: "Jönö Bängsät",
         dateCreated: 1648652098000,
         size: "16208382",
@@ -464,7 +464,7 @@ export const mock_box_dataroom = {
       {
         id: "lylky6",
         name: "SM",
-        type: "DIR",
+        type: EntryItemTypes.DIR,
         author: "Jönö Bängsät",
         dateCreated: 1624866904000,
         size: null,
@@ -479,7 +479,7 @@ export const mock_box_dataroom = {
       {
         id: "lylprr",
         name: "NT",
-        type: "DIR",
+        type: EntryItemTypes.DIR,
         author: "Jönö Bängsät",
         dateCreated: 1627290963000,
         size: null,
@@ -494,7 +494,7 @@ export const mock_box_dataroom = {
       {
         id: "lylqun",
         name: "Test folder",
-        type: "DIR",
+        type: EntryItemTypes.DIR,
         author: "Jönö Bängsät",
         dateCreated: 1628837494000,
         size: null,
@@ -509,7 +509,7 @@ export const mock_box_dataroom = {
       {
         id: "lyrshz",
         name: "The Divine Comedy",
-        type: "DIR",
+        type: EntryItemTypes.DIR,
         author: "Jönö Bängsät",
         dateCreated: 1637155470000,
         size: null,
@@ -524,7 +524,7 @@ export const mock_box_dataroom = {
       {
         id: "lyrxfr",
         name: "should be renamed",
-        type: "DIR",
+        type: EntryItemTypes.DIR,
         author: "Jönö Bängsät",
         dateCreated: 1641391322000,
         size: null,
@@ -539,7 +539,7 @@ export const mock_box_dataroom = {
       {
         id: "lyu8an",
         name: "create renamed",
-        type: "DIR",
+        type: EntryItemTypes.DIR,
         author: "Jönö Bängsät",
         dateCreated: 1648651672000,
         size: null,
@@ -559,7 +559,7 @@ export const mock_box_dataroom = {
 export const mock_box_children = {
   id: "lylprr",
   name: "NT",
-  type: "DIR",
+  type: EntryItemTypes.DIR,
   author: "Jönö Bängsät",
   dateCreated: 1627290963000,
   ermInfo: null,
@@ -568,7 +568,7 @@ export const mock_box_children = {
     {
       id: "lylprs",
       name: "Acts.pdf",
-      type: BoxTypes.FILE,
+      type: EntryItemTypes.FILE,
       author: "Jönö Bängsät",
       dateCreated: 1627290963000,
       size: "8629",
@@ -587,7 +587,7 @@ export const mock_box_children = {
     {
       id: "lylps1",
       name: "Revelations.pdf",
-      type: BoxTypes.FILE,
+      type: EntryItemTypes.FILE,
       author: "Jönö Bängsät",
       dateCreated: 1627290964000,
       size: "7831",
@@ -606,7 +606,7 @@ export const mock_box_children = {
     {
       id: "lys9sc",
       name: "NT.pdf",
-      type: BoxTypes.FILE,
+      type: EntryItemTypes.FILE,
       author: "Jönö Bängsät",
       dateCreated: 1643810905000,
       size: "644906",
@@ -625,7 +625,7 @@ export const mock_box_children = {
     {
       id: "lyu8aw",
       name: "NT(1).pdf",
-      type: BoxTypes.FILE,
+      type: EntryItemTypes.FILE,
       author: "Jönö Bängsät",
       dateCreated: 1648652111000,
       size: "152469",
@@ -644,7 +644,7 @@ export const mock_box_children = {
     {
       id: "lylprt",
       name: "Gospels",
-      type: "DIR",
+      type: EntryItemTypes.DIR,
       author: "Jönö Bängsät",
       dateCreated: 1627290963000,
       size: null,
@@ -659,7 +659,7 @@ export const mock_box_children = {
     {
       id: "lylps2",
       name: "Epistles",
-      type: "DIR",
+      type: EntryItemTypes.DIR,
       author: "Jönö Bängsät",
       dateCreated: 1627290964000,
       size: null,
@@ -674,7 +674,7 @@ export const mock_box_children = {
     {
       id: "lyrt7p",
       name: "Legit historical evidence",
-      type: "DIR",
+      type: EntryItemTypes.DIR,
       author: "Jönö Bängsät",
       dateCreated: 1638352915000,
       size: null,

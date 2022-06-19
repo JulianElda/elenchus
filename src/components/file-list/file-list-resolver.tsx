@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import api from "api/api";
+import api from "api/api-faker";
 import { BoxType, EntryItemResponseType, EntryItemType } from "types";
 import { BreadcrumbType } from "components/breadcrumbs";
 import { FileList } from "components/file-list";

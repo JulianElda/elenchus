@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import boxListReducer from "store/box-list";
-import api from "api/api";
+import api from "api/api-faker";
 import { BoxListResolver } from "components/box-list";
 import { mock_boxes_partial } from "mocks/box";
 

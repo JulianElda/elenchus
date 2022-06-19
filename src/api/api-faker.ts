@@ -1,4 +1,6 @@
 import {
+  BoxType,
+  BoxListResponseType,
   BoxSettingsType,
   PasswordPolicyType,
   SoftwareSettingsType,
@@ -10,6 +12,7 @@ import { generate_PasswordPolicyType } from "./enterprise-password";
 import { generate_SoftwareSettingsType } from "./enterprise-software";
 import { generate_getDefaultSessionTimeout } from "./enterprise-timeout";
 import { generate_EntryItemResponseType } from "./entry-item";
+import { generate_BoxType, generate_BoxListResponseType } from "./box";
 
 const FAKER_DELAY = 500;
 
@@ -51,6 +54,18 @@ const faker_getDefaultSessionTimeout =
 const faker_getBoxChildren = function (): Promise<EntryItemResponseType> {
   return new Promise<EntryItemResponseType>((resolve: Function) => {
     delayedResolve(resolve, generate_EntryItemResponseType());
+  });
+};
+
+const faker_getBox = function (): Promise<BoxType> {
+  return new Promise<BoxType>((resolve: Function) => {
+    delayedResolve(resolve, generate_BoxType());
+  });
+};
+
+const faker_paginateBox = function (): Promise<BoxListResponseType> {
+  return new Promise<BoxListResponseType>((resolve: Function) => {
+    delayedResolve(resolve, generate_BoxListResponseType());
   });
 };
 
@@ -110,6 +125,33 @@ export const api = {
     errorCallback?: Function
   ) {
     faker_getBoxChildren()
+      .then((res) => {
+        successCallback?.(res);
+      })
+      .catch((res) => {
+        errorCallback?.(res);
+      });
+  },
+  paginateBox: function (
+    limit: number,
+    start: number,
+    successCallback?: Function,
+    errorCallback?: Function
+  ) {
+    faker_paginateBox()
+      .then((res) => {
+        successCallback?.(res);
+      })
+      .catch((res) => {
+        errorCallback?.(res);
+      });
+  },
+  getBox: function (
+    id: string,
+    successCallback?: Function,
+    errorCallback?: Function
+  ) {
+    faker_getBox()
       .then((res) => {
         successCallback?.(res);
       })

@@ -10,7 +10,7 @@ export type EntryItemType = {
   author: string;
   dateCreated: number;
   size: string;
-  description: string;
+  description?: string;
   owner: boolean;
 };
 

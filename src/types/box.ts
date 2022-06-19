@@ -1,10 +1,11 @@
 export type BoxPermission = {
-  accessChat?: boolean;
-  accessJournal?: boolean;
-  accessUsers?: boolean;
-  deleteFiles?: boolean;
-  readFiles?: boolean;
-  writeFiles?: boolean;
+  accessChat: boolean;
+  accessJournal: boolean;
+  accessUsers: boolean;
+  deleteFiles: boolean;
+  readFiles: boolean;
+  writeFiles: boolean;
+  exportJournal: boolean;
 };
 
 export enum BoxRoles {
@@ -28,13 +29,14 @@ export type BoxType = {
   permissions: BoxPermission;
   role: BoxRoles;
   type: BoxTypes;
-  attributes?: Record<string, any>;
-  creationDate?: number;
+  creationDate: number;
   // TODO
+  attributes?: Record<string, any>;
   sharingConfig?: any;
   validityConfig?: any;
   boxDeleteConfig?: any;
   dataroomConfig?: any;
+  // TODO: type
   rootFolder?: any;
 };
 
@@ -42,7 +44,7 @@ export type BoxListType = {
   id: string;
   name: string;
   description: string;
-  attributes: any;
+  attributes?: any;
   role: BoxRoles;
   type: BoxTypes;
   permissions: BoxPermission;

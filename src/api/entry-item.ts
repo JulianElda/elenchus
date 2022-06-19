@@ -22,6 +22,7 @@ const randomType = function (): EntryItemTypes {
 const generateItemName = function (type: string): string {
   switch (type) {
     case EntryItemTypes.FILE:
+      // TODO: specify extensions
       return faker.system.commonFileName();
     case EntryItemTypes.DIR:
       return faker.commerce.productAdjective() + " " + faker.commerce.product();
