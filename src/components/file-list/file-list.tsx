@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useReducer, useState } from "react";
-import api from "api/api";
+import api from "api/api-faker";
 import { BoxType, EntryItemType } from "types";
 import { Breadcrumbs, BreadcrumbType } from "components/breadcrumbs";
 import { FileListEmpty } from "components/file-list";

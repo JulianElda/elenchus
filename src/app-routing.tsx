@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
+import Tester from "components/tester/tester";
 
 const AppResolver = lazy(() => import("components/app"));
 const AdminRouting = lazy(() => import("components/admin"));
@@ -10,6 +11,7 @@ const Login = lazy(() => import("components/login"));
 export default function AppRouting() {
   return (
     <Routes>
+      <Route path="tester" element={<Tester />} />
       <Route path="login" element={<Login />} />
       <Route path="" element={<Navigate to="/box" />} />
       <Route path="/" element={<AppResolver />}>

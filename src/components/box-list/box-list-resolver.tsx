@@ -12,10 +12,11 @@ export function BoxListResolver() {
   useEffect(
     function () {
       // TODO: correct type
-      // @ts-ignore
-      dispatch(loadBoxes());
+      if (!loaded)
+        // @ts-ignore
+        dispatch(loadBoxes());
     },
-    [dispatch]
+    [dispatch, loaded]
   );
 
   if (!loaded) {
