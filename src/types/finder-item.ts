@@ -5,9 +5,9 @@ export type IdName = {
   name: string;
 };
 
-type ParentType = {
+export type ParentType = {
   node: IdName;
-  parent: ParentType;
+  parent: ParentType | null;
 };
 
 export type FinderItemType = {
@@ -16,6 +16,6 @@ export type FinderItemType = {
   box: IdName;
   created: number;
   creator: IdName;
-  fileSize: number;
-  parent: ParentType;
+  fileSize: string;
+  parent: ParentType | null;
 };

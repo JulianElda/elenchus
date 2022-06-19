@@ -6,13 +6,15 @@ import {
   SoftwareSettingsType,
   TimeoutSettingsType,
   EntryItemResponseType,
+  FinderItemType,
 } from "types";
+import { generate_EntryItemResponseType } from "./entry-item";
+import { generate_BoxType, generate_BoxListResponseType } from "./box";
 import { generate_BoxSettingsType } from "./enterprise-box";
 import { generate_PasswordPolicyType } from "./enterprise-password";
 import { generate_SoftwareSettingsType } from "./enterprise-software";
 import { generate_getDefaultSessionTimeout } from "./enterprise-timeout";
-import { generate_EntryItemResponseType } from "./entry-item";
-import { generate_BoxType, generate_BoxListResponseType } from "./box";
+import { generate_FinderItemTypes } from "./finder-item";
 
 const FAKER_DELAY = 500;
 
@@ -69,6 +71,11 @@ const faker_paginateBox = function (): Promise<BoxListResponseType> {
   });
 };
 
+const faker_findItemsInBox = function (): Promise<FinderItemType[]> {
+  return new Promise<FinderItemType[]>((resolve: Function) => {
+    delayedResolve(resolve, generate_FinderItemTypes());
+  });
+};
 export const api = {
   getBoxSettings: function (
     successCallback?: Function,
@@ -152,6 +159,21 @@ export const api = {
     errorCallback?: Function
   ) {
     faker_getBox()
+      .then((res) => {
+        successCallback?.(res);
+      })
+      .catch((res) => {
+        errorCallback?.(res);
+      });
+  },
+  findItemsInBox: function (
+    boxId: string,
+    types: string,
+    name: string,
+    successCallback?: Function,
+    errorCallback?: Function
+  ) {
+    faker_findItemsInBox()
       .then((res) => {
         successCallback?.(res);
       })

@@ -5,7 +5,7 @@ import {
   EntryItemResponseType,
 } from "types/entry-item";
 
-const randomType = function (): EntryItemTypes {
+export const generateEntryItemType = function (): EntryItemTypes {
   let i = Math.floor(Math.random() * 10);
   switch (i) {
     case 0:
@@ -19,7 +19,7 @@ const randomType = function (): EntryItemTypes {
   }
 };
 
-const generateItemName = function (type: string): string {
+export const generateItemName = function (type: string): string {
   switch (type) {
     case EntryItemTypes.FILE:
       // TODO: specify extensions
@@ -33,7 +33,7 @@ const generateItemName = function (type: string): string {
   }
 };
 
-const generateItemSize = function (type): string {
+export const generateItemSize = function (type): string {
   switch (type) {
     case EntryItemTypes.FILE:
       return Math.floor(Math.random() * 1024 * 1024 * 1024) + "";
@@ -67,7 +67,7 @@ const generateOwner = function (): boolean {
 export const generate_EntryItemType = function (
   variance?: EntryItemTypes
 ): EntryItemType {
-  let type: EntryItemTypes = variance || randomType();
+  let type: EntryItemTypes = variance || generateEntryItemType();
 
   return {
     id: faker.database.mongodbObjectId(),
