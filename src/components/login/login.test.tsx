@@ -3,7 +3,7 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import api from "api/api";
+import api from "api/api-faker";
 import { LoginErrorResponses } from "const/login";
 import { Login } from "components/login";
 

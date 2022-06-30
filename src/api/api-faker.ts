@@ -102,6 +102,12 @@ const faker_paginateUser = function (): Promise<UserType[]> {
   });
 };
 
+const faker_login = function (): Promise<ClientConfigType> {
+  return new Promise((resolve: Function) => {
+    delayedResolve(resolve, generate_ClientConfigType(ClientConfigUserTypes.ADMIN));
+  });
+};
+
 export const api = {
   getBoxSettings: function (
     successCallback?: Function,
@@ -152,8 +158,8 @@ export const api = {
       });
   },
   getBoxChildren: function (
-    boxId: string,
-    folderId: string,
+    _boxId: string,
+    _folderId: string,
     successCallback?: Function,
     errorCallback?: Function
   ) {
@@ -166,8 +172,8 @@ export const api = {
       });
   },
   paginateBox: function (
-    limit: number,
-    start: number,
+    _limit: number,
+    _start: number,
     successCallback?: Function,
     errorCallback?: Function
   ) {
@@ -180,7 +186,7 @@ export const api = {
       });
   },
   getBox: function (
-    id: string,
+    _id: string,
     successCallback?: Function,
     errorCallback?: Function
   ) {
@@ -193,9 +199,9 @@ export const api = {
       });
   },
   findItemsInBox: function (
-    boxId: string,
-    types: string,
-    name: string,
+    _boxId: string,
+    _types: string,
+    _name: string,
     successCallback?: Function,
     errorCallback?: Function
   ) {
@@ -208,7 +214,7 @@ export const api = {
       });
   },
   getUser: function (
-    id: string,
+    _id: string,
     successCallback?: Function,
     errorCallback?: Function
   ) {
@@ -221,8 +227,8 @@ export const api = {
       });
   },
   paginateUser: function (
-    limit: number,
-    start: number,
+    _limit: number,
+    _start: number,
     successCallback?: Function,
     errorCallback?: Function
   ) {
@@ -235,11 +241,11 @@ export const api = {
       });
   },
   getClientConfiguration: function (
-    type: ClientConfigUserTypes,
+    type?: ClientConfigUserTypes,
     successCallback?: Function,
     errorCallback?: Function
   ) {
-    faker_getClientConfiguration(type)
+    faker_getClientConfiguration(type || ClientConfigUserTypes.ADMIN)
       .then((res) => {
         successCallback?.(res);
       })
@@ -247,6 +253,19 @@ export const api = {
         errorCallback?.(res);
       });
   },
+  login: function(
+    _payload,
+    successCallback?: Function,
+    errorCallback?: Function
+  ) {
+    faker_login()
+    .then((res) => {
+      successCallback?.(res);
+    })
+    .catch((res) => {
+      errorCallback?.(res);
+    });
+  }
 };
 
 export default api;

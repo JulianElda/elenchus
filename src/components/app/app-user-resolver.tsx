@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import api from "api/api";
+import api from "api/api-faker";
 import { ClientConfigType, ClientConfigUserTypes, UserType } from "types";
 import {
   currentUserLoaded,

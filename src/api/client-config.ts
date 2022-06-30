@@ -2,13 +2,13 @@ import { faker } from "@faker-js/faker";
 import { ClientConfigType, ClientConfigUserTypes } from "types";
 
 export const generate_ClientConfigType = function (
-  variance: ClientConfigUserTypes
+  variance?: ClientConfigUserTypes
 ): ClientConfigType {
   return {
     csfrToken: faker.random.word(),
     id: faker.database.mongodbObjectId(),
     lastLogin: faker.date.past().getTime(),
     nick: faker.name.findName(),
-    userType: variance,
+    userType: variance || ClientConfigUserTypes.ADMIN,
   };
 };

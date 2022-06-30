@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import api from "api/api";
+import api from "api/api-faker";
 import { LoginPayloadType } from "types";
 import { LoginErrorResponses } from "const/login";
 
