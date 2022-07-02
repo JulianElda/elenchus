@@ -6,6 +6,7 @@ import api from "api/api-faker";
 import { LoginPayloadType } from "types";
 import { LoginErrorResponses } from "const/login";
 
+import loginLogo from "assets/images/sakura.png";
 import "./login.scss";
 
 export function Login() {
@@ -48,18 +49,23 @@ export function Login() {
   };
 
   return (
-    <div className="container login-container">
-      <div className="card m-auto">
-        <div className="card-body">
-          <h2 data-testid="login-header">{t("login.header")}</h2>
+    <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <img className="mx-auto h-12 w-auto" src={loginLogo} alt="logo" />
+        <h2 className="mt-6 text-center text-xl text-gray-900">elenchus</h2>
+      </div>
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3">
-              <label htmlFor="username-input" className="form-label">
+              <label
+                htmlFor="username-input"
+                className="block text-sm font-medium text-gray-700">
                 Username
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 id="username-input"
                 {...register("username", {
                   required: true,
@@ -70,12 +76,14 @@ export function Login() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="password-input" className="form-label">
+              <label
+                htmlFor="password-input"
+                className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <input
                 type="password"
-                className="form-control"
+                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 id="password-input"
                 {...register("password", {
                   required: true,
@@ -86,7 +94,9 @@ export function Login() {
               />
             </div>
             <p className="text-danger">{showError ? errorMessage : ""}</p>
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Login
             </button>
           </form>

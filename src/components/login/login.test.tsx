@@ -15,7 +15,7 @@ test("page shown", async () => {
     </Router>
   );
 
-  const loginTitle = screen.getByTestId("login-header");
+  const loginTitle = screen.getByText("elenchus");
   expect(loginTitle).toBeInTheDocument();
 });
 
