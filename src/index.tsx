@@ -5,10 +5,11 @@ import store from "store/store";
 import { Provider } from "react-redux";
 //import reportWebVitals from "./reportWebVitals";
 
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./index.scss";
-import "./tailwind.css";
+//import "bootstrap/dist/css/bootstrap.css";
+//import "bootstrap/dist/js/bootstrap.bundle.min.js";
+//import "./index.scss";
+import "assets/styles/inter.css";
+import "assets/styles/tailwind.css";
 import "./i18n";
 import AppRouting from "./app-routing";
 
