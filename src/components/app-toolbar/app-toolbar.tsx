@@ -1,7 +1,5 @@
-import FAIcon from "components/common/fa-icon";
-import { Finder } from "components/finder";
-import { Logout } from "components/logout";
-import "./app-toolbar.scss";
+//import "./app-toolbar.scss";
+import { Link } from "react-router-dom";
 
 type AppToolbarProps = {
   nick: string;
@@ -9,50 +7,32 @@ type AppToolbarProps = {
 
 export function AppToolbar(props: AppToolbarProps) {
   return (
-    <>
-      <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div className="container d-flex">
-          <label className="navbar-brand ">elenchus</label>
-          <ul className="navbar-nav flex-grow-1 mb-2 mb-lg-0">
-            <li className="nav-item mx-auto">
-              <button
-                type="button"
-                className="btn btn-outline-secondary app-toolbar-search"
-                data-bs-toggle="modal"
-                data-bs-target="#toolbar-search-modal">
-                <span className="app-toolbar-search-icon">
-                  <FAIcon type="GENERAL" icon="SEARCH" />
-                </span>
-                Find
-              </button>
-            </li>
-            <li className="nav-item dropdown">
-              <span
-                className="nav-link dropdown-toggle"
-                id="app-toolbar-dropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false">
-                {props.nick}
-              </span>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="app-toolbar-dropdown">
-                <li>
-                  <span
-                    className="dropdown-item"
-                    data-bs-toggle="modal"
-                    data-bs-target="#logout-confirm-modal">
-                    Logout
-                  </span>
-                </li>
-              </ul>
-            </li>
-          </ul>
+    <nav className="w-full bg-gray-800 fixed top-0">
+      <div className="container mx-auto px-2">
+        <div className="relative flex items-center justify-between h-12">
+          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="flex-shrink-0 flex items-center">
+              <label className="text-white font-semibold">elenchus</label>
+            </div>
+            <div className="flex space-x-4 ml-8">
+              <Link
+                to="/box"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Files
+              </Link>
+
+              <Link
+                to="/admin/user"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Administration
+              </Link>
+            </div>
+          </div>
+          <div className="right-0 flex pr-2">
+            <span className="text-white">{props.nick}</span>
+          </div>
         </div>
-      </nav>
-      <Finder />
-      <Logout />
-    </>
+      </div>
+    </nav>
   );
 }

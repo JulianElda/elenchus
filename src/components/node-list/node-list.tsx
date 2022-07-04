@@ -48,5 +48,5 @@ export const NodeList = memo(function (props: NodelistProp) {
       });
   };
 
-  return <ul className="list-group">{mapItemList()}</ul>;
+  return <ul className="divide-y shadow">{mapItemList()}</ul>;
 });

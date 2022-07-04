@@ -3,7 +3,7 @@ import api from "api/api-faker";
 import { BoxType, EntryItemType } from "types";
 import { Breadcrumbs, BreadcrumbType } from "components/breadcrumbs";
 import { FileListEmpty } from "components/file-list";
-import { FileListToolbar } from "components/file-list-toolbar";
+//import { FileListToolbar } from "components/file-list-toolbar";
 import { NodeList } from "components/node-list";
 
 const selectedItemsReducer = function (state, action) {
@@ -35,10 +35,7 @@ export function FileList(props: FileListProp) {
   const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbType[]>(
     props.breadcrumbs
   );
-  const [selectedItems, dispatchSelectedItems] = useReducer(
-    selectedItemsReducer,
-    []
-  );
+  const [, dispatchSelectedItems] = useReducer(selectedItemsReducer, []);
 
   const handleSelectedItems = useCallback(dispatchSelectedItems, [
     dispatchSelectedItems,
@@ -86,7 +83,6 @@ export function FileList(props: FileListProp) {
     <React.StrictMode>
       <FileListContext.Provider value={contextValue}>
         <div>
-          <FileListToolbar selectedItems={selectedItems} />
           <Breadcrumbs
             items={breadcrumbs}
             onClick={loadDirectory}

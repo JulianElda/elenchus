@@ -17,9 +17,9 @@ export function UserListItem(props: UserListItemProps) {
       onClick={(e) => {
         onClick(props.user.id);
       }}>
-      <td>{props.user.userInfos.name}</td>
-      <td>{props.user.userInfos.email}</td>
-      <td>{props.user.userInfos.type}</td>
+      <td className="px-3 py-3 text-left">{props.user.userInfos.name}</td>
+      <td className="px-3 py-3 text-left">{props.user.userInfos.email}</td>
+      <td className="px-3 py-3 text-left">{props.user.userInfos.type}</td>
     </tr>
   );
 }

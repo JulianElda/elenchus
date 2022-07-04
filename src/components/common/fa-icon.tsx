@@ -35,5 +35,5 @@ type FAIconProps = {
 
 export default function FAIcon(props: FAIconProps) {
   if (!props.type || !props.icon) return <></>;
-  return <FontAwesomeIcon icon={iconIndex[props.type][props.icon]} />;
+  return <FontAwesomeIcon icon={iconIndex[props.type][props.icon]} size="lg" />;
 }

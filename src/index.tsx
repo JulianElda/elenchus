@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 //import "bootstrap/dist/css/bootstrap.css";
 //import "bootstrap/dist/js/bootstrap.bundle.min.js";
 //import "./index.scss";
-import "assets/styles/inter.css";
+import "assets/styles/index.scss";
 import "assets/styles/tailwind.css";
 import "./i18n";
 import AppRouting from "./app-routing";

@@ -10,11 +10,11 @@ type AppProps = {
 
 export function App(props: AppProps) {
   return (
-    <>
+    <div>
       <AppToolbar nick={props.clientConfiguration.nick} />
-      <main className="app-container container">
+      <main className="container mx-auto pt-12">
         <Outlet />
       </main>
-    </>
+    </div>
   );
 }

@@ -34,9 +34,9 @@ export const NodeListItem = memo(function (props: NodeListItemProps) {
   };
 
   return (
-    <li className="list-group-item node-list-item">
+    <li className="h-12 cursor-pointer p-4 bg-white">
       <input
-        className="form-check-input me-2"
+        className="h-4 w-4 rounded border-gray-300"
         type="checkbox"
         checked={selected}
         aria-label="selected"

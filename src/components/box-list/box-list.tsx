@@ -5,7 +5,7 @@ import {
   BoxListNoboxes,
   boxListSorterFunction,
 } from "components/box-list";
-import { BoxListToolbar } from "components/box-list-toolbar";
+//import { BoxListToolbar } from "components/box-list-toolbar";
 
 type BoxListProp = {
   boxes: BoxListType[];
@@ -32,7 +32,7 @@ export function BoxList(props: BoxListProp) {
   };
 
   const getBoxListContent = function () {
-    return <ul className="list-group">{mapBoxList()}</ul>;
+    return <ul className="divide-y shadow">{mapBoxList()}</ul>;
   };
 
   if (props.boxes.length === 0) {
@@ -40,11 +40,10 @@ export function BoxList(props: BoxListProp) {
   } else {
     return (
       <React.StrictMode>
-        <BoxListToolbar />
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item font-monospace">
-              <span>/ home</span>
+        <nav className="flex my-4" aria-label="breadcrumb">
+          <ol className="flex items-center space-x-4">
+            <li className="cursor-pointer font-mono">
+              <span className="text-gray-800">/ home</span>
             </li>
           </ol>
         </nav>

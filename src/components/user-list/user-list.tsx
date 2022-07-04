@@ -35,15 +35,21 @@ export function UserList(props: UserListProps) {
     if (list.length === 0) return <UserListNoresult />;
     else
       return (
-        <table className="table table-bordered table-hover">
-          <thead>
+        <table className="w-full bg-white divide-y divide-gray-300">
+          <thead className="">
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Type</th>
+              <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                Name
+              </th>
+              <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                Email
+              </th>
+              <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                Type
+              </th>
             </tr>
           </thead>
-          <tbody>{list}</tbody>
+          <tbody className="bg-white divide-y divide-gray-200">{list}</tbody>
         </table>
       );
   };

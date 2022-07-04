@@ -24,7 +24,7 @@ export function NodeListItemIcon(props: NodeListItemIconProps) {
   };
 
   return (
-    <span className="node-list-item-icon">
+    <span className="node-list-item-icon ml-3 mr-2 h-6">
       <FAIcon type="FILE" icon={getItemIcon(props.type, props.name)} />
     </span>
   );
