@@ -13,8 +13,7 @@ export const UserListSearcher = memo(function (props: UserListSearcherProps) {
   return (
     <input
       type="text"
-      className="form-control"
-      id="user-list-searcher"
+      className="shadow-sm focus:ring-gray-800 focus:border-gray-800 block w-full sm:text-sm border-gray-300 rounded-md my-4"
       placeholder="Search"
       onChange={(e) => onChangeText(e.target.value)}
     />

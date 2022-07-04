@@ -3,6 +3,13 @@ import { useForm } from "react-hook-form";
 import { SoftwareSettingsType } from "types";
 import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
 
+import {
+  checkbox_style,
+  input_label_style,
+  input_style,
+  h3_style,
+} from "const/styles";
+
 export function EnterpriseSoftware(props: SoftwareSettingsType) {
   const { handleSubmit } = useForm();
 
@@ -28,22 +35,24 @@ export function EnterpriseSoftware(props: SoftwareSettingsType) {
 
   return (
     <React.StrictMode>
-      <div className="card">
-        <div className="card-body">
+      <div className="md:shadow rounded bg-white p-4 my-4">
+        <div className="">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <h3>Software settings</h3>
+            <h3 className={h3_style}>Software settings</h3>
 
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="invitationtemplate-input"
                 checked={enableInvitationTemplate}
                 onChange={(e) => {
                   setEnableInvitationTemplate(e.target.checked);
                 }}
               />
-              <label htmlFor="invitationtemplate-input" className="form-label">
+              <label
+                htmlFor="invitationtemplate-input"
+                className={input_label_style}>
                 Invitation template
               </label>
             </div>
@@ -51,14 +60,16 @@ export function EnterpriseSoftware(props: SoftwareSettingsType) {
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="certificatecheck-input"
                 checked={forceCertificateCheck}
                 onChange={(e) => {
                   setForceCertificateCheck(e.target.checked);
                 }}
               />
-              <label htmlFor="certificatecheck-input" className="form-label">
+              <label
+                htmlFor="certificatecheck-input"
+                className={input_label_style}>
                 Certificate check
               </label>
             </div>
@@ -66,7 +77,7 @@ export function EnterpriseSoftware(props: SoftwareSettingsType) {
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="serversideinvitation-input"
                 checked={forceServerSendInvitation}
                 onChange={(e) => {
@@ -75,7 +86,7 @@ export function EnterpriseSoftware(props: SoftwareSettingsType) {
               />
               <label
                 htmlFor="serversideinvitation-input"
-                className="form-label">
+                className={input_label_style}>
                 Server side invitation
               </label>
             </div>
@@ -83,14 +94,16 @@ export function EnterpriseSoftware(props: SoftwareSettingsType) {
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="force2falogin-input"
                 checked={forceSecFacAuth}
                 onChange={(e) => {
                   setForceSecFacAuth(e.target.checked);
                 }}
               />
-              <label htmlFor="force2falogin-input" className="form-label">
+              <label
+                htmlFor="force2falogin-input"
+                className={input_label_style}>
                 2fa login enforce
               </label>
             </div>
@@ -98,24 +111,28 @@ export function EnterpriseSoftware(props: SoftwareSettingsType) {
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="force2falogin-input"
                 checked={forceSecFacInvitation}
                 onChange={(e) => {
                   setForceSecFacInvitation(e.target.checked);
                 }}
               />
-              <label htmlFor="force2falogin-input" className="form-label">
+              <label
+                htmlFor="force2falogin-input"
+                className={input_label_style}>
                 2fa registration enforce
               </label>
             </div>
 
             <div className="mb-3">
-              <label htmlFor="defaultauthtype-input" className="form-label">
+              <label
+                htmlFor="defaultauthtype-input"
+                className={input_label_style}>
                 Type
               </label>
               <select
-                className="form-select"
+                className={input_style}
                 value={defaultAuthType}
                 id="defaultauthtype-input"
                 onChange={(e) => {

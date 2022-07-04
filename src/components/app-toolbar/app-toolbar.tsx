@@ -24,7 +24,13 @@ export function AppToolbar(props: AppToolbarProps) {
               <Link
                 to="/admin/user"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                Administration
+                Users
+              </Link>
+
+              <Link
+                to="/admin/enterprise"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Enterprise
               </Link>
             </div>
           </div>

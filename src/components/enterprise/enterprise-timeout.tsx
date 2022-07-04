@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { TimeoutSettingsType } from "types";
 
+import {
+  checkbox_style,
+  input_label_style,
+  input_style,
+  h3_style,
+} from "const/styles";
+
 export function EnterpriseTimeout(props: TimeoutSettingsType) {
   const { register, handleSubmit } = useForm();
   const [forced, setForced] = useState<boolean>(props.forced || false);
@@ -11,32 +18,32 @@ export function EnterpriseTimeout(props: TimeoutSettingsType) {
 
   return (
     <React.StrictMode>
-      <div className="card mt-3">
-        <div className="card-body">
+      <div className="md:shadow rounded bg-white p-4 my-4">
+        <div className="">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <h3>Timeout settings</h3>
+            <h3 className={h3_style}>Timeout settings</h3>
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="forced-input"
                 checked={forced}
                 onChange={(e) => {
                   setForced(e.target.checked);
                 }}
               />
-              <label htmlFor="forced-input" className="form-label">
+              <label htmlFor="forced-input" className={input_label_style}>
                 Forced
               </label>
             </div>
 
             <div className="mb-3">
-              <label htmlFor="timeout-input" className="form-label">
+              <label htmlFor="timeout-input" className={input_label_style}>
                 Timeout
               </label>
               <input
                 type="number"
-                className="form-control"
+                className={input_style}
                 id="timeout-input"
                 value={timeout}
                 {...register("timeout", {

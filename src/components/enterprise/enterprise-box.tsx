@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BoxSettingsType } from "types";
 
+import {
+  checkbox_style,
+  input_label_style,
+  input_style,
+  h3_style,
+} from "const/styles";
+
 export function EnterpriseBox(props: BoxSettingsType) {
   const { register, handleSubmit } = useForm();
 
@@ -39,22 +46,24 @@ export function EnterpriseBox(props: BoxSettingsType) {
 
   return (
     <React.StrictMode>
-      <div className="card">
-        <div className="card-body">
+      <div className="md:shadow rounded bg-white p-4 my-4">
+        <div className="">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <h3>Box settings</h3>
+            <h3 className={h3_style}>Box settings</h3>
 
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="cancreateprivacy-input"
                 checked={canCreatePrivacyBoxes}
                 onChange={(e) => {
                   setCanCreatePrivacyBoxes(e.target.checked);
                 }}
               />
-              <label htmlFor="cancreateprivacy-input" className="form-label">
+              <label
+                htmlFor="cancreateprivacy-input"
+                className={input_label_style}>
                 Can create privacy box
               </label>
             </div>
@@ -62,14 +71,16 @@ export function EnterpriseBox(props: BoxSettingsType) {
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="cancreatedataroom-input"
                 checked={canCreateDataRooms}
                 onChange={(e) => {
                   setCanCreateDataRooms(e.target.checked);
                 }}
               />
-              <label htmlFor="cancreatedataroom-input" className="form-label">
+              <label
+                htmlFor="cancreatedataroom-input"
+                className={input_label_style}>
                 Can create data room
               </label>
             </div>
@@ -77,14 +88,16 @@ export function EnterpriseBox(props: BoxSettingsType) {
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="cancreatetempbox-input"
                 checked={canCreateTemporaryBoxes}
                 onChange={(e) => {
                   setCanCreateTemporaryBoxes(e.target.checked);
                 }}
               />
-              <label htmlFor="cancreatetempbox-input" className="form-label">
+              <label
+                htmlFor="cancreatetempbox-input"
+                className={input_label_style}>
                 Can create temporary box
               </label>
             </div>
@@ -92,14 +105,16 @@ export function EnterpriseBox(props: BoxSettingsType) {
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="caninvitemembers-input"
                 checked={canInviteMembers}
                 onChange={(e) => {
                   setCanInviteMembers(e.target.checked);
                 }}
               />
-              <label htmlFor="caninvitemembers-input" className="form-label">
+              <label
+                htmlFor="caninvitemembers-input"
+                className={input_label_style}>
                 Can invite members
               </label>
             </div>
@@ -107,14 +122,14 @@ export function EnterpriseBox(props: BoxSettingsType) {
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="firstvisit-input"
                 checked={showFirstVisit}
                 onChange={(e) => {
                   setShowFirstVisit(e.target.checked);
                 }}
               />
-              <label htmlFor="firstvisit-input" className="form-label">
+              <label htmlFor="firstvisit-input" className={input_label_style}>
                 Show first visit
               </label>
             </div>
@@ -122,14 +137,14 @@ export function EnterpriseBox(props: BoxSettingsType) {
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="lastvisit-input"
                 checked={showLastVisit}
                 onChange={(e) => {
                   setShowLastVisit(e.target.checked);
                 }}
               />
-              <label htmlFor="lastvisit-input" className="form-label">
+              <label htmlFor="lastvisit-input" className={input_label_style}>
                 Show last visit
               </label>
             </div>
@@ -137,25 +152,27 @@ export function EnterpriseBox(props: BoxSettingsType) {
             <div className="mb-1">
               <input
                 type="checkbox"
-                className="form-check-input me-2"
+                className={checkbox_style}
                 id="forcepasscode-input"
                 checked={forceBoxPasscode}
                 onChange={(e) => {
                   setForceBoxPasscode(e.target.checked);
                 }}
               />
-              <label htmlFor="forcepasscode-input" className="form-label">
+              <label
+                htmlFor="forcepasscode-input"
+                className={input_label_style}>
                 Force box passcode
               </label>
             </div>
 
             <div className="mb-3">
-              <label htmlFor="quarantine-input" className="form-label">
+              <label htmlFor="quarantine-input" className={input_label_style}>
                 Quarantine policy
               </label>
               <input
                 type="number"
-                className="form-control"
+                className={input_style}
                 id="quarantine-input"
                 value={quarantinePolicy}
                 {...register("quarantine", {
@@ -169,12 +186,14 @@ export function EnterpriseBox(props: BoxSettingsType) {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="tempboxlifetime-input" className="form-label">
+              <label
+                htmlFor="tempboxlifetime-input"
+                className={input_label_style}>
                 Temp box policy
               </label>
               <input
                 type="number"
-                className="form-control"
+                className={input_style}
                 id="tempboxlifetime-input"
                 value={tempBoxesPolicy}
                 {...register("tempboxlifetime", {

@@ -7,14 +7,14 @@ import {
 
 export function EnterpriseSettings() {
   return (
-    <div className="row">
-      <div className="col-xl-4 col-lg-6 col-md-12">
+    <div className="grid grid-cols-3 md:space-x-4">
+      <div className="col-span-3 md:col-span-1">
         <EnterprisePasswordResolver />
       </div>
-      <div className="col-xl-4 col-lg-6 col-md-12">
+      <div className="col-span-3 md:col-span-1">
         <EnterpriseBoxResolver />
       </div>
-      <div className="col-xl-4 col-lg-6 col-md-12">
+      <div className="col-span-3 md:col-span-1">
         <EnterpriseSoftwareResolver />
         <EnterpriseTimeoutResolver />
       </div>
