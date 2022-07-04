@@ -49,7 +49,7 @@ export function UserFormStatistics(props: UserFormStatisticsProps) {
   );
   return (
     <React.StrictMode>
-      <div className="divide-y divide-gray-200 shadow rounded bg-white p-4 my-4">
+      <div className="md:shadow rounded bg-white p-4 my-4">
         <div className="">
           <h3 className={h3_style}>User statistics</h3>
           <div className="grid grid-cols-3 md:space-x-8">
