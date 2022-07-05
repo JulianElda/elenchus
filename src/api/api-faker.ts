@@ -21,7 +21,7 @@ import { generate_getDefaultSessionTimeout } from "./enterprise-timeout";
 import { generate_FinderItemTypes } from "./finder-item";
 import { generate_UserType, generate_UserTypeList } from "./user";
 
-const FAKER_DELAY = 500;
+const FAKER_DELAY = 200;
 
 const api_delay = function (): number {
   return Math.floor(Math.random() * FAKER_DELAY);
@@ -104,7 +104,10 @@ const faker_paginateUser = function (): Promise<UserType[]> {
 
 const faker_login = function (): Promise<ClientConfigType> {
   return new Promise((resolve: Function) => {
-    delayedResolve(resolve, generate_ClientConfigType(ClientConfigUserTypes.ADMIN));
+    delayedResolve(
+      resolve,
+      generate_ClientConfigType(ClientConfigUserTypes.ADMIN)
+    );
   });
 };
 
@@ -253,19 +256,19 @@ export const api = {
         errorCallback?.(res);
       });
   },
-  login: function(
+  login: function (
     _payload,
     successCallback?: Function,
     errorCallback?: Function
   ) {
     faker_login()
-    .then((res) => {
-      successCallback?.(res);
-    })
-    .catch((res) => {
-      errorCallback?.(res);
-    });
-  }
+      .then((res) => {
+        successCallback?.(res);
+      })
+      .catch((res) => {
+        errorCallback?.(res);
+      });
+  },
 };
 
 export default api;
