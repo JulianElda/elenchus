@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/elenchus/static/css/main.cdfbf151.css",
-    "main.js": "/elenchus/static/js/main.202c4498.js",
+    "main.js": "/elenchus/static/js/main.d4c85d85.js",
     "static/css/644.f3d50dea.chunk.css": "/elenchus/static/css/644.f3d50dea.chunk.css",
     "static/js/644.9419a22e.chunk.js": "/elenchus/static/js/644.9419a22e.chunk.js",
     "static/js/634.4193f901.chunk.js": "/elenchus/static/js/634.4193f901.chunk.js",
@@ -24,6 +24,6 @@
   },
   "entrypoints": [
     "static/css/main.cdfbf151.css",
-    "static/js/main.202c4498.js"
+    "static/js/main.d4c85d85.js"
   ]
 }
