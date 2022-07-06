@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import api from "api/api-faker";
+import { user_api } from "api/api-faker";
 import { ClientConfigType, ClientConfigUserTypes, UserType } from "types";
 import {
   currentUserLoaded,
@@ -27,7 +27,7 @@ export function AppUserResolver(props: AppUserResolverProps) {
       props.clientConfiguration?.userType === ClientConfigUserTypes.ADMIN ||
       props.clientConfiguration?.userType === ClientConfigUserTypes.FULL_LICENSE
     ) {
-      api.getUser(props.clientConfiguration.id, getUserSuccessCallback);
+      user_api.getUser(props.clientConfiguration.id, getUserSuccessCallback);
     } else {
       dispatch(initGuest());
     }

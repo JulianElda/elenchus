@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import api from "api/api-faker";
+import { user_api } from "api/api-faker";
 import { UserType } from "types";
 
 type userListInitialStateType = {
@@ -38,7 +38,7 @@ const resolveUsers = function () {
     };
 
     const loadUsers = function (start: number) {
-      api.paginateUser(limit, start, successCallback, errorCallback);
+      user_api.paginateUser(limit, start, successCallback, errorCallback);
     };
 
     loadUsers(index);

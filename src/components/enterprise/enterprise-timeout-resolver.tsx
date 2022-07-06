@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "api/api-faker";
+import { enterprise_api } from "api/api-faker";
 import { TimeoutSettingsType } from "types";
 import { EnterpriseTimeout } from "components/enterprise";
 
@@ -14,7 +14,7 @@ export function EnterpriseTimeoutResolver() {
       setSessionTimeout(res);
       setLoading(false);
     };
-    api.getDefaultSessionTimeout(callback);
+    enterprise_api.getDefaultSessionTimeout(callback);
   }, []);
 
   if (loading === true) {

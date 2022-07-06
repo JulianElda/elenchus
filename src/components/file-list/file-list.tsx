@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useReducer, useState } from "react";
-import api from "api/api-faker";
+import { file_api } from "api/api-faker";
 import { BoxType, EntryItemType } from "types";
 import { Breadcrumbs, BreadcrumbType } from "components/breadcrumbs";
 import { FileListEmpty } from "components/file-list";
@@ -52,7 +52,7 @@ export function FileList(props: FileListProp) {
       });
       dispatchSelectedItems({ type: "clear" });
       setLoading(true);
-      api.getBoxChildren(props.box.id!, folderId, getBoxChildrenCallback);
+      file_api.getBoxChildren(props.box.id!, folderId, getBoxChildrenCallback);
     },
     [props.box.id]
   );

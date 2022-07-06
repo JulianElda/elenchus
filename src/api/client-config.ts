@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import { faker } from "@faker-js/faker/locale/en";
 import { ClientConfigType, ClientConfigUserTypes } from "types";
 
 export const generate_ClientConfigType = function (

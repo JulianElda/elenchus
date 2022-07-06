@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import api from "api/api-faker";
+import { file_api } from "api/api-faker";
 import { getBoxList } from "store/box-list";
 import { BoxListType, FinderItemType } from "types";
 import { FinderList } from "components/finder-list";
@@ -37,7 +37,7 @@ export function Finder() {
       );
     };
 
-    api.findItemsInBox(boxId, types, name, findCallback);
+    file_api.findItemsInBox(boxId, types, name, findCallback);
   };
 
   return (

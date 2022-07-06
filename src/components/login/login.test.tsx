@@ -3,7 +3,7 @@ import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import api from "api/api-faker";
+import { login_api } from "api/api-faker";
 import { LoginErrorResponses } from "const/login";
 import { Login } from "components/login";
 
@@ -40,7 +40,7 @@ test("wrong credentials", async () => {
   const history = createMemoryHistory();
 
   jest
-    .spyOn(api, "login")
+    .spyOn(login_api, "login")
     .mockImplementation((payload, successCallback, errorCallback) => {
       errorCallback?.({ payload: LoginErrorResponses.WRONG_CRED });
     });
@@ -66,7 +66,7 @@ test("submit callback to box", async () => {
   const history = createMemoryHistory();
 
   jest
-    .spyOn(api, "login")
+    .spyOn(login_api, "login")
     .mockImplementation((payload, successCallback, errorCallback) => {
       successCallback?.({ csfrToken: "test-csfr" });
     });

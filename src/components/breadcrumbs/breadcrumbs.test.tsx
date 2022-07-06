@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import api from "api/api";
+import { file_api } from "api/api-faker";
 import clientConfigReducer from "store/client-config";
 import { EntryItemTypes } from "types";
 import { Breadcrumbs } from "components/breadcrumbs";
@@ -69,7 +69,7 @@ test("sliced bread", async () => {
   };
   let mockEntries = [{ id: "test-2", name: "test-2", type: "DIR" }];
   jest
-    .spyOn(api, "getBoxChildren")
+    .spyOn(file_api, "getBoxChildren")
     .mockImplementation((boxId, folderId, successCallback) => {
       successCallback?.({ entries: mockEntries });
     });

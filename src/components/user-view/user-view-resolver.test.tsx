@@ -1,7 +1,7 @@
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
-import api from "api/api-faker";
+import { user_api } from "api/api-faker";
 import { UserViewResolver } from "components/user-view";
 import { mock_userlist } from "mocks/user";
 
@@ -16,7 +16,7 @@ test("load user", async () => {
   const mockedUser = mock_userlist[0];
 
   jest
-    .spyOn(api, "getUser")
+    .spyOn(user_api, "getUser")
     .mockImplementation((id, successCallback, errorCallback) => {
       successCallback?.(mockedUser);
     });

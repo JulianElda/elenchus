@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import api from "api/api";
+import { enterprise_api } from "api/api-faker";
 import { EnterpriseBoxResolver } from "components/enterprise";
 
 import { mock_enterprise_box } from "mocks/enterprise";
@@ -11,9 +11,11 @@ test("shows loading", () => {
 });
 
 test("shows box settings", async () => {
-  jest.spyOn(api, "getBoxSettings").mockImplementation((successCallback) => {
-    successCallback?.(mock_enterprise_box);
-  });
+  jest
+    .spyOn(enterprise_api, "getBoxSettings")
+    .mockImplementation((successCallback) => {
+      successCallback?.(mock_enterprise_box);
+    });
 
   render(<EnterpriseBoxResolver />);
 

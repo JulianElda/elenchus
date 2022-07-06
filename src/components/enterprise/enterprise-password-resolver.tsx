@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "api/api-faker";
+import { enterprise_api } from "api/api-faker";
 import { PasswordPolicyType } from "types";
 import { EnterprisePassword } from "components/enterprise";
 
@@ -14,7 +14,7 @@ export function EnterprisePasswordResolver() {
       setPasswordPolicy(res);
       setLoading(false);
     };
-    api.getPasswordPolicy(callback);
+    enterprise_api.getPasswordPolicy(callback);
   }, []);
 
   if (loading === true) {

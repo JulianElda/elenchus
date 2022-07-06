@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import api from "api/api-faker";
+import { file_api } from "api/api-faker";
 import { BoxListResponseType, BoxListType } from "types";
 
 type boxListInitialStateType = {
@@ -32,7 +32,7 @@ const resolveBoxes = function () {
     };
 
     const loadBoxes = function (start: number) {
-      api.paginateBox(limit, start, successCallback, errorCallback);
+      file_api.paginateBox(limit, start, successCallback, errorCallback);
     };
 
     loadBoxes(index);

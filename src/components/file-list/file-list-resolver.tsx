@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import api from "api/api-faker";
+import { file_api } from "api/api-faker";
 import { BoxType, EntryItemResponseType, EntryItemType } from "types";
 import { BreadcrumbType } from "components/breadcrumbs";
 import { FileList } from "components/file-list";
@@ -49,10 +49,10 @@ export function FileListResolver() {
         return;
       }
       setBreadcrumbs(breadcrumbs);
-      api.getBoxChildren(params.boxId!, folderId, getBoxChildrenCallback);
+      file_api.getBoxChildren(params.boxId!, folderId, getBoxChildrenCallback);
     };
 
-    api.getBox(params.boxId!, getBoxCallback);
+    file_api.getBox(params.boxId!, getBoxCallback);
   }, [params.boxId, state]);
 
   if (loading) {

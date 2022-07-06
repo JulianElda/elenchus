@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import api from "api/api";
+import { enterprise_api } from "api/api-faker";
 import { EnterpriseTimeoutResolver } from "components/enterprise";
 
 import { mock_enterprise_timeout } from "mocks/enterprise";
@@ -12,7 +12,7 @@ test("shows loading", () => {
 
 test("shows timeout settings", async () => {
   jest
-    .spyOn(api, "getDefaultSessionTimeout")
+    .spyOn(enterprise_api, "getDefaultSessionTimeout")
     .mockImplementation((successCallback) => {
       successCallback?.(mock_enterprise_timeout);
     });

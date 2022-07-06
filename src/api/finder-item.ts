@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import { faker } from "@faker-js/faker/locale/en";
 import { IdName, ParentType, FinderItemType } from "types/finder-item";
 import { generateEntryItemType, generateItemSize } from "./entry-item";
 import { EntryItemTypes } from "types/entry-item";

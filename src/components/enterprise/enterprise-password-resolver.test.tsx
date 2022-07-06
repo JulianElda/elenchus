@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import api from "api/api";
+import { enterprise_api } from "api/api-faker";
 import { EnterprisePasswordResolver } from "components/enterprise";
 
 import { mock_enterprise_password } from "mocks/enterprise";
@@ -11,9 +11,11 @@ test("shows loading", () => {
 });
 
 test("shows password settings", async () => {
-  jest.spyOn(api, "getPasswordPolicy").mockImplementation((successCallback) => {
-    successCallback?.(mock_enterprise_password);
-  });
+  jest
+    .spyOn(enterprise_api, "getPasswordPolicy")
+    .mockImplementation((successCallback) => {
+      successCallback?.(mock_enterprise_password);
+    });
 
   render(<EnterprisePasswordResolver />);
 

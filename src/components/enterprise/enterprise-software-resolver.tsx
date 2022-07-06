@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "api/api-faker";
+import { enterprise_api } from "api/api-faker";
 import { SoftwareSettingsType } from "types";
 import { EnterpriseSoftware } from "components/enterprise";
 
@@ -13,7 +13,7 @@ export function EnterpriseSoftwareResolver() {
       setSoftwareSettings(res);
       setLoading(false);
     };
-    api.getSoftwareSettings(callback);
+    enterprise_api.getSoftwareSettings(callback);
   }, []);
 
   if (loading === true) {

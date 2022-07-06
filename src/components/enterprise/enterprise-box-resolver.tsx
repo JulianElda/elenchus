@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "api/api-faker";
+import { enterprise_api } from "api/api-faker";
 import { BoxSettingsType } from "types";
 import { EnterpriseBox } from "components/enterprise";
 
@@ -14,7 +14,7 @@ export function EnterpriseBoxResolver() {
       setBoxSettings(res);
       setLoading(false);
     };
-    api.getBoxSettings(callback);
+    enterprise_api.getBoxSettings(callback);
   }, []);
 
   if (loading === true) {

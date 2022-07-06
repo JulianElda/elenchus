@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import boxListReducer from "store/box-list";
-import api from "api/api-faker";
+import { file_api } from "api/api-faker";
 import { BoxListResolver } from "components/box-list";
 import { mock_boxes_partial } from "mocks/box";
 
@@ -33,7 +33,7 @@ test("renders loading", () => {
 test("paginates once", async () => {
   const history = createMemoryHistory();
   jest
-    .spyOn(api, "paginateBox")
+    .spyOn(file_api, "paginateBox")
     .mockImplementation((limit, start, successCallback) => {
       successCallback?.(mock_boxes_partial);
     });

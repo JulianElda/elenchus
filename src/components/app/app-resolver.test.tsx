@@ -2,7 +2,7 @@ import { Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
-import api from "api/api";
+import { account_api, user_api } from "api/api-faker";
 import store from "store/store";
 import { AppResolver } from "components/app";
 import {
@@ -26,12 +26,12 @@ test.skip("shows app for admin type", async () => {
   const history = createMemoryHistory();
 
   jest
-    .spyOn(api, "getClientConfiguration")
-    .mockImplementation((successCallback) => {
+    .spyOn(account_api, "getClientConfiguration")
+    .mockImplementation((_type, successCallback) => {
       successCallback?.(mock_clientconfig_admin);
     });
 
-  jest.spyOn(api, "getUser").mockImplementation((id, successCallback) => {
+  jest.spyOn(user_api, "getUser").mockImplementation((id, successCallback) => {
     successCallback?.(mock_user_admin);
   });
 
@@ -53,12 +53,12 @@ test.skip("shows app for full license", async () => {
   const history = createMemoryHistory();
 
   jest
-    .spyOn(api, "getClientConfiguration")
-    .mockImplementation((successCallback) => {
+    .spyOn(account_api, "getClientConfiguration")
+    .mockImplementation((_type, successCallback) => {
       successCallback?.(mock_clientconfig_full);
     });
 
-  jest.spyOn(api, "getUser").mockImplementation((id, successCallback) => {
+  jest.spyOn(user_api, "getUser").mockImplementation((id, successCallback) => {
     successCallback?.(mock_user_full);
   });
 
@@ -79,8 +79,8 @@ test.skip("shows app for full license", async () => {
 test.skip("shows no access for guest", async () => {
   const history = createMemoryHistory();
   jest
-    .spyOn(api, "getClientConfiguration")
-    .mockImplementation((successCallback) => {
+    .spyOn(account_api, "getClientConfiguration")
+    .mockImplementation((_type, successCallback) => {
       successCallback?.(mock_clientconfig_guest);
     });
 

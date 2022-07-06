@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import api from "api/api";
+import { enterprise_api } from "api/api-faker";
 import { EnterpriseSoftwareResolver } from "components/enterprise";
 
 import { mock_enterprise_software } from "mocks/enterprise";
@@ -12,7 +12,7 @@ test("shows loading", () => {
 
 test("shows software settings", async () => {
   jest
-    .spyOn(api, "getSoftwareSettings")
+    .spyOn(enterprise_api, "getSoftwareSettings")
     .mockImplementation((successCallback) => {
       successCallback?.(mock_enterprise_software);
     });

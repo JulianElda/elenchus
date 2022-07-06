@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import api from "api/api-faker";
+import { user_api } from "api/api-faker";
 import { UserType } from "types";
 import { UserView } from "components/user-view";
 
@@ -14,7 +14,7 @@ export function UserViewResolver() {
       setUser(res);
       setLoading(false);
     };
-    api.getUser(params.userId!, getUserCallback);
+    user_api.getUser(params.userId!, getUserCallback);
   }, [params.userId]);
 
   if (loading) {

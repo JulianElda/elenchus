@@ -111,7 +111,39 @@ const faker_login = function (): Promise<ClientConfigType> {
   });
 };
 
-export const api = {
+export const account_api = {
+  getClientConfiguration: function (
+    type?: ClientConfigUserTypes,
+    successCallback?: Function,
+    errorCallback?: Function
+  ) {
+    faker_getClientConfiguration(type || ClientConfigUserTypes.ADMIN)
+      .then((res) => {
+        successCallback?.(res);
+      })
+      .catch((res) => {
+        errorCallback?.(res);
+      });
+  },
+};
+
+export const login_api = {
+  login: function (
+    _payload,
+    successCallback?: Function,
+    errorCallback?: Function
+  ) {
+    faker_login()
+      .then((res) => {
+        successCallback?.(res);
+      })
+      .catch((res) => {
+        errorCallback?.(res);
+      });
+  },
+};
+
+export const enterprise_api = {
   getBoxSettings: function (
     successCallback?: Function,
     errorCallback?: Function
@@ -160,6 +192,9 @@ export const api = {
         errorCallback?.(res);
       });
   },
+};
+
+export const file_api = {
   getBoxChildren: function (
     _boxId: string,
     _folderId: string,
@@ -216,6 +251,9 @@ export const api = {
         errorCallback?.(res);
       });
   },
+};
+
+export const user_api = {
   getUser: function (
     _id: string,
     successCallback?: Function,
@@ -243,32 +281,8 @@ export const api = {
         errorCallback?.(res);
       });
   },
-  getClientConfiguration: function (
-    type?: ClientConfigUserTypes,
-    successCallback?: Function,
-    errorCallback?: Function
-  ) {
-    faker_getClientConfiguration(type || ClientConfigUserTypes.ADMIN)
-      .then((res) => {
-        successCallback?.(res);
-      })
-      .catch((res) => {
-        errorCallback?.(res);
-      });
-  },
-  login: function (
-    _payload,
-    successCallback?: Function,
-    errorCallback?: Function
-  ) {
-    faker_login()
-      .then((res) => {
-        successCallback?.(res);
-      })
-      .catch((res) => {
-        errorCallback?.(res);
-      });
-  },
 };
+
+export const api = {};
 
 export default api;

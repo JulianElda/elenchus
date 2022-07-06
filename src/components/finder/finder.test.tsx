@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { createMemoryHistory } from "history";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import api from "api/api-faker";
+import { file_api } from "api/api-faker";
 import boxListReducer from "store/box-list";
 import clientConfigReducer from "store/client-config";
 import { Finder } from "components/finder";
@@ -59,7 +59,7 @@ test("show items", async () => {
   const history = createMemoryHistory();
 
   jest
-    .spyOn(api, "findItemsInBox")
+    .spyOn(file_api, "findItemsInBox")
     .mockImplementationOnce((boxId, types, name, successCallback) => {
       successCallback?.(mockResults);
     });
