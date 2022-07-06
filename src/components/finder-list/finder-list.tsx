@@ -1,11 +1,7 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import api from "api/api";
 import { FinderItemType } from "types";
-import { getClientConfig } from "store/client-config";
 import { BreadcrumbType } from "components/breadcrumbs";
-import { downloadFromId } from "components/common/download";
 import {
   FinderListItem,
   finderListSorterFunction,
@@ -23,8 +19,6 @@ type FinderListProps = {
 export function FinderList(props: FinderListProps) {
   const navigate = useNavigate();
 
-  const clientConfiguration = useSelector(getClientConfig);
-
   const handleFolder = useCallback(
     function (folderId: string, boxId: string, breadcrumbs: BreadcrumbType[]) {
       navigate("/box/" + boxId, {
@@ -34,22 +28,9 @@ export function FinderList(props: FinderListProps) {
     [navigate]
   );
 
-  const handleFile = useCallback(
-    function (itemId: string, itemName: string) {
-      const payload = [
-        {
-          itemId: itemId,
-          itemName: itemName,
-        },
-      ];
-
-      const downloadItemsCallback = function (res: string) {
-        downloadFromId(res, clientConfiguration.csfrToken);
-      };
-      api.getDownloadId(payload, null, downloadItemsCallback);
-    },
-    [clientConfiguration.csfrToken]
-  );
+  const handleFile = useCallback(function (_itemId: string, itemName: string) {
+    console.log(itemName);
+  }, []);
 
   const getBreadcrumbs = function (item: FinderItemType) {
     const breadcrumbs: BreadcrumbType[] = [

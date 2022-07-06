@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { AdminTypes, UserType } from "types";
-import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
-import { RegistrationValidationType } from "idg-types/RegistrationValidationType";
-import { UserInfos } from "idg-types/UserInfos";
-import { UserPermissions } from "idg-types/UserPermissions";
+import {
+  LoginValidationTypes,
+  RegistrationValidationTypes,
+  UserInfoStatus,
+  UserInfoType,
+  UserPermissionsVisibility,
+} from "types/user";
 
 import { UserFormStatistics } from "components/user-form";
 
@@ -211,10 +214,10 @@ export function UserForm(props: UserFormProps) {
                     onChange={(e) => {
                       setType(e.target.value);
                     }}>
-                    <option value={UserInfos.type.FULL_LICENSE}>
+                    <option value={UserInfoType.FULL_LICENSE}>
                       Full license
                     </option>
-                    <option value={UserInfos.type.GUEST_LICENSE}>
+                    <option value={UserInfoType.GUEST_LICENSE}>
                       Guest license
                     </option>
                   </select>
@@ -234,11 +237,9 @@ export function UserForm(props: UserFormProps) {
                     onChange={(e) => {
                       setStatus(e.target.value);
                     }}>
-                    <option value={UserInfos.status.ACTIVE}>Active</option>
-                    <option value={UserInfos.status.DISABLED}>Disabled</option>
-                    <option value={UserInfos.status.INITIATED}>
-                      Initiated
-                    </option>
+                    <option value={UserInfoStatus.ACTIVE}>Active</option>
+                    <option value={UserInfoStatus.DISABLED}>Disabled</option>
+                    <option value={UserInfoStatus.INITIATED}>Initiated</option>
                   </select>
                 </div>
 
@@ -370,15 +371,15 @@ export function UserForm(props: UserFormProps) {
                     onChange={(e) => {
                       setLoginValidationType(e.target.value);
                     }}>
-                    <option value={LoginValidationTypeOrNone.NONE}>None</option>
-                    <option value={LoginValidationTypeOrNone.PASSCODE}>
+                    <option value={LoginValidationTypes.NONE}>None</option>
+                    <option value={LoginValidationTypes.PASSCODE}>
                       Passcode
                     </option>
-                    <option value={LoginValidationTypeOrNone.LOGINCARD}>
+                    <option value={LoginValidationTypes.LOGINCARD}>
                       Login card
                     </option>
-                    <option value={LoginValidationTypeOrNone.DUO}>DUO</option>
-                    <option value={LoginValidationTypeOrNone.TOTP}>TOTP</option>
+                    <option value={LoginValidationTypes.DUO}>DUO</option>
+                    <option value={LoginValidationTypes.TOTP}>TOTP</option>
                   </select>
                 </div>
                 <div className="mb-3">
@@ -411,13 +412,13 @@ export function UserForm(props: UserFormProps) {
                     onChange={(e) => {
                       setRegistrationValidationType(e.target.value);
                     }}>
-                    <option value={RegistrationValidationType.NONE}>
+                    <option value={RegistrationValidationTypes.NONE}>
                       None
                     </option>
-                    <option value={RegistrationValidationType.PASSCODE}>
+                    <option value={RegistrationValidationTypes.PASSCODE}>
                       Passcode
                     </option>
-                    <option value={RegistrationValidationType.LOGINCARD}>
+                    <option value={RegistrationValidationTypes.LOGINCARD}>
                       Login card
                     </option>
                   </select>
@@ -457,17 +458,15 @@ export function UserForm(props: UserFormProps) {
                     onChange={(e) => {
                       setVisibility(e.target.value);
                     }}>
-                    <option value={UserPermissions.visibility.ALL}>All</option>
+                    <option value={UserPermissionsVisibility.ALL}>All</option>
                     <option
-                      value={UserPermissions.visibility.OTHER_FULL_LICENSES}>
+                      value={UserPermissionsVisibility.OTHER_FULL_LICENSES}>
                       Other full licenses
                     </option>
-                    <option value={UserPermissions.visibility.OWN_INVITED}>
+                    <option value={UserPermissionsVisibility.OWN_INVITED}>
                       Own invited
                     </option>
-                    <option value={UserPermissions.visibility.NONE}>
-                      None
-                    </option>
+                    <option value={UserPermissionsVisibility.NONE}>None</option>
                   </select>
                 </div>
                 <div className="mb-3">

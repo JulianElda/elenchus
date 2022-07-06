@@ -46,7 +46,7 @@ export const NodeListItem = memo(function (props: NodeListItemProps) {
         type={props.type || defaultIconType}
         name={props.name || defaultIconName}
       />
-      <label className="node-list-item-name" onClick={onClick}>
+      <label className="node-list-item-name cursor-pointer" onClick={onClick}>
         {props.name}
       </label>
     </li>

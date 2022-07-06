@@ -19,7 +19,9 @@ export function BoxListItem(props: BoxListItemType) {
   return (
     <li className="h-12 cursor-pointer p-4 bg-white" onClick={onNavigateBox}>
       <BoxListItemIcon icon={props.type} />
-      <label className="ml-2 box-list-item-name">{props.name}</label>
+      <label className="ml-2 box-list-item-name cursor-pointer">
+        {props.name}
+      </label>
     </li>
   );
 }

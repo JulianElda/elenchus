@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { SoftwareSettingsType } from "types";
-import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
+import { LoginValidationTypes } from "types/user";
 
 import {
   checkbox_style,
@@ -28,7 +28,7 @@ export function EnterpriseSoftware(props: SoftwareSettingsType) {
     props.forceSecFacInvitation || false
   );
   const [defaultAuthType, setDefaultAuthType] = useState<string>(
-    props.defaultAuthType || LoginValidationTypeOrNone.NONE
+    props.defaultAuthType || LoginValidationTypes.NONE
   );
 
   const onSubmit = function () {};
@@ -138,15 +138,13 @@ export function EnterpriseSoftware(props: SoftwareSettingsType) {
                 onChange={(e) => {
                   setDefaultAuthType(e.target.value);
                 }}>
-                <option value={LoginValidationTypeOrNone.NONE}>None</option>
-                <option value={LoginValidationTypeOrNone.DUO}>DUO</option>
-                <option value={LoginValidationTypeOrNone.LOGINCARD}>
+                <option value={LoginValidationTypes.NONE}>None</option>
+                <option value={LoginValidationTypes.DUO}>DUO</option>
+                <option value={LoginValidationTypes.LOGINCARD}>
                   Login card
                 </option>
-                <option value={LoginValidationTypeOrNone.PASSCODE}>
-                  Passcode
-                </option>
-                <option value={LoginValidationTypeOrNone.TOTP}>TOTP</option>
+                <option value={LoginValidationTypes.PASSCODE}>Passcode</option>
+                <option value={LoginValidationTypes.TOTP}>TOTP</option>
               </select>
             </div>
           </form>

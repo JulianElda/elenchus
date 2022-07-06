@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
+import { LoginValidationTypes } from "types/user";
 import { EnterpriseSoftware } from "components/enterprise";
 
 import { mock_enterprise_software } from "mocks/enterprise";
@@ -23,6 +23,6 @@ test("shows software settings", async () => {
   });
   await waitFor(async () => {
     const quarantinePolicy = screen.getByLabelText(/Type/i);
-    expect(quarantinePolicy).toHaveValue(LoginValidationTypeOrNone.PASSCODE);
+    expect(quarantinePolicy).toHaveValue(LoginValidationTypes.PASSCODE);
   });
 });

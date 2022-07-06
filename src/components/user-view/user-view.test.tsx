@@ -1,6 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { LoginValidationTypeOrNone } from "idg-types/LoginValidationTypeOrNone";
-import { UserPermissions } from "idg-types/UserPermissions";
+import { LoginValidationTypes, UserPermissionsVisibility } from "types/user";
 import { UserView } from "components/user-view";
 
 import { mock_user_admin } from "mocks/user";
@@ -40,11 +39,11 @@ test("show user creation", async () => {
   });
   await waitFor(async () => {
     const login2fa = screen.getByLabelText(/2fa login type/i);
-    expect(login2fa).toHaveValue(LoginValidationTypeOrNone.NONE);
+    expect(login2fa).toHaveValue(LoginValidationTypes.NONE);
   });
   await waitFor(async () => {
     const register2fa = screen.getByLabelText(/2fa registration type/i);
-    expect(register2fa).toHaveValue(LoginValidationTypeOrNone.NONE);
+    expect(register2fa).toHaveValue(LoginValidationTypes.NONE);
   });
 });
 
@@ -54,7 +53,7 @@ test("show user permissions", async () => {
 
   await waitFor(async () => {
     const visibility = screen.getByLabelText(/Visibility/i);
-    expect(visibility).toHaveValue(UserPermissions.visibility.ALL);
+    expect(visibility).toHaveValue(UserPermissionsVisibility.ALL);
   });
   await waitFor(async () => {
     const tempLifeTime = screen.getByLabelText(/Temporary box lifetime/i);
