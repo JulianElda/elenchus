@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import store from "store/store";
@@ -18,14 +17,7 @@ root.render(
   <Provider store={store}>
     <HashRouter>
       <Routes>
-        <Route
-          path="/*"
-          element={
-            <React.Suspense fallback={<></>}>
-              <AppRouting />
-            </React.Suspense>
-          }
-        />
+        <Route path="/*" element={<AppRouting />} />
       </Routes>
     </HashRouter>
     <Footer />

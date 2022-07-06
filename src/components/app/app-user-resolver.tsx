@@ -35,7 +35,7 @@ export function AppUserResolver(props: AppUserResolverProps) {
 
   if (!loaded) {
     return (
-      <div className="app-container container">
+      <div className="container pt-12">
         <p>loading user...</p>
       </div>
     );
@@ -46,7 +46,7 @@ export function AppUserResolver(props: AppUserResolverProps) {
       );
     } else {
       return (
-        <div className="app-container container">
+        <div className="container pt-12">
           <p>no access</p>
         </div>
       );

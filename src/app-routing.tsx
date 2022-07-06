@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import React, { lazy } from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
 import Tester from "components/tester/tester";
 
@@ -12,7 +12,14 @@ export default function AppRouting() {
   return (
     <Routes>
       <Route path="tester" element={<Tester />} />
-      <Route path="login" element={<Login />} />
+      <Route
+        path="login"
+        element={
+          <React.Suspense fallback={<></>}>
+            <Login />
+          </React.Suspense>
+        }
+      />
       <Route path="" element={<Navigate to="/box" />} />
       <Route path="/" element={<AppResolver />}>
         <Route path="box" element={<BoxListResolver />} />
