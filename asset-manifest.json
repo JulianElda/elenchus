@@ -1,19 +1,17 @@
 {
   "files": {
-    "main.css": "/elenchus/static/css/main.cdfbf151.css",
-    "main.js": "/elenchus/static/js/main.789c50dc.js",
-    "static/css/644.f3d50dea.chunk.css": "/elenchus/static/css/644.f3d50dea.chunk.css",
-    "static/js/644.e72b91eb.chunk.js": "/elenchus/static/js/644.e72b91eb.chunk.js",
-    "static/js/634.096535f6.chunk.js": "/elenchus/static/js/634.096535f6.chunk.js",
+    "main.css": "/elenchus/static/css/main.b64b3bf3.css",
+    "main.js": "/elenchus/static/js/main.dc884322.js",
+    "static/js/633.e23db69e.chunk.js": "/elenchus/static/js/633.e23db69e.chunk.js",
+    "static/js/381.3ffd6799.chunk.js": "/elenchus/static/js/381.3ffd6799.chunk.js",
     "static/css/637.ade7b2f0.chunk.css": "/elenchus/static/css/637.ade7b2f0.chunk.css",
-    "static/js/637.6f49be47.chunk.js": "/elenchus/static/js/637.6f49be47.chunk.js",
-    "static/css/651.5a63399a.chunk.css": "/elenchus/static/css/651.5a63399a.chunk.css",
-    "static/js/651.2096098c.chunk.js": "/elenchus/static/js/651.2096098c.chunk.js",
+    "static/js/637.2d85b59f.chunk.js": "/elenchus/static/js/637.2d85b59f.chunk.js",
+    "static/css/909.5a63399a.chunk.css": "/elenchus/static/css/909.5a63399a.chunk.css",
+    "static/js/909.16979282.chunk.js": "/elenchus/static/js/909.16979282.chunk.js",
     "static/css/716.1c77db28.chunk.css": "/elenchus/static/css/716.1c77db28.chunk.css",
     "static/js/716.04c00ddb.chunk.js": "/elenchus/static/js/716.04c00ddb.chunk.js",
     "static/js/877.872bcb20.chunk.js": "/elenchus/static/js/877.872bcb20.chunk.js",
     "static/js/20.ff8abb9e.chunk.js": "/elenchus/static/js/20.ff8abb9e.chunk.js",
-    "static/js/881.be2f6921.chunk.js": "/elenchus/static/js/881.be2f6921.chunk.js",
     "static/media/Mplus1-ExtraBold.woff2": "/elenchus/static/media/Mplus1-ExtraBold.c9ddd3892a94aeac4b86.woff2",
     "static/media/Mplus1-Bold.woff2": "/elenchus/static/media/Mplus1-Bold.91034977bafddd53f111.woff2",
     "static/media/Mplus1-SemiBold.woff2": "/elenchus/static/media/Mplus1-SemiBold.f616eb8c154f7ed4c50b.woff2",
@@ -23,7 +21,7 @@
     "index.html": "/elenchus/index.html"
   },
   "entrypoints": [
-    "static/css/main.cdfbf151.css",
-    "static/js/main.789c50dc.js"
+    "static/css/main.b64b3bf3.css",
+    "static/js/main.dc884322.js"
   ]
 }
