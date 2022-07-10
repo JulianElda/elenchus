@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import "assets/styles/index.scss";
 import "assets/styles/tailwind.css";
 import "./i18n";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 import AppRouting from "./app-routing";
 import { Footer } from "components/footer";
@@ -23,3 +24,5 @@ root.render(
     <Footer />
   </Provider>
 );
+
+serviceWorkerRegistration.register();
